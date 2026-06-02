@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amritesh.is-a.dev/sitemap.xml
