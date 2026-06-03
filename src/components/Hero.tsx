@@ -91,12 +91,13 @@ export default function Hero() {
               style={{ transitionDelay: "400ms" }}
             >
               <a
-                href="/resume.pdf"
-                download
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-medium rounded-xl px-6 py-3 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-accent-blue/20 hover:scale-[1.02] active:scale-[0.98]"
-                aria-label="Download resume"
+                href="/resume/Amritesh_Mishra.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-accent-blue text-white font-medium rounded-xl px-5 py-3 transition-all duration-300 ease-out hover:bg-[#6aa2ff] hover:scale-[1.02] active:scale-[0.98]"
+                aria-label="View resume in a new tab"
               >
-                Resume
+                View Resume
               </a>
               <a
                 href="https://github.com/amrit-verse"

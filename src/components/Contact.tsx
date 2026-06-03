@@ -1,6 +1,18 @@
+import type { ReactNode } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-const CONTACTS = [
+type ContactLink = {
+  iconBg: string;
+  iconColor: string;
+  icon: ReactNode;
+  label: string;
+  value: string;
+  href: string;
+  external: boolean;
+  download?: boolean;
+};
+
+const CONTACTS: ContactLink[] = [
   {
     iconBg: "bg-accent-blue/10",
     iconColor: "text-accent-blue",
@@ -68,6 +80,22 @@ const CONTACTS = [
     href: "https://www.hackerrank.com/profile/amriteshmishra71",
     external: true,
   },
+  {
+    iconBg: "bg-accent-blue/10",
+    iconColor: "text-accent-blue",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="7 10 12 15 17 10" />
+        <line x1="12" y1="15" x2="12" y2="3" />
+      </svg>
+    ),
+    label: "Resume",
+    value: "Download Resume",
+    href: "/resume/Amritesh_Mishra.pdf",
+    external: false,
+    download: true,
+  },
 ];
 
 export default function Contact() {
@@ -116,6 +144,7 @@ export default function Contact() {
                   href={c.href}
                   target={c.external ? "_blank" : undefined}
                   rel={c.external ? "noopener noreferrer" : undefined}
+                  download={c.download || undefined}
                   className="glass-card p-4 flex items-center gap-4 group"
                 >
                   <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${c.iconBg} ${c.iconColor}`}>
