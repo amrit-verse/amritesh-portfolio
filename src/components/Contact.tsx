@@ -1,4 +1,6 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useState, useCallback, type ReactNode } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 type ContactLink = {
@@ -10,6 +12,7 @@ type ContactLink = {
   href: string;
   external: boolean;
   download?: boolean;
+  copyable?: boolean;
 };
 
 const CONTACTS: ContactLink[] = [
@@ -26,6 +29,7 @@ const CONTACTS: ContactLink[] = [
     value: "m.amrit2004@gmail.com",
     href: "mailto:m.amrit2004@gmail.com",
     external: false,
+    copyable: true,
   },
   {
     iconBg: "bg-[#333]/30",
@@ -99,6 +103,29 @@ const CONTACTS: ContactLink[] = [
 ];
 
 export default function Contact() {
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+
+  const showToast = useCallback((msg: string) => {
+    setToastMessage(msg);
+    setToastVisible(true);
+    setTimeout(() => setToastVisible(false), 2500);
+  }, []);
+
+  const handleCopyEmail = useCallback(
+    async (e: React.MouseEvent, email: string) => {
+      e.preventDefault();
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast("Email copied to clipboard!");
+      } catch {
+        // Fallback: open mailto
+        window.location.href = `mailto:${email}`;
+      }
+    },
+    [showToast]
+  );
+
   return (
     <section id="contact" className="py-24 md:py-32 bg-bg-secondary/50" aria-labelledby="contact-title">
       <div className="max-w-6xl mx-auto px-6">
@@ -125,7 +152,7 @@ export default function Contact() {
                 or just chatting about technology. Whether you have a question, a project
                 idea, or want to connect — feel free to reach out.
               </p>
-              <div className="flex items-center gap-3 text-text-secondary">
+              <div className="flex items-center gap-3 text-text-secondary group cursor-default" title="Currently based in Chennai, India">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-accent-blue" aria-hidden="true">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
@@ -139,28 +166,75 @@ export default function Contact() {
           <ScrollReveal delay={200}>
             <div className="grid gap-3">
               {CONTACTS.map((c) => (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  target={c.external ? "_blank" : undefined}
-                  rel={c.external ? "noopener noreferrer" : undefined}
-                  download={c.download || undefined}
-                  className="glass-card p-4 flex items-center gap-4 group"
-                >
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${c.iconBg} ${c.iconColor}`}>
-                    {c.icon}
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-text-primary group-hover:text-accent-blue transition-colors">
-                      {c.label}
-                    </p>
-                    <p className="text-xs text-text-tertiary">{c.value}</p>
-                  </div>
-                </a>
+                <div key={c.label} className="relative">
+                  <a
+                    href={c.href}
+                    target={c.external ? "_blank" : undefined}
+                    rel={c.external ? "noopener noreferrer" : undefined}
+                    download={c.download || undefined}
+                    className="glass-card p-4 flex items-center gap-4 group"
+                    aria-label={
+                      c.download
+                        ? `Download ${c.label}`
+                        : c.external
+                          ? `Visit ${c.label} profile`
+                          : `Send email to ${c.value}`
+                    }
+                  >
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${c.iconBg} ${c.iconColor} transition-transform duration-300 group-hover:scale-110`}>
+                      {c.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-text-primary group-hover:text-accent-blue transition-colors">
+                        {c.label}
+                      </p>
+                      <p className="text-xs text-text-tertiary truncate">{c.value}</p>
+                    </div>
+                    {/* Copy button for email */}
+                    {c.copyable && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleCopyEmail(e, c.value);
+                        }}
+                        className="shrink-0 w-8 h-8 rounded-lg bg-bg-tertiary/50 flex items-center justify-center text-text-tertiary hover:text-accent-blue hover:bg-accent-blue-dim transition-all duration-200"
+                        aria-label={`Copy ${c.value} to clipboard`}
+                        title="Copy email"
+                      >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5" aria-hidden="true">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                        </svg>
+                      </button>
+                    )}
+                    {/* External link indicator */}
+                    {c.external && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-text-tertiary group-hover:text-accent-blue transition-colors shrink-0" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                    )}
+                  </a>
+                </div>
               ))}
             </div>
           </ScrollReveal>
         </div>
+      </div>
+
+      {/* Toast Notification */}
+      <div
+        className={`toast ${toastVisible ? "toast-visible" : ""}`}
+        role="status"
+        aria-live="polite"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-emerald-400 shrink-0" aria-hidden="true">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
+        {toastMessage}
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { SITE_URL, SITE_CONFIG } from "@/lib/config";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,10 +18,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://amritesh.is-a.dev"),
-  title: "Amritesh Mishra — Computer Science Engineering Student",
-  description:
-    "Portfolio of Amritesh Mishra — a Computer Science Engineering student building practical software solutions while exploring Linux, systems, and cybersecurity.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_CONFIG.title,
+  description: SITE_CONFIG.description,
   keywords: [
     "Amritesh Mishra",
     "Computer Science Engineering Student",
@@ -30,31 +30,31 @@ export const metadata: Metadata = {
     "Full Stack Developer",
     "Portfolio",
   ],
-  authors: [{ name: "Amritesh Mishra" }],
-  creator: "Amritesh Mishra",
+  authors: [{ name: SITE_CONFIG.name }],
+  creator: SITE_CONFIG.name,
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://amritesh.is-a.dev",
-    title: "Amritesh Mishra — Computer Science Engineering Student",
-    description:
-      "Building practical software solutions while exploring Linux, systems, and cybersecurity.",
-    siteName: "Amritesh Mishra",
+    url: SITE_URL,
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.shortDescription,
+    siteName: SITE_CONFIG.name,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Amritesh Mishra — Portfolio",
+        alt: `${SITE_CONFIG.name} — Portfolio`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Amritesh Mishra — CS Engineering Student",
-    description:
-      "Building practical software solutions while exploring Linux, systems, and cybersecurity.",
-    creator: "@amrit-verse",
+    title: `${SITE_CONFIG.name} — CS Engineering Student`,
+    description: SITE_CONFIG.shortDescription,
     images: ["/og-image.png"],
   },
   robots: {
@@ -79,20 +79,15 @@ export const viewport = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Amritesh Mishra",
-  url: "https://amritesh.is-a.dev",
-  email: "m.amrit2004@gmail.com",
-  jobTitle: "Computer Science Engineering Student",
+  name: SITE_CONFIG.name,
+  url: SITE_URL,
+  email: SITE_CONFIG.email,
+  jobTitle: SITE_CONFIG.jobTitle,
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Excel Engineering College (Anna University)",
   },
-  sameAs: [
-    "https://github.com/amrit-verse",
-    "https://www.linkedin.com/in/amrit2004/",
-    "https://tryhackme.com/p/amriteshmishra729",
-    "https://www.hackerrank.com/profile/amriteshmishra71",
-  ],
+  sameAs: Object.values(SITE_CONFIG.links),
   knowsAbout: [
     "Software Engineering",
     "Linux",
@@ -104,6 +99,18 @@ const jsonLd = {
     "Spring Boot",
     "Node.js",
   ],
+};
+
+const portfolioJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: `${SITE_CONFIG.name} — Portfolio`,
+  url: SITE_URL,
+  description: SITE_CONFIG.description,
+  author: {
+    "@type": "Person",
+    name: SITE_CONFIG.name,
+  },
 };
 
 export default function RootLayout({
@@ -119,6 +126,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioJsonLd) }}
         />
       </head>
       <body className="min-h-screen bg-bg-primary text-text-primary font-sans antialiased">
