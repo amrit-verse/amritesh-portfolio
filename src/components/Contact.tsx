@@ -152,6 +152,14 @@ export default function Contact() {
                 or just chatting about technology. Whether you have a question, a project
                 idea, or want to connect — feel free to reach out.
               </p>
+              {/* Availability Indicator */}
+              <div className="flex items-center gap-2.5 mb-4 px-4 py-3 rounded-xl bg-emerald-400/[0.06] border border-emerald-400/15">
+                <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden="true">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-pulse-dot" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+                </span>
+                <span className="text-sm font-medium text-emerald-300">Available for Internships &amp; Collaborations</span>
+              </div>
               <div className="flex items-center gap-3 text-text-secondary group cursor-default" title="Currently based in Chennai, India">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-accent-blue" aria-hidden="true">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />

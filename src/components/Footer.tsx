@@ -82,7 +82,11 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-border-subtle flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-text-tertiary">© 2026 Amritesh Mishra. All rights reserved.</p>
-          <p className="text-xs text-text-tertiary">Built with Next.js, TypeScript & Tailwind CSS</p>
+          <p className="text-xs text-text-tertiary flex items-center gap-1.5 flex-wrap justify-center">
+            <span>Built with Next.js, TypeScript &amp; Tailwind CSS</span>
+            <span aria-hidden="true" className="hidden sm:inline">·</span>
+            <span>Hosted on Vercel</span>
+          </p>
         </div>
       </div>
     </footer>

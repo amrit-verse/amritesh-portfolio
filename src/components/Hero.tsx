@@ -143,15 +143,37 @@ export default function Hero() {
                 Contact
               </a>
             </div>
+
+            {/* Quick Stats Row */}
+            <div
+              className={`grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10 transition-all duration-700 ease-out ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+              style={{ transitionDelay: "450ms" }}
+              aria-label="Quick stats"
+            >
+              {[
+                { value: "4+", label: "Projects" },
+                { value: "8.55", label: "CGPA" },
+                { value: "5+", label: "Security Labs" },
+                { value: "10+", label: "Repositories" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center px-3 py-3 rounded-xl bg-bg-card/40 border border-border-subtle">
+                  <p className="text-lg font-bold gradient-text">{stat.value}</p>
+                  <p className="text-xs text-text-tertiary mt-0.5">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
+          {/* Avatar — 25% larger */}
           <div
             className={`hidden lg:block transition-all duration-1000 ease-out ${
               isLoaded ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
             }`}
-            style={{ transitionDelay: "450ms" }}
+            style={{ transitionDelay: "500ms" }}
           >
-            <div className="relative w-64 h-64 xl:w-72 xl:h-72">
+            <div className="relative w-80 h-80 xl:w-[22rem] xl:h-[22rem]">
               <div
                 className="absolute inset-[-3px] rounded-full bg-gradient-to-r from-accent-blue via-accent-purple to-accent-blue blur-sm opacity-55"
                 aria-hidden="true"
@@ -163,7 +185,7 @@ export default function Hero() {
                   fill
                   className="object-cover"
                   priority
-                  sizes="(max-width: 1024px) 0px, (max-width: 1280px) 256px, 288px"
+                  sizes="(max-width: 1024px) 0px, (max-width: 1280px) 320px, 352px"
                 />
               </div>
             </div>
