@@ -17,7 +17,7 @@ export const SITE_CONFIG = {
   location: "Chennai, India",
   links: {
     github: "https://github.com/amrit-verse",
-    linkedin: "https://www.linkedin.com/in/amrit2004/",
+    linkedin: "https://www.linkedin.com/in/amriteshmishra0",
     tryhackme: "https://tryhackme.com/p/amriteshmishra729",
     hackerrank: "https://www.hackerrank.com/profile/amriteshmishra71",
   },

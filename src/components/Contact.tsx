@@ -54,7 +54,7 @@ const CONTACTS: ContactLink[] = [
     ),
     label: "LinkedIn",
     value: "Amritesh Mishra",
-    href: "https://www.linkedin.com/in/amrit2004/",
+    href: "https://www.linkedin.com/in/amriteshmishra0",
     external: true,
   },
   {
