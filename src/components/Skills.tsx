@@ -1,15 +1,15 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const SKILLS = {
-  comfortable: ["Python", "Java", "HTML", "CSS", "JavaScript", "MongoDB", "Git", "Linux"],
-  familiar: ["React", "TypeScript", "Node.js", "Express", "Spring Boot", "MySQL", "Railway", "Render", "Vercel"],
-  learning: ["Linux Internals", "Cybersecurity", "Network Security", "Virtual Labs", "Offensive Security"],
+  frontendBackend: ["React", "TypeScript", "Node.js", "Express", "Spring Boot", "Java", "Python", "MongoDB", "MySQL"],
+  systemsSecurity: ["Linux Internals", "Cybersecurity", "Network Security", "Virtual Labs", "Offensive Security"],
+  toolsDeployment: ["Git", "Railway", "Render", "Vercel", "HTML", "CSS", "JavaScript"],
 };
 
 const CATEGORIES: { key: keyof typeof SKILLS; label: string; colorClass: string; tagClass: string }[] = [
-  { key: "comfortable", label: "Comfortable With", colorClass: "text-accent-blue", tagClass: "skill-comfortable" },
-  { key: "familiar", label: "Familiar With", colorClass: "text-[#a78bfa]", tagClass: "skill-familiar" },
-  { key: "learning", label: "Currently Learning", colorClass: "text-[#6ee7b7]", tagClass: "skill-learning" },
+  { key: "frontendBackend", label: "Frontend & Backend", colorClass: "text-accent-blue", tagClass: "skill-comfortable" },
+  { key: "systemsSecurity", label: "Systems & Security", colorClass: "text-[#6ee7b7]", tagClass: "skill-learning" },
+  { key: "toolsDeployment", label: "Tools & Deployment", colorClass: "text-[#a78bfa]", tagClass: "skill-familiar" },
 ];
 
 export default function Skills() {
@@ -17,7 +17,7 @@ export default function Skills() {
     <section id="skills" className="py-16 sm:py-24 md:py-32 bg-bg-secondary/50" aria-labelledby="skills-title">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-12">
             <span className="section-number">04</span>
             <h2 id="skills-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
               Technical Skills

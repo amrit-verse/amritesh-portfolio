@@ -117,7 +117,7 @@ export default function GitHubActivity() {
     <section id="github" className="py-16 sm:py-24 md:py-32" aria-labelledby="github-title">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-12">
             <span className="section-number">08</span>
             <h2 id="github-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
               GitHub Activity

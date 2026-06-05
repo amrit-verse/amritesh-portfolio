@@ -130,7 +130,7 @@ export default function Contact() {
     <section id="contact" className="py-16 sm:py-24 md:py-32 bg-bg-secondary/50" aria-labelledby="contact-title">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-12">
             <span className="section-number">09</span>
             <h2 id="contact-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
               Get In Touch
@@ -142,26 +142,42 @@ export default function Contact() {
           </div>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-12 items-start">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-start">
           {/* Left: Message */}
           <ScrollReveal delay={100}>
             <div>
-              <h3 className="text-2xl font-semibold mb-4 text-text-primary">Let&apos;s Talk</h3>
-              <p className="text-text-secondary leading-relaxed mb-6">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-text-primary">Let&apos;s Talk</h3>
+              <p className="text-sm sm:text-base text-text-secondary leading-relaxed mb-4 sm:mb-6">
                 I&apos;m always open to discussing new projects, collaborative opportunities,
                 or just chatting about technology. Whether you have a question, a project
                 idea, or want to connect — feel free to reach out.
               </p>
               {/* Availability Indicator */}
-              <div className="flex items-center gap-2.5 mb-4 px-4 py-3 rounded-xl bg-emerald-400/[0.06] border border-emerald-400/15">
+              <div className="flex items-center gap-2.5 mb-6 px-4 py-3 rounded-xl bg-emerald-400/[0.06] border border-emerald-400/15">
                 <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden="true">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-pulse-dot" />
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
                 </span>
                 <span className="text-sm font-medium text-emerald-300">Available for Internships &amp; Collaborations</span>
               </div>
-              <div className="flex items-center gap-3 text-text-secondary group cursor-default" title="Currently based in Chennai, India">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-accent-blue" aria-hidden="true">
+
+              {/* Prominent Email Block */}
+              <div className="mb-6 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-bg-tertiary to-bg-primary border border-border-subtle hover:border-accent-blue/30 transition-colors group">
+                <p className="text-xs sm:text-sm text-text-tertiary uppercase tracking-wider mb-2 font-mono">Direct Email</p>
+                <a 
+                  href="mailto:contact@amritesh.com.np"
+                  className="inline-flex items-center gap-3 text-lg sm:text-xl lg:text-2xl font-bold text-text-primary group-hover:text-accent-blue transition-colors break-all"
+                >
+                  contact@amritesh.com.np
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-accent-blue shrink-0" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3 text-text-secondary cursor-default" title="Currently based in Chennai, India">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-accent-blue shrink-0" aria-hidden="true">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
@@ -172,7 +188,7 @@ export default function Contact() {
 
           {/* Right: Contact Links */}
           <ScrollReveal delay={200}>
-            <div className="grid gap-3">
+            <div className="grid gap-2.5">
               {CONTACTS.map((c) => (
                 <div key={c.label} className="relative">
                   <a
@@ -180,7 +196,7 @@ export default function Contact() {
                     target={c.external ? "_blank" : undefined}
                     rel={c.external ? "noopener noreferrer" : undefined}
                     download={c.download || undefined}
-                    className="glass-card p-4 flex items-center gap-4 group"
+                    className="glass-card p-3 sm:p-4 flex items-center gap-3 sm:gap-4 group active:scale-[0.98] transition-all duration-200"
                     aria-label={
                       c.download
                         ? `Download ${c.label}`

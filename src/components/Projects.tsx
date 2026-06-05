@@ -175,13 +175,13 @@ export default function Projects() {
         {/* Section Header */}
         <ScrollReveal>
           <span className="section-number">03</span>
-          <h2 className="font-bold mb-3 text-text-primary">
+          <h2 id="projects-title" className="font-bold mb-3 text-text-primary" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
             Featured Projects
           </h2>
           <p className="text-text-secondary max-w-2xl">
             Real-world applications built with modern technologies
           </p>
-          <div className="w-16 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple mt-4 mb-12" />
+          <div className="w-16 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple mt-4 mb-8 sm:mb-12" />
         </ScrollReveal>
 
         {/* Project List */}
@@ -354,7 +354,7 @@ export default function Projects() {
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-bg-tertiary border border-border-subtle rounded-lg px-4 py-2 text-sm text-text-secondary hover:border-border-hover hover:text-text-primary transition-all duration-300"
+                                className="inline-flex items-center justify-center gap-2 bg-bg-tertiary border border-border-subtle rounded-xl min-h-[2.75rem] px-5 text-sm font-medium text-text-secondary hover:border-border-hover hover:text-text-primary hover:bg-bg-tertiary/80 active:scale-[0.97] transition-all duration-300"
                                 aria-label={`View ${project.name} source code on GitHub`}
                               >
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -368,7 +368,7 @@ export default function Projects() {
                                 href={project.liveDemo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-accent-blue/10 border border-accent-blue/20 rounded-lg px-4 py-2 text-sm text-accent-blue hover:bg-accent-blue/20 transition-all duration-300"
+                                className="inline-flex items-center justify-center gap-2 bg-accent-blue text-white rounded-xl min-h-[2.75rem] px-5 text-sm font-semibold hover:bg-[#6aa2ff] hover:scale-[1.02] active:scale-[0.97] shadow-[0_4px_20px_rgba(79,143,247,0.3)] transition-all duration-300"
                                 aria-label={`View ${project.name} live demo`}
                               >
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

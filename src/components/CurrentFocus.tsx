@@ -108,7 +108,7 @@ export default function CurrentFocus() {
           <p className="text-text-secondary max-w-2xl">
             Where I&apos;m directing my energy and growth
           </p>
-          <div className="w-16 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple mt-4 mb-12" />
+          <div className="w-16 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple mt-4 mb-8 sm:mb-12" />
         </ScrollReveal>
 
         {/* Focus Cards Grid */}

@@ -12,7 +12,7 @@ export default function LearningJourney() {
     <section id="learning" className="py-16 sm:py-24 md:py-32 bg-bg-secondary/50" aria-labelledby="learning-title">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-12">
             <span className="section-number">07</span>
             <h2 id="learning-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
               Learning Journey
@@ -26,13 +26,13 @@ export default function LearningJourney() {
 
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <ScrollReveal delay={100}>
-            <div className="glass-card p-6">
+            <div className="glass-card p-4 sm:p-6">
               <p className="text-xs uppercase tracking-[0.24em] text-accent-blue mb-3">
                 Current Learning
               </p>
               <ul className="grid gap-3 sm:grid-cols-2">
                 {LEARNING_ITEMS.map((item) => (
-                  <li key={item} className="rounded-2xl bg-bg-primary/60 border border-border-subtle p-4">
+                  <li key={item} className="rounded-2xl bg-bg-primary/60 border border-border-subtle p-3 sm:p-4">
                     <p className="text-sm font-medium text-text-primary">{item}</p>
                   </li>
                 ))}
@@ -41,7 +41,7 @@ export default function LearningJourney() {
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <div className="glass-card p-6">
+            <div className="glass-card p-4 sm:p-6">
               <div className="flex items-center justify-between mb-5 gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.24em] text-accent-blue mb-2">

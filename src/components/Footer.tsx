@@ -9,7 +9,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="py-12 border-t border-border-subtle" role="contentinfo">
+    <footer className="py-10 sm:py-12 border-t border-border-subtle pb-[calc(0.625rem+env(safe-area-inset-bottom))]" role="contentinfo">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           {/* Brand */}
@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
 
           {/* Nav Links */}
-          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-6">
+          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-5 gap-y-3 sm:gap-6">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
@@ -37,7 +37,7 @@ export default function Footer() {
               href="https://github.com/amrit-verse"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg bg-bg-card flex items-center justify-center text-text-secondary hover:text-accent-blue hover:bg-bg-card-hover transition-all"
+              className="w-10 h-10 rounded-lg bg-bg-card flex items-center justify-center text-text-secondary hover:text-accent-blue hover:bg-bg-card-hover active:scale-95 transition-all"
               aria-label="GitHub"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
@@ -48,7 +48,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/amriteshmishra0"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg bg-bg-card flex items-center justify-center text-text-secondary hover:text-accent-blue hover:bg-bg-card-hover transition-all"
+              className="w-10 h-10 rounded-lg bg-bg-card flex items-center justify-center text-text-secondary hover:text-accent-blue hover:bg-bg-card-hover active:scale-95 transition-all"
               aria-label="LinkedIn"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
@@ -59,7 +59,7 @@ export default function Footer() {
               href="https://tryhackme.com/p/amriteshmishra729"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg bg-bg-card flex items-center justify-center text-text-secondary hover:text-accent-blue hover:bg-bg-card-hover transition-all"
+              className="w-10 h-10 rounded-lg bg-bg-card flex items-center justify-center text-text-secondary hover:text-accent-blue hover:bg-bg-card-hover active:scale-95 transition-all"
               aria-label="TryHackMe"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
@@ -68,7 +68,7 @@ export default function Footer() {
             </a>
             <a
               href="mailto:contact@amritesh.com.np"
-              className="w-9 h-9 rounded-lg bg-bg-card flex items-center justify-center text-text-secondary hover:text-accent-blue hover:bg-bg-card-hover transition-all"
+              className="w-10 h-10 rounded-lg bg-bg-card flex items-center justify-center text-text-secondary hover:text-accent-blue hover:bg-bg-card-hover active:scale-95 transition-all"
               aria-label="Email"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">

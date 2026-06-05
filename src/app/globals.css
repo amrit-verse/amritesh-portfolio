@@ -80,11 +80,6 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-/* ── Responsive Section Padding ── */
-@media (max-width: 639px) {
-  section { padding-top: 4rem; padding-bottom: 4rem; }
-}
-
 /* ── Selection ── */
 ::selection {
   background: rgba(79, 143, 247, 0.25);

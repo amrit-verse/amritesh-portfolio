@@ -10,7 +10,7 @@ export default function About() {
           <p className="text-text-secondary max-w-2xl">
             A focused computer science student building software and systems skills with language discipline and practical labs.
           </p>
-          <div className="w-16 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple mt-4 mb-12" />
+          <div className="w-16 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple mt-4 mb-8 sm:mb-12" />
         </ScrollReveal>
 
         <div className="grid gap-10 lg:grid-cols-[1.4fr_0.9fr] items-start">
@@ -75,27 +75,27 @@ export default function About() {
 
           <ScrollReveal delay={200}>
             <div className="space-y-4">
-              <div className="glass-card p-6">
+              <div className="glass-card p-4 sm:p-6">
                 <p className="text-xs uppercase tracking-[0.24em] text-accent-blue mb-2">Current degree</p>
-                <h3 className="text-2xl font-semibold text-text-primary mb-2">
+                <h3 className="text-xl sm:text-2xl font-semibold text-text-primary mb-2">
                   B.E. Computer Science Engineering
                 </h3>
                 <p className="text-sm text-text-secondary leading-relaxed mb-4">
                   Excel Engineering College, affiliated to Anna University, India.
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-bg-tertiary p-4 border border-border-subtle">
+                  <div className="rounded-2xl bg-bg-tertiary p-3 sm:p-4 border border-border-subtle">
                     <p className="text-xs uppercase tracking-[0.24em] text-text-secondary mb-2">CGPA</p>
                     <p className="text-xl font-semibold text-text-primary">8.55</p>
                   </div>
-                  <div className="rounded-2xl bg-bg-tertiary p-4 border border-border-subtle">
+                  <div className="rounded-2xl bg-bg-tertiary p-3 sm:p-4 border border-border-subtle">
                     <p className="text-xs uppercase tracking-[0.24em] text-text-secondary mb-2">Expected graduation</p>
                     <p className="text-xl font-semibold text-text-primary">2029</p>
                   </div>
                 </div>
               </div>
 
-              <div className="glass-card p-6">
+              <div className="glass-card p-4 sm:p-6">
                 <p className="text-sm text-text-primary leading-relaxed">
                   I focus on translating learning into practical software projects, while strengthening systems awareness and security fundamentals.
                 </p>
