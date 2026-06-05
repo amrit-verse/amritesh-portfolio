@@ -14,12 +14,12 @@ const CATEGORIES: { key: keyof typeof SKILLS; label: string; colorClass: string;
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 md:py-32 bg-bg-secondary/50" aria-labelledby="skills-title">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="skills" className="py-16 sm:py-24 md:py-32 bg-bg-secondary/50" aria-labelledby="skills-title">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
           <div className="mb-12">
             <span className="section-number">04</span>
-            <h2 id="skills-title" className="text-3xl md:text-4xl font-bold mb-3">
+            <h2 id="skills-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
               Technical Skills
             </h2>
             <p className="text-text-secondary max-w-2xl">
@@ -29,7 +29,7 @@ export default function Skills() {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {CATEGORIES.map((cat, i) => (
             <ScrollReveal key={cat.key} delay={i * 120}>
               <div>

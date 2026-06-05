@@ -170,12 +170,12 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="projects" className="py-16 sm:py-24 md:py-32">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <ScrollReveal>
           <span className="section-number">03</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-text-primary">
+          <h2 className="font-bold mb-3 text-text-primary">
             Featured Projects
           </h2>
           <p className="text-text-secondary max-w-2xl">
@@ -194,7 +194,7 @@ export default function Projects() {
                 <div className="glass-card overflow-hidden hover:!transform-none">
                   {/* Project Header — Always Visible */}
                   <div
-                    className="flex items-start justify-between p-6 cursor-pointer"
+                    className="flex items-start justify-between p-4 sm:p-6 cursor-pointer"
                     onClick={() => toggleProject(project.number)}
                     role="button"
                     tabIndex={0}
@@ -214,7 +214,7 @@ export default function Projects() {
                       </span>
                       <div>
                         <div className="flex items-center gap-2.5 flex-wrap">
-                          <h3 id={`project-heading-${project.number}`} className="text-xl font-semibold text-text-primary">
+                          <h3 id={`project-heading-${project.number}`} className="text-lg sm:text-xl font-semibold text-text-primary">
                             {project.name}
                           </h3>
                           {project.badge && (
@@ -257,7 +257,7 @@ export default function Projects() {
                     aria-labelledby={`project-heading-${project.number}`}
                   >
                     <div>
-                      <div className="px-6 pb-6 pt-2">
+                      <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-2">
                         {/* Divider */}
                         <div className="h-px bg-border-subtle mb-6" />
 

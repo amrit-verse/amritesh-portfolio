@@ -2,11 +2,11 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 
 export default function About() {
   return (
-    <section id="about" className="py-24 md:py-32" aria-label="About Me">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="about" className="py-16 sm:py-24 md:py-32" aria-label="About Me">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
           <span className="section-number">01</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">About Me</h2>
+          <h2 className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>About Me</h2>
           <p className="text-text-secondary max-w-2xl">
             A focused computer science student building software and systems skills with language discipline and practical labs.
           </p>
@@ -17,7 +17,7 @@ export default function About() {
           <ScrollReveal delay={100}>
             <div className="space-y-6">
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="glass-card p-6">
+                <div className="glass-card p-4 sm:p-6">
                   <p className="text-sm text-text-secondary uppercase tracking-[0.24em] mb-3">
                     Roots
                   </p>
@@ -25,7 +25,7 @@ export default function About() {
                     Born in Rautahat, Nepal, and began the academic journey with SEE at Jana Jyoti Secondary School.
                   </p>
                 </div>
-                <div className="glass-card p-6">
+                <div className="glass-card p-4 sm:p-6">
                   <p className="text-sm text-text-secondary uppercase tracking-[0.24em] mb-3">
                     Secondary Education
                   </p>
@@ -36,7 +36,7 @@ export default function About() {
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="glass-card p-6">
+                <div className="glass-card p-4 sm:p-6">
                   <p className="text-sm text-text-secondary uppercase tracking-[0.24em] mb-3">
                     Language Credentials
                   </p>
@@ -45,7 +45,7 @@ export default function About() {
                     <li>Duolingo English Test score: 105</li>
                   </ul>
                 </div>
-                <div className="glass-card p-6">
+                <div className="glass-card p-4 sm:p-6">
                   <p className="text-sm text-text-secondary uppercase tracking-[0.24em] mb-3">
                     Current Focus
                   </p>
@@ -55,7 +55,7 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="glass-card p-6">
+              <div className="glass-card p-4 sm:p-6">
                 <p className="text-sm text-text-secondary uppercase tracking-[0.24em] mb-3">
                   Academic Performance
                 </p>

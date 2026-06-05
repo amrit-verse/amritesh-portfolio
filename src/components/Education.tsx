@@ -30,12 +30,12 @@ const TIMELINE = [
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 md:py-32" aria-labelledby="education-title">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="education" className="py-16 sm:py-24 md:py-32" aria-labelledby="education-title">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
           <div className="mb-12">
             <span className="section-number">05</span>
-            <h2 id="education-title" className="text-3xl md:text-4xl font-bold mb-3">
+            <h2 id="education-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
               Education
             </h2>
             <p className="text-text-secondary max-w-2xl">
@@ -50,9 +50,9 @@ export default function Education() {
           <div className="space-y-10">
             {TIMELINE.map((item, i) => (
               <ScrollReveal key={`${item.title}-${i}`} delay={i * 100}>
-                <div className="relative pl-12">
-                  <div className="absolute left-0 top-2 w-3.5 h-3.5 rounded-full bg-bg-tertiary border-2 border-text-tertiary" aria-hidden="true" />
-                  <div className="glass-card p-6 border-border-subtle">
+                <div className="relative pl-8 sm:pl-12">
+                  <div className="absolute left-0 top-2 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-bg-tertiary border-2 border-text-tertiary" aria-hidden="true" />
+                  <div className="glass-card p-4 sm:p-6 border-border-subtle">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <p className="text-xs font-mono uppercase tracking-[0.24em] text-text-secondary">

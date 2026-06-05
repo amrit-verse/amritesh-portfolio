@@ -124,7 +124,7 @@ export default function Navbar() {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
         {/* Logo */}
         <a
           href="#"
@@ -218,7 +218,7 @@ export default function Navbar() {
 
         {/* Menu Content */}
         <div
-          className={`fixed right-0 top-0 z-[101] flex h-dvh w-full flex-col bg-bg-secondary/90 px-6 py-5 shadow-2xl ring-1 ring-border-hover backdrop-blur-2xl transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:max-w-md ${
+          className={`fixed right-0 top-0 z-[101] flex h-dvh w-full flex-col bg-bg-secondary/90 px-4 sm:px-6 py-5 shadow-2xl ring-1 ring-border-hover backdrop-blur-2xl transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:max-w-md ${
             isMobileOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
           role="dialog"
@@ -259,7 +259,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={handleLinkClick}
-                    className={`flex min-h-14 items-center justify-center rounded-2xl border px-6 py-4 text-2xl font-semibold transition-all duration-300 ease-out active:scale-[0.98] ${
+                    className={`flex min-h-12 sm:min-h-14 items-center justify-center rounded-2xl border px-4 sm:px-6 py-3 sm:py-4 text-xl sm:text-2xl font-semibold transition-all duration-300 ease-out active:scale-[0.98] ${
                       isActive
                         ? 'border-border-hover bg-accent-blue-dim text-accent-blue shadow-[0_0_24px_rgba(79,143,247,0.14)]'
                         : 'border-transparent text-text-secondary hover:border-border-subtle hover:bg-bg-card/70 hover:text-text-primary'

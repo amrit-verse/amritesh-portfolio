@@ -15,12 +15,12 @@ const CERTIFICATIONS = [
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="py-24 md:py-32" aria-labelledby="certifications-title">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="certifications" className="py-16 sm:py-24 md:py-32" aria-labelledby="certifications-title">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
           <div className="mb-12">
             <span className="section-number">06</span>
-            <h2 id="certifications-title" className="text-3xl md:text-4xl font-bold mb-3">
+            <h2 id="certifications-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
               Certifications
             </h2>
             <p className="text-text-secondary max-w-2xl">

@@ -14,16 +14,16 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center relative overflow-hidden"
+      className="min-h-[100dvh] flex items-center relative overflow-hidden py-20 sm:py-0"
       aria-label="Hero section"
     >
       <div className="absolute inset-0 hero-depth" aria-hidden="true" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-12 items-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        <div className="grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-12 items-center">
           <div className="max-w-2xl">
             <p
-              className={`text-text-secondary text-sm font-mono tracking-[0.26em] uppercase mb-4 transition-all duration-700 ease-out ${
+              className={`text-text-secondary text-xs sm:text-sm font-mono tracking-[0.22em] sm:tracking-[0.26em] uppercase mb-3 sm:mb-4 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: "100ms" }}
@@ -32,26 +32,31 @@ export default function Hero() {
             </p>
 
             <h1
-              className={`text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-[-0.03em] mb-5 transition-all duration-700 ease-out ${
+              className={`font-extrabold leading-[1.05] tracking-[-0.03em] mb-4 sm:mb-5 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
-              style={{ transitionDelay: "150ms" }}
+              style={{
+                transitionDelay: "150ms",
+                fontSize: "clamp(2.25rem, 5vw + 0.5rem, 4.5rem)",
+              }}
             >
               <span className="gradient-text">Amritesh Mishra</span>
             </h1>
 
             <h2
-              className={`text-2xl md:text-3xl font-semibold leading-snug text-text-primary mb-4 transition-all duration-700 ease-out ${
+              className={`font-semibold leading-snug text-text-primary mb-3 sm:mb-4 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
-              style={{ transitionDelay: "200ms" }}
+              style={{
+                transitionDelay: "200ms",
+                fontSize: "clamp(1.125rem, 2vw + 0.25rem, 1.875rem)",
+              }}
             >
-              Building practical software solutions while exploring Linux,
-              systems, and cybersecurity.
+              Full-Stack Developer &amp; Aspiring Security Engineer
             </h2>
 
             <p
-              className={`text-base md:text-lg text-text-secondary max-w-xl mb-4 transition-all duration-700 ease-out ${
+              className={`text-sm sm:text-base text-text-secondary max-w-xl mb-3 sm:mb-4 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: "250ms" }}
@@ -60,45 +65,46 @@ export default function Hero() {
             </p>
 
             <p
-              className={`text-sm md:text-base text-text-tertiary max-w-xl leading-7 mb-10 transition-all duration-700 ease-out ${
+              className={`text-xs sm:text-sm md:text-base text-text-tertiary max-w-xl leading-relaxed sm:leading-7 mb-6 sm:mb-8 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: "300ms" }}
             >
-              Currently learning Linux Internals, Cybersecurity Fundamentals,
-              and System Design.
+              Building practical software with clean architecture. Exploring Linux internals,
+              backend systems, and cybersecurity fundamentals.
             </p>
 
+            {/* Availability Badge */}
             <div
-              className={`grid sm:grid-cols-[auto_1fr] gap-4 items-center mb-10 transition-all duration-700 ease-out ${
+              className={`flex items-start sm:items-center gap-3 sm:gap-4 mb-6 sm:mb-8 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: "350ms" }}
             >
-              <span className="inline-flex items-center justify-center rounded-full bg-emerald-400/15 text-emerald-300 text-xs font-semibold uppercase tracking-[0.22em] px-3 py-2">
+              <span className="inline-flex items-center justify-center rounded-full bg-emerald-400/15 text-emerald-300 text-[0.625rem] sm:text-xs font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] px-2.5 sm:px-3 py-1.5 sm:py-2 shrink-0 whitespace-nowrap">
                 Available
               </span>
-              <p className="text-sm text-text-secondary leading-relaxed">
+              <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
                 Focused on building career-ready systems software and security
                 skills while delivering polished applications.
               </p>
             </div>
 
+            {/* CTA Buttons */}
             <div
-              className={`flex flex-wrap gap-3 transition-all duration-700 ease-out ${
+              className={`grid grid-cols-2 sm:flex sm:flex-wrap gap-2.5 sm:gap-3 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: "400ms" }}
             >
-              {/* View Resume — opens in new tab */}
               <a
                 href="/resume/Amritesh_Mishra.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-accent-blue text-white font-medium rounded-xl px-5 py-3 transition-all duration-300 ease-out hover:bg-[#6aa2ff] hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_16px_rgba(79,143,247,0.25)]"
+                className="col-span-2 sm:col-span-1 inline-flex items-center justify-center gap-2 bg-accent-blue text-white font-medium rounded-xl px-4 sm:px-5 py-2.5 sm:py-3 text-sm transition-all duration-300 ease-out hover:bg-[#6aa2ff] hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_16px_rgba(79,143,247,0.25)]"
                 aria-label="View resume PDF in a new tab"
               >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                   <polyline points="14 2 14 8 20 8" />
                   <line x1="16" y1="13" x2="8" y2="13" />
@@ -107,37 +113,34 @@ export default function Hero() {
                 </svg>
                 View Resume
               </a>
-              {/* Download Resume — direct download */}
               <a
                 href="/resume/Amritesh_Mishra.pdf"
                 download
-                className="inline-flex items-center gap-2 bg-bg-card border border-border-subtle text-text-primary font-medium rounded-xl px-5 py-3 transition-all duration-300 ease-out hover:border-border-hover hover:bg-bg-card-hover hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 bg-bg-card border border-border-subtle text-text-primary font-medium rounded-xl px-4 sm:px-5 py-2.5 sm:py-3 text-sm transition-all duration-300 ease-out hover:border-border-hover hover:bg-bg-card-hover hover:scale-[1.02] active:scale-[0.98]"
                 aria-label="Download resume PDF"
               >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
                 Download
               </a>
-              {/* GitHub */}
               <a
                 href="https://github.com/amrit-verse"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-bg-card border border-border-subtle text-text-primary font-medium rounded-xl px-5 py-3 transition-all duration-300 ease-out hover:border-border-hover hover:bg-bg-card-hover hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 bg-bg-card border border-border-subtle text-text-primary font-medium rounded-xl px-4 sm:px-5 py-2.5 sm:py-3 text-sm transition-all duration-300 ease-out hover:border-border-hover hover:bg-bg-card-hover hover:scale-[1.02] active:scale-[0.98]"
                 aria-label="Visit GitHub profile"
               >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
                 </svg>
                 GitHub
               </a>
-              {/* Contact */}
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 text-accent-blue font-medium rounded-xl px-5 py-3 transition-all duration-300 ease-out hover:bg-accent-blue-dim hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 text-accent-blue font-medium rounded-xl px-4 sm:px-5 py-2.5 sm:py-3 text-sm transition-all duration-300 ease-out hover:bg-accent-blue-dim hover:scale-[1.02] active:scale-[0.98]"
                 aria-label="Navigate to contact section"
               >
                 Contact
@@ -146,7 +149,7 @@ export default function Hero() {
 
             {/* Quick Stats Row */}
             <div
-              className={`grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10 transition-all duration-700 ease-out ${
+              className={`grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mt-6 sm:mt-10 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: "450ms" }}
@@ -158,9 +161,9 @@ export default function Hero() {
                 { value: "5+", label: "Security Labs" },
                 { value: "10+", label: "Repositories" },
               ].map((stat) => (
-                <div key={stat.label} className="text-center px-3 py-3 rounded-xl bg-bg-card/40 border border-border-subtle">
-                  <p className="text-lg font-bold gradient-text">{stat.value}</p>
-                  <p className="text-xs text-text-tertiary mt-0.5">{stat.label}</p>
+                <div key={stat.label} className="text-center px-2 sm:px-3 py-2.5 sm:py-3 rounded-xl bg-bg-card/40 border border-border-subtle">
+                  <p className="text-base sm:text-lg font-bold gradient-text">{stat.value}</p>
+                  <p className="text-[0.625rem] sm:text-xs text-text-tertiary mt-0.5">{stat.label}</p>
                 </div>
               ))}
             </div>

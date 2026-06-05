@@ -12,7 +12,7 @@ export const SITE_CONFIG = {
     "Portfolio of Amritesh Mishra — a Computer Science Engineering student building practical software solutions while exploring Linux, systems, and cybersecurity.",
   shortDescription:
     "Building practical software solutions while exploring Linux, systems, and cybersecurity.",
-  email: "m.amrit2004@gmail.com",
+  email: "contact@amritesh.com.np",
   jobTitle: "Computer Science Engineering Student",
   location: "Chennai, India",
   links: {

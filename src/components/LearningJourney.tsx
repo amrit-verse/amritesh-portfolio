@@ -9,12 +9,12 @@ const LEARNING_ITEMS = [
 
 export default function LearningJourney() {
   return (
-    <section id="learning" className="py-24 md:py-32 bg-bg-secondary/50" aria-labelledby="learning-title">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="learning" className="py-16 sm:py-24 md:py-32 bg-bg-secondary/50" aria-labelledby="learning-title">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
           <div className="mb-12">
             <span className="section-number">07</span>
-            <h2 id="learning-title" className="text-3xl md:text-4xl font-bold mb-3">
+            <h2 id="learning-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
               Learning Journey
             </h2>
             <p className="text-text-secondary max-w-2xl">

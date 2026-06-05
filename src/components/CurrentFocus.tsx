@@ -95,14 +95,14 @@ export default function CurrentFocus() {
   return (
     <section
       id="focus"
-      className="py-24 md:py-32 bg-bg-secondary/50"
+      className="py-16 sm:py-24 md:py-32 bg-bg-secondary/50"
       aria-label="Current Focus"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <ScrollReveal>
           <span className="section-number">02</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+          <h2 className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
             Current Focus
           </h2>
           <p className="text-text-secondary max-w-2xl">
@@ -112,10 +112,10 @@ export default function CurrentFocus() {
         </ScrollReveal>
 
         {/* Focus Cards Grid */}
-        <div className="grid sm:grid-cols-2 gap-6 reveal-stagger">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 reveal-stagger">
           {focusCards.map((card, index) => (
             <ScrollReveal key={card.title} delay={index * 100}>
-              <div className="glass-card p-6 group cursor-default">
+              <div className="glass-card p-4 sm:p-6 group cursor-default">
                 <div className="w-10 h-10 rounded-lg bg-accent-blue-dim flex items-center justify-center mb-4 group-hover:bg-accent-blue/20 transition-colors duration-300 ease-out">
                   {card.icon}
                 </div>

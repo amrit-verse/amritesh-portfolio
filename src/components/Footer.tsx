@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="py-12 border-t border-border-subtle" role="contentinfo">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-2">
@@ -67,7 +67,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="mailto:m.amrit2004@gmail.com"
+              href="mailto:contact@amritesh.com.np"
               className="w-9 h-9 rounded-lg bg-bg-card flex items-center justify-center text-text-secondary hover:text-accent-blue hover:bg-bg-card-hover transition-all"
               aria-label="Email"
             >
