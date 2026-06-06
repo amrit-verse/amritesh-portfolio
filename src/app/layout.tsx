@@ -23,12 +23,13 @@ export const metadata: Metadata = {
   description: SITE_CONFIG.description,
   keywords: [
     "Amritesh Mishra",
-    "Computer Science Engineering Student",
-    "Software Developer",
-    "Linux Enthusiast",
+    "Software Engineer",
+    "Backend Developer",
+    "Linux",
     "Cybersecurity",
     "Full Stack Developer",
-    "Portfolio",
+    "Computer Science Engineering",
+    "Open Source",
   ],
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     images: [
       {
-        url: "/og-image.png",
+        url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
         alt: `${SITE_CONFIG.name} — Portfolio`,
@@ -53,9 +54,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_CONFIG.name} — CS Engineering Student`,
+    title: SITE_CONFIG.title,
     description: SITE_CONFIG.shortDescription,
-    images: ["/og-image.png"],
+    images: [`${SITE_URL}/og-image.png`],
   },
   robots: {
     index: true,
@@ -81,6 +82,7 @@ const jsonLd = {
   "@type": "Person",
   name: SITE_CONFIG.name,
   url: SITE_URL,
+  image: `${SITE_URL}/avatar.png`,
   email: SITE_CONFIG.email,
   jobTitle: SITE_CONFIG.jobTitle,
   alumniOf: {

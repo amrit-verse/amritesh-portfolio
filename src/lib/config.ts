@@ -1,19 +1,18 @@
 /**
  * Site-wide configuration.
- * Change SITE_URL when migrating from amritesh.is-a.dev → amritesh.com.np.
  * Every metadata field, canonical URL, sitemap, robots, and JSON-LD will update automatically.
  */
-export const SITE_URL = "https://amritesh.is-a.dev";
+export const SITE_URL = "https://amritesh.com.np";
 
 export const SITE_CONFIG = {
   name: "Amritesh Mishra",
-  title: "Amritesh Mishra — Computer Science Engineering Student",
+  title: "Amritesh Mishra | Software Engineer | Linux & Backend Developer",
   description:
-    "Portfolio of Amritesh Mishra — a Computer Science Engineering student building practical software solutions while exploring Linux, systems, and cybersecurity.",
+    "Computer Science Engineering student passionate about Linux, Backend Development, Full Stack Engineering, Cybersecurity, and Open Source. Explore projects, skills, and professional experience.",
   shortDescription:
-    "Building practical software solutions while exploring Linux, systems, and cybersecurity.",
+    "Computer Science Engineering student passionate about Linux, Backend Development, Full Stack Engineering, Cybersecurity, and Open Source.",
   email: "contact@amritesh.com.np",
-  jobTitle: "Computer Science Engineering Student",
+  jobTitle: "Software Engineer",
   location: "Chennai, India",
   links: {
     github: "https://github.com/amrit-verse",
