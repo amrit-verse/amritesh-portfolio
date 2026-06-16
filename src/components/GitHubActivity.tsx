@@ -123,7 +123,7 @@ export default function GitHubActivity() {
               GitHub Activity
             </h2>
             <p className="text-text-secondary max-w-2xl">
-              Open source contributions and project activity
+              Consistent open-source contributions, daily learning, and active project development.
             </p>
             <div className="w-16 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple mt-4" />
           </div>

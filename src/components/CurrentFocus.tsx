@@ -2,90 +2,48 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 
 const focusCards = [
   {
-    title: 'Software Engineering',
+    title: 'Backend Development',
     description:
-      'Designing and building full-stack applications with clean architecture, RESTful APIs, and modern deployment practices.',
+      'Architecting robust, stateless REST APIs and complex aggregation pipelines using Java, Spring Boot, Node.js, and MongoDB.',
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="w-5 h-5 text-accent-blue"
-        aria-hidden="true"
-      >
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-accent-blue" aria-hidden="true">
+        <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
+        <polyline points="14 2 14 8 20 8" />
+        <path d="M2 15h10" />
+        <path d="M2 18h10" />
       </svg>
     ),
   },
   {
-    title: 'Linux Systems',
+    title: 'Linux Engineering',
     description:
-      'Exploring Linux internals, kernel concepts, shell scripting, and system administration for deeper technical understanding.',
+      'Debian daily-driver. Building custom shell scripts, securing kernel configurations, and optimizing system-level performance.',
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="w-5 h-5 text-accent-blue"
-        aria-hidden="true"
-      >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-accent-blue" aria-hidden="true">
         <polyline points="4 17 10 11 4 5" />
         <line x1="12" y1="19" x2="20" y2="19" />
       </svg>
     ),
   },
   {
-    title: 'Cybersecurity Foundations',
+    title: 'Cybersecurity',
     description:
-      'Learning network security, penetration testing fundamentals, and security-first development through hands-on virtual labs.',
+      'Offensive security exploration. Setting up virtual labs (Kali/Windows 11) for Active Directory testing and network enumeration.',
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="w-5 h-5 text-accent-blue"
-        aria-hidden="true"
-      >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-accent-blue" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
   },
   {
-    title: 'Problem Solving',
+    title: 'Full Stack & Open Source',
     description:
-      'Developing algorithmic thinking and structured approaches to complex engineering challenges.',
+      'Bridging frontend engineering with scalable backend services and actively contributing to the open-source community.',
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="w-5 h-5 text-accent-blue"
-        aria-hidden="true"
-      >
-        <path d="M9 18h6" />
-        <path d="M10 22h4" />
-        <path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-accent-blue" aria-hidden="true">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        <polyline points="15 3 21 3 21 9" />
+        <line x1="10" y1="14" x2="21" y2="3" />
       </svg>
     ),
   },

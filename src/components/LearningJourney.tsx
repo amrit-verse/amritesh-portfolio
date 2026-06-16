@@ -1,10 +1,10 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const LEARNING_ITEMS = [
-  "Linux Internals",
-  "Cybersecurity Fundamentals",
-  "Network Enumeration",
-  "Virtual Security Labs",
+  "Debian (Daily Driver)",
+  "Kali Linux (Security Auditing)",
+  "Windows 11 (Vulnerable AD Target)",
+  "VirtualBox Hypervisor",
 ];
 
 export default function LearningJourney() {
@@ -15,10 +15,10 @@ export default function LearningJourney() {
           <div className="mb-8 sm:mb-12">
             <span className="section-number">07</span>
             <h2 id="learning-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
-              Learning Journey
+              Cybersecurity & Linux
             </h2>
             <p className="text-text-secondary max-w-2xl">
-              Ongoing learning and practical lab experience.
+              Practical labs, virtual environments, and system exploration.
             </p>
             <div className="w-16 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple mt-4" />
           </div>
@@ -28,7 +28,7 @@ export default function LearningJourney() {
           <ScrollReveal delay={100}>
             <div className="glass-card p-4 sm:p-6">
               <p className="text-xs uppercase tracking-[0.24em] text-accent-blue mb-3">
-                Current Learning
+                Virtual Security Lab
               </p>
               <ul className="grid gap-3 sm:grid-cols-2">
                 {LEARNING_ITEMS.map((item) => (
@@ -45,34 +45,58 @@ export default function LearningJourney() {
               <div className="flex items-center justify-between mb-5 gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.24em] text-accent-blue mb-2">
-                    Home Security Lab
+                    Security Operations
                   </p>
                   <h3 className="text-xl font-semibold text-text-primary">
-                    Practical exploration in a safe lab environment.
+                    Hands-on penetration testing and networking.
                   </h3>
                 </div>
               </div>
 
-              <div className="space-y-5 text-sm text-text-secondary">
+              <div className="space-y-6 text-sm text-text-secondary">
+                {/* Daily Environment */}
                 <div>
-                  <p className="text-sm font-semibold text-text-primary mb-2">Host System</p>
-                  <p>Debian Linux</p>
+                  <p className="text-sm font-semibold text-text-primary flex items-center gap-2 mb-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-blue" /> Daily Environment
+                  </p>
+                  <p className="pl-3.5">
+                    <strong>Debian Linux:</strong> Primary operating system for all development, shell scripting, and kernel exploration.
+                  </p>
                 </div>
 
+                {/* Virtual Lab */}
                 <div>
-                  <p className="text-sm font-semibold text-text-primary mb-2">Virtual Machines</p>
-                  <ul className="space-y-2 list-disc list-inside">
-                    <li>Kali Linux</li>
-                    <li>Windows 11</li>
+                  <p className="text-sm font-semibold text-text-primary flex items-center gap-2 mb-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-blue" /> Virtual Lab
+                  </p>
+                  <ul className="pl-3.5 space-y-1">
+                    <li><strong>Kali Linux:</strong> Dedicated offensive security and auditing environment.</li>
+                    <li><strong>Windows 11 VM:</strong> Purpose-built vulnerable target for Active Directory testing.</li>
                   </ul>
                 </div>
 
+                {/* Security Tools */}
                 <div>
-                  <p className="text-sm font-semibold text-text-primary mb-2">Tools Currently Exploring</p>
-                  <ul className="space-y-2 list-disc list-inside">
-                    <li>Nmap</li>
-                    <li>SMB Enumeration</li>
-                    <li>Linux Networking</li>
+                  <p className="text-sm font-semibold text-text-primary flex items-center gap-2 mb-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-blue" /> Security Tools
+                  </p>
+                  <div className="pl-3.5 flex flex-wrap gap-2">
+                    {["Nmap", "Packet Analysis", "Network Discovery", "SMB Enumeration"].map(tool => (
+                      <span key={tool} className="text-xs font-mono px-2 py-1 rounded bg-bg-primary border border-border-subtle">{tool}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Learning Areas */}
+                <div>
+                  <p className="text-sm font-semibold text-text-primary flex items-center gap-2 mb-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-blue" /> Learning Areas
+                  </p>
+                  <ul className="pl-3.5 space-y-1 grid sm:grid-cols-2 gap-x-4">
+                    <li>Linux Administration</li>
+                    <li>Networking Fundamentals</li>
+                    <li>System Security</li>
+                    <li>Practical Cybersecurity</li>
                   </ul>
                 </div>
               </div>

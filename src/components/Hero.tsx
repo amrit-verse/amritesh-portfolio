@@ -80,7 +80,7 @@ export default function Hero() {
                 fontSize: "clamp(1.0625rem, 2vw + 0.25rem, 1.875rem)",
               }}
             >
-              Full-Stack Developer &amp; Aspiring Security Engineer
+              Backend Developer, Linux Enthusiast &amp; Security Learner
             </h2>
 
             {/* Description — two short lines, not one long string */}
@@ -91,10 +91,10 @@ export default function Hero() {
               style={{ transitionDelay: "250ms" }}
             >
               <p className="text-[0.8125rem] sm:text-sm text-text-secondary leading-relaxed">
-                Computer Science Engineering Student
+                Building scalable backend systems with Java and Spring Boot, exploring Linux internals,
               </p>
-              <p className="text-[0.8125rem] sm:text-sm text-text-tertiary leading-relaxed">
-                Linux · Backend Systems · Cybersecurity · Clean Architecture
+              <p className="text-[0.8125rem] sm:text-sm text-text-secondary leading-relaxed">
+                and developing practical cybersecurity skills through hands-on labs and real-world projects.
               </p>
             </div>
 

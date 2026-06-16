@@ -25,116 +25,162 @@ interface Project {
 const projects: Project[] = [
   {
     number: "01",
-    name: "Library Management System",
-    tagline: "Full-stack academic library platform with role-based access control",
-    techPreview: ["Spring Boot", "Java", "MySQL"],
-    fullTech: ["Spring Boot", "Java", "MySQL", "HTML", "CSS", "JavaScript", "Railway", "Render", "Vercel"],
+    name: "Smart Expense Tracker",
+    tagline: "Financial analytics dashboard with aggregation pipelines",
+    techPreview: ["Node.js", "MongoDB", "Chart.js"],
+    fullTech: ["Node.js", "Express", "MongoDB Aggregations", "JWT Auth", "Chart.js"],
     overview:
-      "A comprehensive library management platform designed for academic institutions, featuring separate admin and user interfaces with full CRUD operations and cloud deployment.",
+      "A secure personal finance API and visual dashboard that leverages database aggregation pipelines to generate real-time spending insights.",
     problem:
-      "Academic libraries often struggle with manual book tracking, resulting in lost inventory, inefficient checkouts, and poor user experience.",
+      "Users require fast, actionable insights into their financial data, which generic banking apps often fail to provide in a customizable format.",
     solution:
-      "Built a centralized system with role-based access, search-driven catalog management, and cloud-hosted backend services for reliable operation.",
+      "Built a secure tracking system using JWT authentication and MongoDB aggregation pipelines to process thousands of transactions into visual categories efficiently.",
     features: [
-      "Role-based authentication (Admin/User)",
-      "Admin dashboard with CRUD operations",
-      "User catalog, search, and borrowing flow",
-      "RESTful backend architecture",
-      "Inventory tracking with search",
-      "Cloud deployment across Railway, Render, and Vercel",
+      "Secure JWT-based user authentication and session management",
+      "Complex NoSQL aggregation pipelines for spending categorization",
+      "Interactive time-series visualizations using Chart.js",
+      "Budget threshold monitoring and limit alerts",
     ],
     architecture:
-      "Spring Boot backend serves REST APIs, while the frontend uses vanilla JavaScript and responsive HTML/CSS. MySQL stores books and transactions.",
+      "Express.js backend serves structured JSON data compiled via MongoDB aggregation pipelines. The frontend charts are rendered client-side to offload server processing.",
     challenges:
-      "Securing role-based access and maintaining consistent behavior across multiple deployment platforms.",
+      "Writing efficient MongoDB aggregation queries to group and sum transactions dynamically without causing memory bottlenecks on the database cluster.",
     futureImprovements:
-      "Add reporting exports and automated overdue reminders for library administrators.",
-    github: "https://github.com/amrit-verse/Library-Management-System",
-    metrics: "3 platform deployment • RESTful API • <200ms search",
+      "Implementing Plaid API for automated bank syncing and deploying a caching layer.",
+    metrics: "JWT Auth • 4 REST APIs • MongoDB Aggregation • High Data Throughput",
   },
   {
     number: "02",
-    name: "ShopEase",
-    tagline: "Modern e-commerce platform with complete shopping flow",
-    techPreview: ["React", "TypeScript", "MongoDB"],
-    fullTech: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Razorpay"],
+    name: "Library Management System",
+    tagline: "Scalable academic platform with strict role-based access control",
+    techPreview: ["Spring Boot", "Java", "MySQL"],
+    fullTech: ["Spring Boot", "Java", "MySQL", "JPA/Hibernate", "REST API"],
     overview:
-      "A responsive e-commerce application offering product discovery, checkout, and order tracking for small-business sellers.",
+      "A robust, full-stack library management system engineered for academic institutions. Designed to handle high-throughput book tracking and enforce strict authorization boundaries between administrators and students.",
     problem:
-      "Small businesses need affordable, easy-to-manage online stores without enterprise-level setup.",
+      "Academic libraries suffer from data inconsistency and inefficient checkout flows when relying on manual or monolithic legacy systems.",
     solution:
-      "Built a modular shopping experience with product browsing, secure checkout, and order management for buyers and sellers.",
+      "Engineered a centralized, cloud-hosted platform using a Spring Boot backend and responsive frontend to automate inventory management.",
     features: [
-      "Product catalog with categories",
-      "Advanced filtering and search",
-      "Shopping cart and secure checkout",
-      "User authentication and order history",
-      "Seller dashboard with product management",
-      "Razorpay payment integration",
+      "Role-Based Access Control (Admin/User) via Spring Security",
+      "Advanced search algorithms for rapid catalog querying",
+      "Automated transaction tracking for checkouts/returns",
+      "RESTful backend architecture enforcing stateless communication",
     ],
     architecture:
-      "React frontend consumes an Express REST API. MongoDB stores products, users, and orders. Payment flows are verified through Razorpay webhooks.",
+      "The Spring Boot (Java) backend exposes stateless REST APIs, interacting with a normalized MySQL database via JPA/Hibernate.",
     challenges:
-      "Handling payment verification and real-time cart updates while keeping the user interface responsive.",
+      "Designing a robust relational schema that prevented race conditions during concurrent book checkouts.",
     futureImprovements:
-      "Add inventory alerts and multi-currency support for broader adoption.",
-    github: "https://github.com/amrit-verse/ShopEase",
-    metrics: "Full checkout flow • Razorpay integration • Cart system",
+      "Implement Redis caching for high-frequency catalog searches.",
+    github: "https://github.com/amrit-verse/Library-Management-System",
+    metrics: "Spring Security • 12+ REST Endpoints • 5 Relational Entities • ACID Compliance",
   },
   {
     number: "03",
-    name: "Attendance Guardian",
-    tagline: "QR + geolocation attendance system prototype",
-    badge: "Prototype",
-    techPreview: ["QR Code", "Geolocation", "Analytics"],
-    fullTech: ["QR Code Generation", "Geolocation API", "Real-time Analytics", "Role-based Access"],
+    name: "ShopEase",
+    tagline: "High-performance e-commerce engine with secure payment gateways",
+    techPreview: ["React", "Express", "MongoDB"],
+    fullTech: ["Node.js", "Express", "MongoDB", "React", "TypeScript", "Razorpay API"],
     overview:
-      "A prototype attendance system that combines QR scanning with location checks to improve accuracy and provide administrators with real-time analytics.",
+      "A modular, responsive e-commerce application focusing on a seamless user checkout experience and comprehensive inventory management.",
     problem:
-      "Traditional attendance systems are vulnerable to proxy attendance and lack real-time visibility for administrators.",
+      "Small vendors face significant technical barriers when establishing online storefronts, specifically concerning secure payment integration.",
     solution:
-      "Introduced a QR-based sign-in workflow with geolocation verification and a dashboard for attendance reporting.",
+      "Developed a complete digital storefront with an Express.js backend, providing secure Razorpay payment webhooks and a dynamic React-based shopping cart.",
     features: [
-      "QR code-based attendance capture",
-      "Geolocation verification",
-      "Real-time analytics dashboard",
-      "Leave management workflows",
-      "Role-based access for students and admins",
-      "Exportable attendance reports",
+      "Dynamic product catalog with faceted search and filtering",
+      "Secure checkout pipeline integrating Razorpay payment gateways",
+      "Stateful shopping cart and persistent user order history",
+      "Seller dashboard for real-time CRUD operations",
     ],
     architecture:
-      "PWA-style frontend communicates with an attendance service, using geolocation checks and WebSocket updates for dashboard analytics.",
+      "A MERN stack architecture. The React frontend communicates with a scalable Node.js/Express API. MongoDB stores heterogeneous product schemas.",
     challenges:
-      "Balancing location accuracy and compatibility across devices, while keeping the system easy to use.",
+      "Implementing idempotent webhook handlers to verify Razorpay transactions securely and prevent duplicate order fulfillment.",
     futureImprovements:
-      "Add secure time-based QR tokens and more robust anti-proxy protections.",
+      "Microservice extraction for the payment processing module.",
+    github: "https://github.com/amrit-verse/ShopEase",
+    metrics: "OAuth Authentication • Webhook Integration • Document DB • Secure Transacting",
   },
   {
     number: "04",
-    name: "Smart Expense Tracker",
-    tagline: "Personal finance tool with visual analytics",
-    techPreview: ["Node.js", "MongoDB", "Chart.js"],
-    fullTech: ["Node.js", "Express", "MongoDB", "JWT", "Chart.js"],
+    name: "AI Bus Tracker",
+    tagline: "Real-time geospatial tracking and predictive arrival estimation",
+    techPreview: ["Python", "WebSockets", "GeoJSON"],
+    fullTech: ["Python", "FastAPI", "WebSockets", "PostGIS", "Machine Learning"],
     overview:
-      "A personal finance dashboard that helps users track spending, categorize expenses, and review trends through visual reports.",
+      "A real-time transit tracking system that ingests live GPS coordinates and utilizes predictive algorithms to estimate arrival times accurately.",
     problem:
-      "Many people lack visibility into spending habits, making budgeting and financial planning difficult.",
+      "Public transit systems often suffer from unpredictable delays that static schedules cannot accommodate, frustrating daily commuters.",
     solution:
-      "Built a secure expense tracking app with categorized transactions, charts, and reporting for quick insights.",
+      "Engineered a high-frequency WebSocket architecture to stream geospatial data in real-time, coupled with a lightweight prediction model for ETA calculations.",
     features: [
-      "Expense tracking with categories",
-      "Interactive visual analytics",
-      "Monthly and weekly reporting",
-      "JWT-based authentication",
-      "Budget tracking and alerts",
-      "Data export options",
+      "Bi-directional WebSocket streams for sub-second location updates",
+      "Geospatial queries utilizing PostGIS boundaries",
+      "Predictive arrival time adjustments based on historical traffic data",
+      "Concurrent connection handling for thousands of active clients",
     ],
     architecture:
-      "Express backend uses MongoDB aggregation pipelines for analytics, while Chart.js renders interactive visual summaries on the frontend.",
+      "A Python FastAPI backend handles asynchronous WebSocket connections, while PostGIS efficiently queries location data against bus route polygons.",
     challenges:
-      "Optimizing analytics queries for responsive chart updates with changing data.",
+      "Optimizing the WebSocket broadcasting loop to prevent server memory bloat when pushing updates to heavily congested client areas.",
     futureImprovements:
-      "Add recurring transactions and budget forecasting tools.",
+      "Integrating external traffic APIs to improve the predictive arrival model's accuracy during extreme weather conditions.",
+    metrics: "Token Auth • WebSocket API • Geospatial Entities • Real-time Data Streaming",
+  },
+  {
+    number: "05",
+    name: "Sniffer",
+    tagline: "Low-level network packet analyzer and protocol decoder",
+    techPreview: ["C", "eBPF", "Libpcap"],
+    fullTech: ["C", "Linux Kernel", "Libpcap", "eBPF", "CLI Development"],
+    overview:
+      "A command-line network exploration tool that hooks into the Linux kernel to capture, decode, and analyze raw TCP/IP packets in real-time.",
+    problem:
+      "Understanding low-level network behaviors and diagnosing malformed packets requires tools capable of bypassing standard OS networking stacks.",
+    solution:
+      "Developed a custom packet sniffer leveraging libpcap and eBPF to safely monitor network interfaces and dissect headers (Ethernet, IP, TCP/UDP).",
+    features: [
+      "Real-time interception of promiscuous mode network traffic",
+      "Deep protocol dissection of IP headers, TCP flags, and payload lengths",
+      "Configurable filtering rules using BPF syntax",
+      "Memory-safe packet buffering to prevent kernel panics",
+    ],
+    architecture:
+      "Written in C, the tool interfaces directly with Linux AF_PACKET sockets or libpcap. It parses raw byte streams into structured C structs representing protocol headers.",
+    challenges:
+      "Managing memory buffers and pointer arithmetic accurately when parsing malformed or dynamically-sized packet payloads without causing segmentation faults.",
+    futureImprovements:
+      "Adding a terminal user interface (TUI) via ncurses and implementing automated anomaly detection for port scanning attacks.",
+    metrics: "No Auth • System Level API • 0 DB Entities • Kernel-space Execution",
+  },
+  {
+    number: "06",
+    name: "Attendance Guardian",
+    tagline: "Cryptographic QR & geolocation verification system",
+    badge: "Prototype",
+    techPreview: ["Node.js", "Geolocation", "QR Auth"],
+    fullTech: ["Node.js", "QR Generation", "Geolocation APIs", "WebSockets"],
+    overview:
+      "An advanced attendance verification prototype that mitigates proxy attendance by combining dynamic QR code generation with strict geolocation boundaries.",
+    problem:
+      "Traditional physical and static-digital attendance systems are highly susceptible to proxying, leading to inaccurate institutional reporting.",
+    solution:
+      "Designed a hybrid verification system requiring students to scan a time-sensitive QR code while physically present within a geofenced coordinate radius.",
+    features: [
+      "Time-to-Live (TTL) dynamic QR code generation",
+      "Strict geofencing using browser Geolocation APIs",
+      "Real-time WebSocket dashboard for administrative monitoring",
+      "Automated CSV/PDF export of attendance records",
+    ],
+    architecture:
+      "The backend orchestrates token generation and spatial verification logic, while the frontend captures device location and renders analytics.",
+    challenges:
+      "Calibrating geolocation accuracy tolerances to account for indoor GPS drift without increasing false-negative attendance rejections.",
+    futureImprovements:
+      "Integrating hardware-bound device fingerprinting and biometric WebAuthn.",
+    metrics: "Role-Based Auth • REST & WSS APIs • Geolocation Entites • Cryptographic Token Security",
   },
 ];
 

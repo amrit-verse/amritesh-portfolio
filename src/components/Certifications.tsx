@@ -4,12 +4,20 @@ const CERTIFICATIONS = [
   {
     title: "JL-NAT N5",
     subtitle: "Japanese Language Proficiency",
-    detail: "Elementary Japanese reading and listening skills.",
+    issuer: "JL-NAT Board",
+    date: "Dec 2023",
+    skills: ["Language Discipline", "Cross-cultural Communication", "Linguistic Analysis"],
+    highlight: "Validated elementary Japanese reading and listening skills.",
+    relevance: "Demonstrates strong discipline and adaptability, essential traits for continuous learning in rapidly evolving backend and cybersecurity landscapes.",
   },
   {
     title: "Duolingo English Test",
-    subtitle: "English Language Proficiency",
-    detail: "Score: 105 — strong academic reading and listening skills.",
+    subtitle: "English Language Proficiency (Score: 105)",
+    issuer: "Duolingo",
+    date: "2023",
+    skills: ["Technical Reading", "Professional Writing", "Verbal Communication"],
+    highlight: "Achieved a highly competitive score of 105.",
+    relevance: "Validates the academic reading and writing skills necessary for consuming complex technical documentation, RFCs, and communicating architecture decisions globally.",
   },
 ];
 
@@ -30,15 +38,47 @@ export default function Certifications() {
           </div>
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {CERTIFICATIONS.map((item, index) => (
             <ScrollReveal key={item.title} delay={index * 100}>
-              <div className="glass-card p-4 sm:p-6">
-                <div className="text-sm font-semibold uppercase tracking-[0.24em] text-accent-blue mb-3">
-                  {item.title}
+              <div className="glass-card p-6 relative overflow-hidden group">
+                <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent-blue/5 rounded-full blur-2xl group-hover:bg-accent-blue/10 transition-colors duration-500" />
+                
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-4 relative">
+                  <div className="text-sm font-bold uppercase tracking-wider text-accent-blue">
+                    {item.title}
+                  </div>
+                  <div className="text-xs font-mono px-2.5 py-1 rounded-full bg-bg-tertiary border border-border-subtle text-text-tertiary">
+                    {item.date}
+                  </div>
                 </div>
-                <p className="text-sm font-medium text-text-primary mb-2">{item.subtitle}</p>
-                <p className="text-sm text-text-secondary leading-relaxed">{item.detail}</p>
+
+                <div className="relative mb-6">
+                  <h3 className="text-lg font-semibold text-text-primary mb-1">{item.subtitle}</h3>
+                  <p className="text-xs font-medium text-text-tertiary uppercase tracking-wider mb-4">Issued by {item.issuer}</p>
+                  
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-xs font-semibold text-accent-blue uppercase tracking-wider mb-1">Achievement Highlight</p>
+                      <p className="text-sm text-text-secondary leading-relaxed">{item.highlight}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-accent-blue uppercase tracking-wider mb-1">Professional Relevance</p>
+                      <p className="text-sm text-text-secondary leading-relaxed">{item.relevance}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative border-t border-border-subtle pt-4 mt-auto">
+                  <p className="text-xs font-semibold text-text-primary mb-3">KEY SKILLS VALIDATED</p>
+                  <div className="flex flex-wrap gap-2">
+                    {item.skills.map((skill) => (
+                      <span key={skill} className="text-xs font-medium px-2.5 py-1 rounded-full bg-accent-blue-dim text-accent-blue border border-accent-blue/10">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
           ))}

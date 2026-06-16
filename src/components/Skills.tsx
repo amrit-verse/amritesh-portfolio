@@ -1,15 +1,19 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const SKILLS = {
-  frontendBackend: ["React", "TypeScript", "Node.js", "Express", "Spring Boot", "Java", "Python", "MongoDB", "MySQL"],
-  systemsSecurity: ["Linux Internals", "Cybersecurity", "Network Security", "Virtual Labs", "Offensive Security"],
-  toolsDeployment: ["Git", "Railway", "Render", "Vercel", "HTML", "CSS", "JavaScript"],
+  backend: ["Java", "Spring Boot", "Node.js", "Express"],
+  frontend: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
+  databases: ["MySQL", "MongoDB"],
+  tools: ["Git", "GitHub", "Linux", "Postman", "Docker"],
+  cybersecurity: ["Nmap", "Network Enumeration", "Linux Administration", "Security Fundamentals"],
 };
 
 const CATEGORIES: { key: keyof typeof SKILLS; label: string; colorClass: string; tagClass: string }[] = [
-  { key: "frontendBackend", label: "Frontend & Backend", colorClass: "text-accent-blue", tagClass: "skill-comfortable" },
-  { key: "systemsSecurity", label: "Systems & Security", colorClass: "text-[#6ee7b7]", tagClass: "skill-learning" },
-  { key: "toolsDeployment", label: "Tools & Deployment", colorClass: "text-[#a78bfa]", tagClass: "skill-familiar" },
+  { key: "backend", label: "Backend Architecture", colorClass: "text-[#a78bfa]", tagClass: "skill-comfortable" },
+  { key: "frontend", label: "Frontend", colorClass: "text-accent-blue", tagClass: "skill-comfortable" },
+  { key: "databases", label: "Databases", colorClass: "text-[#60a5fa]", tagClass: "skill-familiar" },
+  { key: "cybersecurity", label: "Cybersecurity", colorClass: "text-[#6ee7b7]", tagClass: "skill-learning" },
+  { key: "tools", label: "Tools & DevOps", colorClass: "text-[#fbbf24]", tagClass: "skill-familiar" },
 ];
 
 export default function Skills() {
