@@ -29,7 +29,9 @@ export const metadata: Metadata = {
     "Cybersecurity",
     "Full Stack Developer",
     "Computer Science Engineering",
-    "Open Source",
+    "Next.js",
+    "Prisma",
+    "PostgreSQL",
   ],
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
@@ -98,8 +100,11 @@ const jsonLd = {
     "Java",
     "JavaScript",
     "React",
+    "Next.js",
     "Spring Boot",
     "Node.js",
+    "PostgreSQL",
+    "Prisma",
   ],
 };
 

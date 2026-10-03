@@ -183,7 +183,7 @@ export default function Hero() {
               aria-label="Quick stats"
             >
               {[
-                { value: "4+", label: "Projects" },
+                { value: "7", label: "Projects" },
                 { value: "8.55", label: "CGPA" },
                 { value: "5+", label: "Labs" },
                 { value: "10+", label: "Repos" },

@@ -25,6 +25,58 @@ interface Project {
 const projects: Project[] = [
   {
     number: "01",
+    name: "Terai Law Students Association (TeLSA)",
+    tagline: "Full-stack organizational CMS and membership platform",
+    techPreview: ["Next.js", "Prisma", "PostgreSQL"],
+    fullTech: ["Next.js", "React", "Prisma", "PostgreSQL", "Auth.js", "Tailwind CSS", "Cloudflare R2", "Cloudinary"],
+    overview:
+      "A comprehensive digital platform engineered for a law students association, serving as a centralized hub for membership, publications, and event management.",
+    problem:
+      "The association required a unified system to manage student memberships, host study resources, and publish editorial content securely.",
+    solution:
+      "Developed a full-stack Next.js application featuring an administrative CMS, secure role-based authentication, and optimized asset delivery.",
+    features: [
+      "Role-Based Access Control (RBAC) via Auth.js",
+      "Dynamic Editorial CMS and Publication workflows",
+      "Event and Membership Management systems",
+      "Study resource taxonomy and dynamic SEO sitemaps",
+    ],
+    architecture:
+      "Next.js App Router for server-rendered performance, backed by a PostgreSQL database managed via Prisma ORM. Assets are distributed through Cloudflare R2 and Cloudinary.",
+    challenges:
+      "Implementing a robust RBAC architecture within Next.js Server Actions to securely segregate administrative and editorial privileges.",
+    futureImprovements:
+      "Implementation of automated membership renewal workflows and integrated payment gateways.",
+    metrics: "Next.js App Router • Prisma ORM • Auth.js • Cloudflare R2",
+  },
+  {
+    number: "02",
+    name: "Entertain Lawyers",
+    tagline: "Legal study-content and resource management architecture",
+    techPreview: ["Next.js", "PostgreSQL", "Auth.js"],
+    fullTech: ["Next.js", "Prisma", "PostgreSQL", "Auth.js"],
+    overview:
+      "A structured legal education platform designed to categorize and serve study taxonomy, resources, and editorial publications.",
+    problem:
+      "Legal students needed an organized, searchable repository for extensive study resources and event information.",
+    solution:
+      "Engineered a scalable content lifecycle management system, ensuring secure document workflows and efficient resource categorization.",
+    features: [
+      "Editorial CMS for legal publications and FAQs",
+      "Secure document and resource workflows",
+      "Study taxonomy classification system",
+      "Role-based administrative dashboards",
+    ],
+    architecture:
+      "Built on Next.js and PostgreSQL with Prisma. Designed for planned Cloudflare R2 storage integration to handle secure document hosting.",
+    challenges:
+      "Structuring the relational database schema to support complex, hierarchical study resource taxonomies while maintaining fast query performance.",
+    futureImprovements:
+      "Full deployment of the planned Cloudflare R2 storage architecture for document distribution.",
+    metrics: "CMS Architecture • Study Taxonomy • RBAC • PostgreSQL",
+  },
+  {
+    number: "03",
     name: "Smart Expense Tracker",
     tagline: "Financial analytics dashboard with aggregation pipelines",
     techPreview: ["Node.js", "MongoDB", "Chart.js"],
@@ -50,7 +102,7 @@ const projects: Project[] = [
     metrics: "JWT Auth • 4 REST APIs • MongoDB Aggregation • High Data Throughput",
   },
   {
-    number: "02",
+    number: "04",
     name: "Library Management System",
     tagline: "Scalable academic platform with strict role-based access control",
     techPreview: ["Spring Boot", "Java", "MySQL"],
@@ -77,7 +129,7 @@ const projects: Project[] = [
     metrics: "Spring Security • 12+ REST Endpoints • 5 Relational Entities • ACID Compliance",
   },
   {
-    number: "03",
+    number: "05",
     name: "ShopEase",
     tagline: "High-performance e-commerce engine with secure payment gateways",
     techPreview: ["React", "Express", "MongoDB"],
@@ -104,58 +156,6 @@ const projects: Project[] = [
     metrics: "OAuth Authentication • Webhook Integration • Document DB • Secure Transacting",
   },
   {
-    number: "04",
-    name: "AI Bus Tracker",
-    tagline: "Real-time geospatial tracking and predictive arrival estimation",
-    techPreview: ["Python", "WebSockets", "GeoJSON"],
-    fullTech: ["Python", "FastAPI", "WebSockets", "PostGIS", "Machine Learning"],
-    overview:
-      "A real-time transit tracking system that ingests live GPS coordinates and utilizes predictive algorithms to estimate arrival times accurately.",
-    problem:
-      "Public transit systems often suffer from unpredictable delays that static schedules cannot accommodate, frustrating daily commuters.",
-    solution:
-      "Engineered a high-frequency WebSocket architecture to stream geospatial data in real-time, coupled with a lightweight prediction model for ETA calculations.",
-    features: [
-      "Bi-directional WebSocket streams for sub-second location updates",
-      "Geospatial queries utilizing PostGIS boundaries",
-      "Predictive arrival time adjustments based on historical traffic data",
-      "Concurrent connection handling for thousands of active clients",
-    ],
-    architecture:
-      "A Python FastAPI backend handles asynchronous WebSocket connections, while PostGIS efficiently queries location data against bus route polygons.",
-    challenges:
-      "Optimizing the WebSocket broadcasting loop to prevent server memory bloat when pushing updates to heavily congested client areas.",
-    futureImprovements:
-      "Integrating external traffic APIs to improve the predictive arrival model's accuracy during extreme weather conditions.",
-    metrics: "Token Auth • WebSocket API • Geospatial Entities • Real-time Data Streaming",
-  },
-  {
-    number: "05",
-    name: "Sniffer",
-    tagline: "Low-level network packet analyzer and protocol decoder",
-    techPreview: ["C", "eBPF", "Libpcap"],
-    fullTech: ["C", "Linux Kernel", "Libpcap", "eBPF", "CLI Development"],
-    overview:
-      "A command-line network exploration tool that hooks into the Linux kernel to capture, decode, and analyze raw TCP/IP packets in real-time.",
-    problem:
-      "Understanding low-level network behaviors and diagnosing malformed packets requires tools capable of bypassing standard OS networking stacks.",
-    solution:
-      "Developed a custom packet sniffer leveraging libpcap and eBPF to safely monitor network interfaces and dissect headers (Ethernet, IP, TCP/UDP).",
-    features: [
-      "Real-time interception of promiscuous mode network traffic",
-      "Deep protocol dissection of IP headers, TCP flags, and payload lengths",
-      "Configurable filtering rules using BPF syntax",
-      "Memory-safe packet buffering to prevent kernel panics",
-    ],
-    architecture:
-      "Written in C, the tool interfaces directly with Linux AF_PACKET sockets or libpcap. It parses raw byte streams into structured C structs representing protocol headers.",
-    challenges:
-      "Managing memory buffers and pointer arithmetic accurately when parsing malformed or dynamically-sized packet payloads without causing segmentation faults.",
-    futureImprovements:
-      "Adding a terminal user interface (TUI) via ncurses and implementing automated anomaly detection for port scanning attacks.",
-    metrics: "No Auth • System Level API • 0 DB Entities • Kernel-space Execution",
-  },
-  {
     number: "06",
     name: "Attendance Guardian",
     tagline: "Cryptographic QR & geolocation verification system",
@@ -180,7 +180,34 @@ const projects: Project[] = [
       "Calibrating geolocation accuracy tolerances to account for indoor GPS drift without increasing false-negative attendance rejections.",
     futureImprovements:
       "Integrating hardware-bound device fingerprinting and biometric WebAuthn.",
-    metrics: "Role-Based Auth • REST & WSS APIs • Geolocation Entites • Cryptographic Token Security",
+    metrics: "Role-Based Auth • REST & WSS APIs • Geolocation Entites • Token Security",
+  },
+  {
+    number: "07",
+    name: "DIODESCAN",
+    tagline: "Passive AI cyber-threat detection concept",
+    badge: "Hackathon",
+    techPreview: ["Python", "AI/ML", "Networking"],
+    fullTech: ["Python", "Cybersecurity", "Network Analysis"],
+    overview:
+      "A conceptual passive AI cyber-threat detection system designed for the Smart India Hackathon (Problem Statement: SIH26145) by Team Sudo.",
+    problem:
+      "Traditional active network scanning techniques can alert attackers and consume excessive bandwidth, requiring a passive monitoring alternative.",
+    solution:
+      "Proposed a passive threat detection architecture that analyzes network traffic patterns using machine learning to identify anomalous behavior without active probing.",
+    features: [
+      "Passive network traffic analysis concepts",
+      "AI-driven anomaly detection models",
+      "Non-intrusive threat monitoring architecture",
+      "Conceptual deployment strategies for enterprise networks",
+    ],
+    architecture:
+      "A Python-based analysis pipeline concept designed to ingest passive network packet streams and evaluate them against pre-trained threat models.",
+    challenges:
+      "Defining the theoretical boundary between normal network noise and stealthy adversarial behavior without generating excessive false positives.",
+    futureImprovements:
+      "Developing a functional MVP using live packet capture libraries and a trained neural network classifier.",
+    metrics: "Team Sudo • SIH26145 • Passive Detection • Threat Analysis",
   },
 ];
 
