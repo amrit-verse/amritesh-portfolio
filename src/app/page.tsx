@@ -22,10 +22,10 @@ export default function Home() {
         <About />
         <CurrentFocus />
         <Projects />
+        <LearningJourney />
         <Skills />
         <Education />
         <Certifications />
-        <LearningJourney />
         <GitHubActivity />
         <Contact />
       </main>

@@ -2,22 +2,26 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 const CERTIFICATIONS = [
   {
-    title: "JL-NAT N5",
-    subtitle: "Japanese Language Proficiency",
-    issuer: "JL-NAT Board",
+    title: "JL-NAT N5 Certified",
+    subtitle: "Japanese Language Proficiency Examination",
+    issuer: "JL-NAT Examination Board",
     date: "Dec 2023",
-    skills: ["Language Discipline", "Cross-cultural Communication", "Linguistic Analysis"],
-    highlight: "Validated elementary Japanese reading and listening skills.",
-    relevance: "Demonstrates strong discipline and adaptability, essential traits for continuous learning in rapidly evolving backend and cybersecurity landscapes.",
+    skills: ["Linguistic Analysis", "Grammar Deconstruction", "Kanji & Listening"],
+    whyItMatters:
+      "Taught myself Japanese out of an interest in linguistics and kanji, then validated elementary reading and listening in the formal JL-NAT N5 exam. Breaking down unfamiliar grammar systems from scratch is the exact same discipline I use when learning new programming languages or systems architectures.",
+    relevance:
+      "Demonstrates independent self-study discipline and the ability to systematically master unfamiliar concepts.",
   },
   {
-    title: "Duolingo English Test",
-    subtitle: "English Language Proficiency (Score: 105)",
-    issuer: "Duolingo",
+    title: "Duolingo English Test (Score: 105)",
+    subtitle: "Certified Academic & Professional English Proficiency",
+    issuer: "Duolingo International Examination",
     date: "2023",
-    skills: ["Technical Reading", "Professional Writing", "Verbal Communication"],
-    highlight: "Achieved a highly competitive score of 105.",
-    relevance: "Validates the academic reading and writing skills necessary for consuming complex technical documentation, RFCs, and communicating architecture decisions globally.",
+    skills: ["Technical Composition", "Documentation Writing", "Verbal Fluency"],
+    whyItMatters:
+      "Standardized examination measuring reading comprehension, writing, and conversational English under proctored test conditions, achieving a competitive 105 score.",
+    relevance:
+      "Ensures clear communication for writing architectural docs, READMEs, pull requests, and working within international engineering teams.",
   },
 ];
 
@@ -27,53 +31,61 @@ export default function Certifications() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <ScrollReveal>
           <div className="mb-8 sm:mb-12">
-            <span className="section-number">06</span>
-            <h2 id="certifications-title" className="font-bold mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw + 0.5rem, 2.25rem)' }}>
-              Certifications
-            </h2>
-            <p className="text-text-secondary max-w-2xl">
-              Validated language and readiness credentials.
+            <p className="section-number mb-2 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              07 // CREDENTIALS &amp; CERTIFICATIONS
             </p>
-            <div className="w-16 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple mt-4" />
+            <h2 id="certifications-title" className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+              Language &amp; Independent Credentials
+            </h2>
+            <p className="text-zinc-400 text-xs sm:text-sm sm:text-base max-w-2xl leading-relaxed">
+              Standardized language accreditations reflecting autodidactic learning discipline and global communication standards.
+            </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
           {CERTIFICATIONS.map((item, index) => (
-            <ScrollReveal key={item.title} delay={index * 100}>
-              <div className="glass-card p-6 relative overflow-hidden group">
-                <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent-blue/5 rounded-full blur-2xl group-hover:bg-accent-blue/10 transition-colors duration-500" />
-                
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-4 relative">
-                  <div className="text-sm font-bold uppercase tracking-wider text-accent-blue">
-                    {item.title}
+            <ScrollReveal key={item.title} delay={index * 80}>
+              <div className="glass-card p-5 sm:p-6 relative overflow-hidden flex flex-col justify-between border border-zinc-800/80 hover:border-zinc-700">
+                <div>
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <span className={`text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border ${
+                      index === 0
+                        ? "text-amber-300 bg-amber-500/10 border-amber-500/25"
+                        : "text-sky-300 bg-sky-500/10 border-sky-500/25"
+                    }`}>
+                      {item.title}
+                    </span>
+                    <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#090c12] border border-zinc-800 text-zinc-400">
+                      {item.date}
+                    </span>
                   </div>
-                  <div className="text-xs font-mono px-2.5 py-1 rounded-full bg-bg-tertiary border border-border-subtle text-text-tertiary">
-                    {item.date}
+
+                  <h3 className="text-sm sm:text-base font-bold text-white mb-1">{item.subtitle}</h3>
+                  <p className="text-xs font-mono text-zinc-500 uppercase tracking-wider mb-4">Issued by {item.issuer}</p>
+
+                  <div className="space-y-3.5 mb-5 text-xs sm:text-sm">
+                    <div>
+                      <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-zinc-300 mb-1">
+                        The Real Story Behind It
+                      </p>
+                      <p className="text-zinc-400 leading-relaxed text-xs sm:text-sm">{item.whyItMatters}</p>
+                    </div>
+                    <div>
+                      <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-zinc-300 mb-1">
+                        Practical Relevance
+                      </p>
+                      <p className="text-zinc-400 leading-relaxed text-xs sm:text-sm">{item.relevance}</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="relative mb-6">
-                  <h3 className="text-lg font-semibold text-text-primary mb-1">{item.subtitle}</h3>
-                  <p className="text-xs font-medium text-text-tertiary uppercase tracking-wider mb-4">Issued by {item.issuer}</p>
-                  
-                  <div className="space-y-3">
-                    <div>
-                      <p className="text-xs font-semibold text-accent-blue uppercase tracking-wider mb-1">Achievement Highlight</p>
-                      <p className="text-sm text-text-secondary leading-relaxed">{item.highlight}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-accent-blue uppercase tracking-wider mb-1">Professional Relevance</p>
-                      <p className="text-sm text-text-secondary leading-relaxed">{item.relevance}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative border-t border-border-subtle pt-4 mt-auto">
-                  <p className="text-xs font-semibold text-text-primary mb-3">KEY SKILLS VALIDATED</p>
-                  <div className="flex flex-wrap gap-2">
+                <div className="border-t border-zinc-800/80 pt-4 mt-auto">
+                  <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-zinc-500 mb-2">Verified Competencies</p>
+                  <div className="flex flex-wrap gap-1.5">
                     {item.skills.map((skill) => (
-                      <span key={skill} className="text-xs font-medium px-2.5 py-1 rounded-full bg-accent-blue-dim text-accent-blue border border-accent-blue/10">
+                      <span key={skill} className="text-xs font-mono px-2.5 py-1 rounded bg-[#0b0e14] border border-zinc-800 text-zinc-300">
                         {skill}
                       </span>
                     ))}
