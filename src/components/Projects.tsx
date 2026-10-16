@@ -212,19 +212,7 @@ const projects: Project[] = [
 
 function getBadgeStyle(badge?: string) {
   if (!badge) return 'bg-zinc-800 text-zinc-300 border-zinc-700';
-  if (badge.includes('Production') || badge.includes('Flagship') || badge.includes('Academic')) {
-    return 'bg-amber-500/10 text-amber-300 border-amber-500/25';
-  }
-  if (badge.includes('Web App') || badge.includes('Algorithm')) {
-    return 'bg-emerald-500/10 text-emerald-300 border-emerald-500/25';
-  }
-  if (badge.includes('API') || badge.includes('Analytics') || badge.includes('E-Commerce')) {
-    return 'bg-sky-500/10 text-sky-300 border-sky-500/25';
-  }
-  if (badge.includes('Hackathon') || badge.includes('NTRO') || badge.includes('Threat')) {
-    return 'bg-purple-500/10 text-purple-300 border-purple-500/25';
-  }
-  return 'bg-zinc-800 text-zinc-300 border-zinc-700';
+  return 'bg-emerald-500/10 text-emerald-300 border-emerald-500/25';
 }
 
 export default function Projects() {
@@ -242,7 +230,7 @@ export default function Projects() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
             <div>
               <p className="section-number mb-2 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 03 // ARCHIVE &amp; BUILDS
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">
@@ -309,7 +297,7 @@ export default function Projects() {
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
                       <div className="flex items-start gap-3 sm:gap-4">
-                        <span className="text-xs sm:text-sm font-mono font-bold text-amber-400/80 pt-0.5">
+                        <span className="text-xs sm:text-sm font-mono font-bold text-emerald-400/90 pt-0.5">
                           {project.number}
                         </span>
                         <div>

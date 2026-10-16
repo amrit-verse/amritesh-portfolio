@@ -4,8 +4,8 @@ const focusCards = [
   {
     title: 'Backend & Database Architecture',
     tag: 'APIs & Schemas',
-    tagColor: 'text-sky-300 bg-sky-500/10 border-sky-500/20',
-    iconColor: 'text-sky-400 bg-sky-500/10 border-sky-500/25 group-hover:border-sky-500/50',
+    tagColor: 'text-emerald-300 bg-emerald-500/10 border-emerald-500/20',
+    iconColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/25 group-hover:border-emerald-500/50',
     description:
       'Writing backend services in Node.js/Express and Java (Spring Boot). Getting relational schemas right with PostgreSQL and Prisma, managing data types, and writing structured REST APIs with input validation.',
     icon: (
@@ -34,8 +34,8 @@ const focusCards = [
   {
     title: 'QEMU/KVM Virtual Systems Lab',
     tag: 'Isolated Hypervisor',
-    tagColor: 'text-amber-300 bg-amber-500/10 border-amber-500/20',
-    iconColor: 'text-amber-400 bg-amber-500/10 border-amber-500/25 group-hover:border-amber-500/50',
+    tagColor: 'text-emerald-300 bg-emerald-500/10 border-emerald-500/20',
+    iconColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/25 group-hover:border-emerald-500/50',
     description:
       'Running an isolated hypervisor testbed with a debian13 guest VM on a virbr0 virtual NAT bridge. Auditing open services with Nmap 7.95 and studying network isolation without touching production.',
     icon: (
@@ -47,8 +47,8 @@ const focusCards = [
   {
     title: 'Full-Stack Next.js Applications',
     tag: 'Production Web Apps',
-    tagColor: 'text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
-    iconColor: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/25 group-hover:border-indigo-500/50',
+    tagColor: 'text-emerald-300 bg-emerald-500/10 border-emerald-500/20',
+    iconColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/25 group-hover:border-emerald-500/50',
     description:
       'Building production apps like TeLSA using Next.js App Router, Server Actions, Auth.js role-based access, and Cloudinary media storage — focusing on fast load times, clean code, and zero bloated packages.',
     icon: (

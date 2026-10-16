@@ -35,7 +35,7 @@ const SOCIAL_LINKS = [
     label: 'TryHackMe',
     href: 'https://tryhackme.com/p/amriteshmishra729',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-rose-400" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-emerald-400" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
@@ -288,7 +288,7 @@ export default function Navbar() {
         >
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot" />
           <span className="font-mono text-sm font-bold text-white group-hover:text-zinc-200 transition-colors">
-            AMRITESH<span className="text-zinc-600">{" // "}</span><span className="text-amber-400/80 text-xs">2026</span>
+            AMRITESH<span className="text-zinc-600">{" // "}</span><span className="text-zinc-400 text-xs font-normal">2026</span>
           </span>
         </a>
 
@@ -437,7 +437,7 @@ export default function Navbar() {
               tabIndex={isMobileOpen ? 0 : -1}
             >
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot" />
-              AMRITESH <span className="text-amber-400/80">{"//"}</span> 2026
+              AMRITESH <span className="text-zinc-600">{"//"}</span> <span className="text-zinc-400 text-xs font-normal">2026</span>
             </a>
             <button
               type="button"

@@ -258,11 +258,11 @@ export default function GitHubActivity() {
                 {[
                   {
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-sky-400" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-emerald-400" aria-hidden="true">
                         <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
                       </svg>
                     ),
-                    iconBg: "bg-sky-500/10 border-sky-500/20",
+                    iconBg: "bg-emerald-500/10 border-emerald-500/20",
                     value: user.public_repos,
                     label: "Public Repositories",
                   },
@@ -279,13 +279,13 @@ export default function GitHubActivity() {
                   },
                   {
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-purple-400" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-emerald-400" aria-hidden="true">
                         <circle cx="12" cy="12" r="10" />
                         <line x1="2" y1="12" x2="22" y2="12" />
                         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                       </svg>
                     ),
-                    iconBg: "bg-purple-500/10 border-purple-500/20",
+                    iconBg: "bg-emerald-500/10 border-emerald-500/20",
                     value: (() => {
                       const langs = new Set(repos.map(r => r.language).filter(Boolean));
                       return langs.size;

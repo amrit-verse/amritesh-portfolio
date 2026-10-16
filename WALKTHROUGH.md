@@ -168,6 +168,16 @@ Following the user's feedback that a pure monochrome site felt too sterile and t
 
 ---
 
+## 8. Unified Minimalist Black, White & Emerald Green Palette
+
+Eliminated all scattered rainbow colors (`sky blue`, `purple`, `indigo`, `rose`) and odd yellow/amber distractions:
+- **Clean Obsidian Base**: Pure `#08090d` and `#0c0f16` backgrounds with subtle `<2%` emerald ambient radial gradient.
+- **Single Cohesive Accent**: Standardized on high-tech **Emerald Green** (`emerald-400`, `emerald-500/10`, `border-emerald-500/25`) across all 9 section header numbers, capability cards, terminal nodes, focus cards, and contact badges.
+- **Polished Monospace Numbers & Typography**: Project indices (`01`, `02`, etc.) and brand year kickers (`2026`) now use matching emerald/zinc typography rather than garish yellow.
+- **Direct Email Harmony**: Converted the Direct Email banner from yellow to sleek emerald hover accents.
+
+---
+
 ## Verification Results
 
 ```bash

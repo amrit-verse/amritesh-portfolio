@@ -13,19 +13,19 @@ const VIRTUAL_LAB_ENV = [
   { 
     name: "debian13 (QEMU/KVM Guest)", 
     badge: "Isolated VM",
-    badgeColor: "bg-amber-500/10 text-amber-300 border-amber-500/25",
+    badgeColor: "bg-emerald-500/10 text-emerald-300 border-emerald-500/25",
     role: "Dedicated testing virtual machine managed via virt-manager and virsh (2 vCPUs, 2 GiB RAM, AppArmor security driver)." 
   },
   { 
     name: "virbr0 (NAT Virtual Bridge)", 
     badge: "Private Subnet",
-    badgeColor: "bg-sky-500/10 text-sky-300 border-sky-500/25",
+    badgeColor: "bg-emerald-500/10 text-emerald-300 border-emerald-500/25",
     role: "Kernel virtual bridge on 192.168.122.1/24 with dnsmasq DHCP (.2–.254) providing isolated host-to-guest networking." 
   },
   { 
     name: "Docker Engine (v26.1)", 
     badge: "Containers",
-    badgeColor: "bg-purple-500/10 text-purple-300 border-purple-500/25",
+    badgeColor: "bg-emerald-500/10 text-emerald-300 border-emerald-500/25",
     role: "Local containerized environments for databases and microservices without cluttering host Debian packages." 
   },
 ];
@@ -143,10 +143,10 @@ export default function LearningJourney() {
                     href="https://tryhackme.com/p/amriteshmishra729"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-md bg-[#0e121a] border border-zinc-800 text-rose-300 hover:border-rose-500/40 hover:text-white transition-all"
+                    className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-md bg-[#0e121a] border border-zinc-800 text-emerald-300 hover:border-emerald-500/40 hover:text-white transition-all"
                   >
                     <span>TryHackMe Profile</span>
-                    <span className="text-rose-400">→</span>
+                    <span className="text-emerald-400">→</span>
                   </a>
                   <a
                     href="https://www.hackerrank.com/profile/amriteshmishra71"

@@ -30,7 +30,7 @@ export default function Hero() {
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 aspect-square rounded-full p-1 bg-gradient-to-b from-amber-500/20 via-zinc-800/40 to-transparent shadow-lg shadow-black/80 shrink-0">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 aspect-square rounded-full p-1 bg-gradient-to-b from-emerald-500/25 via-zinc-800/40 to-transparent shadow-lg shadow-black/80 shrink-0">
                 <div className="relative w-full h-full rounded-full overflow-hidden border border-zinc-700/80 bg-[#07090e]">
                   <Image
                     src="/avatar.png"
@@ -106,13 +106,13 @@ export default function Hero() {
               }`}
               style={{ transitionDelay: "240ms" }}
             >
-              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 hover:border-amber-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono text-amber-400 font-bold uppercase tracking-wider">Academic Record</p>
+              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 hover:border-emerald-500/30 transition-colors">
+                <p className="text-[0.6875rem] font-mono text-emerald-400 font-bold uppercase tracking-wider">Academic Record</p>
                 <p className="text-xs font-semibold text-white mt-0.5">8.88 CGPA · 2nd Year</p>
                 <p className="text-[0.6875rem] text-zinc-400">Anna University affiliated</p>
               </div>
-              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 hover:border-sky-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono text-sky-400 font-bold uppercase tracking-wider">Backend Core</p>
+              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 hover:border-emerald-500/30 transition-colors">
+                <p className="text-[0.6875rem] font-mono text-emerald-400 font-bold uppercase tracking-wider">Backend Core</p>
                 <p className="text-xs font-semibold text-white mt-0.5">Node.js · Spring Boot</p>
                 <p className="text-[0.6875rem] text-zinc-400">PostgreSQL, Prisma, MongoDB</p>
               </div>
@@ -181,7 +181,7 @@ export default function Hero() {
             }`}
             style={{ transitionDelay: "320ms" }}
           >
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 xl:w-80 xl:h-80 aspect-square rounded-full p-2 bg-gradient-to-b from-amber-500/20 via-zinc-800/40 to-transparent shadow-[0_0_50px_rgba(0,0,0,0.6)] group">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 xl:w-80 xl:h-80 aspect-square rounded-full p-2 bg-gradient-to-b from-emerald-500/25 via-zinc-800/40 to-transparent shadow-[0_0_50px_rgba(16,185,129,0.15)] group">
               <div className="relative w-full h-full rounded-full overflow-hidden border border-zinc-700/80 bg-[#07090e]">
                 <Image
                   src="/avatar.png"
@@ -281,9 +281,9 @@ export default function Hero() {
                 <p className="text-emerald-400 font-mono text-xs mt-1.5 font-semibold">CGPA: 8.88 / 10.00</p>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 hover:border-sky-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-sky-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 hover:border-emerald-500/30 transition-colors">
+                <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   Everyday Backend
                 </p>
                 <p className="text-zinc-200 font-medium">Node.js, Express, Spring Boot</p>
@@ -301,9 +301,9 @@ export default function Hero() {
                 <p className="text-zinc-500 text-[0.6875rem] mt-0.5">virbr0 NAT bridge, debian13 guest, Nmap 7.95, Docker</p>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 hover:border-amber-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-amber-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 hover:border-emerald-500/30 transition-colors">
+                <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   Verified Credentials
                 </p>
                 <p className="text-zinc-200 font-medium">Team Leader — SIH &apos;26 (Team Sudo)</p>
@@ -376,9 +376,9 @@ export default function Hero() {
             <div className="p-4 rounded-xl bg-[#090b11] border border-zinc-800/80 font-mono text-xs text-zinc-300 space-y-2 animate-fade-in">
               <p className="text-emerald-400 font-semibold">$ cat achievements.json | jq .highlights</p>
               <div className="grid sm:grid-cols-2 gap-2 text-zinc-400">
-                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-purple-500/30 transition-colors">
-                  <p className="text-purple-300 font-bold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
+                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/30 transition-colors">
+                  <p className="text-emerald-300 font-bold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                     Smart India Hackathon 2026
                   </p>
                   <p className="text-zinc-400 text-[0.6875rem] mt-0.5">Team Leader for Team Sudo (NTRO Threat Detection Problem SIH26145)</p>
@@ -390,16 +390,16 @@ export default function Hero() {
                   </p>
                   <p className="text-zinc-400 text-[0.6875rem] mt-0.5">Excel Engineering College (Anna University affiliated coursework)</p>
                 </div>
-                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-amber-500/30 transition-colors">
-                  <p className="text-amber-300 font-bold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
+                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/30 transition-colors">
+                  <p className="text-emerald-300 font-bold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                     JL-NAT N5 Japanese Certified
                   </p>
                   <p className="text-zinc-400 text-[0.6875rem] mt-0.5">Autodidactic language study validating reading &amp; listening comprehension</p>
                 </div>
-                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-sky-500/30 transition-colors">
-                  <p className="text-sky-300 font-bold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0" />
+                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/30 transition-colors">
+                  <p className="text-emerald-300 font-bold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                     Duolingo English Score: 105
                   </p>
                   <p className="text-zinc-400 text-[0.6875rem] mt-0.5">Certified literacy, academic comprehension, and professional expression</p>

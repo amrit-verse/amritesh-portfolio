@@ -74,7 +74,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot" />
               <span className="text-base font-bold font-mono tracking-wider text-white">
-                AMRITESH MISHRA <span className="text-amber-400/80">{"//"}</span> 2026
+                AMRITESH MISHRA <span className="text-zinc-600">{"//"}</span> <span className="text-zinc-400 font-normal">2026</span>
               </span>
             </div>
             <p className="text-xs text-zinc-400 font-mono">

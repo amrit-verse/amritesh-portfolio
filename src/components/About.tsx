@@ -25,7 +25,7 @@ export default function About() {
               {/* Natural Human Story Timeline */}
               <div className="glass-card p-4 sm:p-6 relative">
                 <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 mb-6 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   The Journey So Far
                 </p>
                 <div className="space-y-6 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:-translate-x-1/2 before:h-full before:w-px before:bg-gradient-to-b before:from-zinc-500/40 before:via-white/10 before:to-transparent">
@@ -128,10 +128,10 @@ export default function About() {
                   Raised speaking Nepali, Hindi, Bhojpuri, and Maithili. Professional fluency in English, conversational Tamil, and self-studied elementary Japanese.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#090c12] border border-amber-500/25 text-amber-300">
+                  <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#090c12] border border-emerald-500/25 text-emerald-300">
                     JL-NAT N5 (Japanese)
                   </span>
-                  <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#090c12] border border-sky-500/25 text-sky-300">
+                  <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#090c12] border border-emerald-500/25 text-emerald-300">
                     Duolingo English: 105
                   </span>
                 </div>

@@ -32,7 +32,7 @@ export default function Certifications() {
         <ScrollReveal>
           <div className="mb-8 sm:mb-12">
             <p className="section-number mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               07 // CREDENTIALS &amp; CERTIFICATIONS
             </p>
             <h2 id="certifications-title" className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
@@ -45,16 +45,12 @@ export default function Certifications() {
         </ScrollReveal>
 
         <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
-          {CERTIFICATIONS.map((item, index) => (
-            <ScrollReveal key={item.title} delay={index * 80}>
+          {CERTIFICATIONS.map((item) => (
+            <ScrollReveal key={item.title} delay={80}>
               <div className="glass-card p-5 sm:p-6 relative overflow-hidden flex flex-col justify-between border border-zinc-800/80 hover:border-zinc-700">
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                    <span className={`text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border ${
-                      index === 0
-                        ? "text-amber-300 bg-amber-500/10 border-amber-500/25"
-                        : "text-sky-300 bg-sky-500/10 border-sky-500/25"
-                    }`}>
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border text-emerald-300 bg-emerald-500/10 border-emerald-500/25">
                       {item.title}
                     </span>
                     <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#090c12] border border-zinc-800 text-zinc-400">

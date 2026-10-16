@@ -62,7 +62,7 @@ html {
 body {
   background-color: var(--color-bg-primary);
   background-image:
-    radial-gradient(ellipse 65% 50% at 50% -5%, rgba(245, 158, 11, 0.018), rgba(16, 185, 129, 0.012) 45%, transparent 70%),
+    radial-gradient(ellipse 65% 50% at 50% -5%, rgba(16, 185, 129, 0.02), transparent 70%),
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   background-position: center top, center top, center top;

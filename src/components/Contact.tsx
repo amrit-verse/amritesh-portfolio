@@ -16,7 +16,7 @@ type ContactLink = {
 const CONTACTS: ContactLink[] = [
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-amber-400" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-emerald-400" aria-hidden="true">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
         <polyline points="22,6 12,13 2,6" />
       </svg>
@@ -51,7 +51,7 @@ const CONTACTS: ContactLink[] = [
   },
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-rose-400" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-emerald-400" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
@@ -148,14 +148,14 @@ export default function Contact() {
               </div>
 
               {/* Prominent Direct Email Block */}
-              <div className="mb-6 p-5 sm:p-6 rounded-2xl bg-[#0a0d14] border border-zinc-800 hover:border-amber-500/40 transition-colors group">
-                <p className="text-xs text-amber-400 uppercase tracking-wider mb-2 font-mono">Direct Email</p>
+              <div className="mb-6 p-5 sm:p-6 rounded-2xl bg-[#0a0d14] border border-zinc-800 hover:border-emerald-500/40 transition-colors group">
+                <p className="text-xs text-emerald-400 uppercase tracking-wider mb-2 font-mono">Direct Email</p>
                 <a 
                   href="mailto:contact@amritesh.com.np"
-                  className="inline-flex items-center gap-3 text-lg sm:text-xl lg:text-2xl font-bold text-white group-hover:text-amber-300 transition-colors break-all"
+                  className="inline-flex items-center gap-3 text-lg sm:text-xl lg:text-2xl font-bold text-white group-hover:text-emerald-300 transition-colors break-all"
                 >
                   contact@amritesh.com.np
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-zinc-400 group-hover:text-amber-300 transition-all shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-zinc-400 group-hover:text-emerald-300 transition-all shrink-0" aria-hidden="true">
                     <line x1="7" y1="17" x2="17" y2="7" />
                     <polyline points="7 7 17 7 17 17" />
                   </svg>

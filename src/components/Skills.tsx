@@ -3,13 +3,13 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 const SKILL_CATEGORIES = [
   {
     label: "Languages",
-    dotColor: "bg-amber-400",
+    dotColor: "bg-emerald-400",
     description: "Languages I write for backend services, automation scripts, and problem solving.",
     skills: ["Java", "Python", "TypeScript", "JavaScript", "SQL", "Bash", "C"],
   },
   {
     label: "Backend & Databases",
-    dotColor: "bg-sky-400",
+    dotColor: "bg-emerald-400",
     description: "Frameworks, databases, and ORMs I use to build scalable REST APIs.",
     skills: ["Node.js", "Express.js", "Spring Boot", "PostgreSQL", "MongoDB", "Prisma ORM", "JPA / Hibernate", "REST APIs"],
   },
@@ -21,13 +21,13 @@ const SKILL_CATEGORIES = [
   },
   {
     label: "Security & Networking",
-    dotColor: "bg-amber-400",
+    dotColor: "bg-emerald-400",
     description: "Diagnostic tools and authentication protocols I practice with.",
     skills: ["Nmap (7.95)", "Network Auditing", "Passive Flow Detection", "Auth.js (v5)", "JWT & Cookies", "RBAC", "Zod Validation"],
   },
   {
     label: "Frontend Engineering",
-    dotColor: "bg-purple-400",
+    dotColor: "bg-emerald-400",
     description: "Modern web tools for building responsive client interfaces.",
     skills: ["React", "Next.js (App Router)", "Tailwind CSS", "Recharts", "HTML5", "CSS3"],
   },
