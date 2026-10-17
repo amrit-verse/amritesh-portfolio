@@ -371,7 +371,7 @@ export default function Navbar() {
         {/* Mobile Hamburger Button */}
         <button
           type="button"
-          className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-xl text-zinc-300 hover:text-white border border-zinc-800 bg-[#0e1118] active:scale-95 transition-all duration-200"
+          className="lg:hidden relative w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-zinc-300 hover:text-white border border-zinc-800 bg-[#0e1118] active:scale-95 transition-all duration-200"
           onClick={() => setIsMobileOpen((prev) => !prev)}
           aria-label={isMobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={isMobileOpen}
@@ -418,7 +418,7 @@ export default function Navbar() {
         />
 
         <div
-          className={`fixed right-0 top-0 z-[101] flex h-dvh w-full flex-col bg-[#07090e] px-4 sm:px-6 py-5 shadow-2xl border-l border-zinc-800 backdrop-blur-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:max-w-md ${
+          className={`fixed right-0 top-0 z-[101] flex h-dvh w-full flex-col bg-[#07090e] px-4 sm:px-6 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-[calc(1.25rem+env(safe-area-inset-bottom))] shadow-2xl border-l border-zinc-800 backdrop-blur-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:max-w-md ${
             isMobileOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
           role="dialog"
@@ -441,7 +441,7 @@ export default function Navbar() {
             </a>
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 transition-all duration-200 hover:border-zinc-700 hover:text-white active:scale-95"
+              className="flex h-11 w-11 min-w-[44px] min-h-[44px] items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 transition-all duration-200 hover:border-zinc-700 hover:text-white active:scale-95"
               onClick={() => setIsMobileOpen(false)}
               aria-label="Close navigation menu"
               tabIndex={isMobileOpen ? 0 : -1}
@@ -505,7 +505,7 @@ export default function Navbar() {
                     document.documentElement.style.overflow = '';
                     setIsMobileOpen(false);
                   }}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 transition-all duration-200 hover:border-zinc-700 hover:text-white active:scale-95"
+                  className="flex h-11 w-11 min-w-[44px] min-h-[44px] items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 transition-all duration-200 hover:border-zinc-700 hover:text-white active:scale-95"
                   aria-label={`Visit ${link.label} profile`}
                   tabIndex={isMobileOpen ? 0 : -1}
                 >

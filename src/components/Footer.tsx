@@ -73,7 +73,7 @@ export default function Footer() {
           <div className="flex flex-col items-center lg:items-start gap-1.5 text-center lg:text-left">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot" />
-              <span className="text-base font-bold font-mono tracking-wider text-white">
+              <span className="text-sm sm:text-base font-bold font-mono tracking-wider text-white">
                 AMRITESH MISHRA <span className="text-zinc-600">{"//"}</span> <span className="text-zinc-400 font-normal">2026</span>
               </span>
             </div>
@@ -105,7 +105,7 @@ export default function Footer() {
                 href={item.href}
                 target={item.href.startsWith("mailto:") ? undefined : "_blank"}
                 rel={item.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                className="w-10 h-10 rounded-xl bg-[#0c0f16] border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-600 active:scale-95 transition-all"
+                className="w-11 h-11 sm:w-10 sm:h-10 rounded-xl bg-[#0c0f16] border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-600 active:scale-95 transition-all"
                 aria-label={item.label}
               >
                 {item.icon}

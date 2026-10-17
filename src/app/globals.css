@@ -57,6 +57,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  overflow-x: hidden;
 }
 
 body {
@@ -300,7 +301,23 @@ body {
   opacity: 1;
 }
 @media (max-width: 639px) {
-  .toast { bottom: 1rem; font-size: 0.8125rem; padding: 0.625rem 1rem; }
+  .toast {
+    bottom: 1rem;
+    font-size: 0.8125rem;
+    padding: 0.625rem 1rem;
+    white-space: normal;
+    text-align: center;
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+/* ── Hide Scrollbar Utility ── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* ── Line Clamp ── */

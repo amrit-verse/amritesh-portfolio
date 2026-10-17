@@ -92,7 +92,7 @@ export default function CurrentFocus() {
                   <div className={`w-10 h-10 rounded-lg border flex items-center justify-center group-hover:scale-105 transition-all duration-200 ${card.iconColor}`}>
                     {card.icon}
                   </div>
-                  <span className={`text-[0.6875rem] font-mono px-2 py-0.5 rounded border ${card.tagColor}`}>
+                  <span className={`text-[0.6875rem] font-mono px-2 py-0.5 rounded border shrink-0 ${card.tagColor}`}>
                     {card.tag}
                   </span>
                 </div>

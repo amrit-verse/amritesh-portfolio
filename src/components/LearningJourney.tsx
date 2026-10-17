@@ -87,7 +87,7 @@ export default function LearningJourney() {
             <h2 id="learning-title" className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
               Linux Workstation &amp; Security Lab
             </h2>
-            <p className="text-zinc-400 text-xs sm:text-sm sm:text-base max-w-2xl leading-relaxed">
+            <p className="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed">
               How I practice systems administration and defensive security: isolated virtual networks, packet captures, and daily Linux workflows.
             </p>
           </div>
@@ -104,12 +104,12 @@ export default function LearningJourney() {
                 </p>
 
                 {/* ASCII Topology Diagram */}
-                <div className="mb-5 p-3 rounded-xl bg-[#090b11] border border-zinc-800/90 font-mono text-[0.6875rem] text-zinc-300 overflow-x-auto leading-relaxed">
+                <div className="mb-5 p-3 rounded-xl bg-[#090b11] border border-zinc-800/90 font-mono text-[0.6875rem] text-zinc-300 overflow-x-auto no-scrollbar leading-relaxed">
                   <p className="text-zinc-200 font-bold mb-1">[ Debian 13 Host (HP Aero 13: 10.111.125.x) ]</p>
                   <p className="text-zinc-500 pl-4">│  (Type-1 KVM Kernel Driver)</p>
                   <p className="text-zinc-200 pl-4">▼</p>
                   <p className="text-zinc-200">[ Isolated Bridge: virbr0 (192.168.122.1/24 NAT) ]</p>
-                  <div className="flex gap-4 pl-4 pt-1 text-zinc-400">
+                  <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 pl-4 pt-1 text-zinc-400">
                     <div>
                       <p className="text-emerald-400 font-bold">┌─&gt; [ debian13 QEMU Guest ]</p>
                       <p className="text-zinc-500 text-[0.625rem]">2 vCPUs · 2 GiB RAM · AppArmor</p>
@@ -181,7 +181,7 @@ export default function LearningJourney() {
                 </div>
 
                 {/* Tab selector — swipeable on mobile */}
-                <div className="flex items-center gap-1.5 mb-3 p-1 rounded-lg bg-[#07090f] border border-zinc-800 font-mono text-xs overflow-x-auto max-w-full">
+                <div className="flex items-center gap-1.5 mb-3 p-1 rounded-lg bg-[#07090f] border border-zinc-800 font-mono text-xs overflow-x-auto max-w-full no-scrollbar">
                   <button
                     type="button"
                     onClick={() => setActiveSnippet('nmap')}

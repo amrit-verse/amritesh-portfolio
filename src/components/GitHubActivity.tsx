@@ -312,8 +312,8 @@ export default function GitHubActivity() {
                     rel="noopener noreferrer"
                     className="glass-card p-5 block group border border-zinc-800/80 hover:border-zinc-700"
                   >
-                    <div className="flex items-start justify-between mb-2">
-                      <h4 className="text-sm sm:text-base font-semibold text-white group-hover:text-zinc-200 transition-colors truncate pr-2">
+                    <div className="flex items-start justify-between mb-2 min-w-0">
+                      <h4 className="text-sm sm:text-base font-semibold text-white group-hover:text-zinc-200 transition-colors truncate pr-2 flex-1 min-w-0">
                         {repo.name}
                       </h4>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-zinc-500 group-hover:text-zinc-200 transition-colors shrink-0" aria-hidden="true">

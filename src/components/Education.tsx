@@ -38,7 +38,7 @@ export default function Education() {
             <h2 id="education-title" className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
               Education &amp; Qualifications
             </h2>
-            <p className="text-zinc-400 text-xs sm:text-sm sm:text-base max-w-2xl leading-relaxed">
+            <p className="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed">
               Formal education from Rautahat and Kathmandu in Nepal to engineering in Chennai, India.
             </p>
           </div>
@@ -58,7 +58,7 @@ export default function Education() {
                   <div className="glass-card p-5 sm:p-6 border-zinc-800/80 hover:border-zinc-700">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                       <div>
-                        <div className="flex items-center gap-2 mb-1">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mb-1">
                           <span className={`text-xs font-mono font-semibold ${item.current ? "text-emerald-400" : "text-zinc-300"}`}>
                             {item.period}
                           </span>
@@ -77,7 +77,7 @@ export default function Education() {
                       )}
                     </div>
                     <p className="text-xs sm:text-sm text-zinc-300 mt-2 font-medium">{item.institution}</p>
-                    <p className="text-xs text-zinc-400 mt-1.5 font-mono">{item.detail}</p>
+                    <p className="text-xs text-zinc-400 mt-1.5 font-mono break-words">{item.detail}</p>
                   </div>
                 </div>
               </ScrollReveal>

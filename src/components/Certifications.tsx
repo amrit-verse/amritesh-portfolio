@@ -38,7 +38,7 @@ export default function Certifications() {
             <h2 id="certifications-title" className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
               Language &amp; Independent Credentials
             </h2>
-            <p className="text-zinc-400 text-xs sm:text-sm sm:text-base max-w-2xl leading-relaxed">
+            <p className="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed">
               Standardized language accreditations reflecting autodidactic learning discipline and global communication standards.
             </p>
           </div>

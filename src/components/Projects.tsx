@@ -319,7 +319,7 @@ export default function Projects() {
                           <div className="mb-2.5">
                             <span className="text-[0.6875rem] font-mono px-2 py-0.5 rounded bg-[#07090e] border border-zinc-800 text-zinc-300 inline-flex flex-wrap items-center gap-1.5 max-w-full">
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                              <span>{project.showOffStat}</span>
+                              <span className="break-words">{project.showOffStat}</span>
                             </span>
                           </div>
 
@@ -345,7 +345,7 @@ export default function Projects() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-mono rounded-lg bg-zinc-900 border border-zinc-700 text-zinc-200 hover:text-white hover:border-zinc-500 transition-colors"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 min-h-[36px] text-xs font-mono rounded-lg bg-zinc-900 border border-zinc-700 text-zinc-200 hover:text-white hover:border-zinc-500 transition-colors"
                             aria-label={`View ${project.name} source code on GitHub`}
                           >
                             <span>Code</span>
@@ -379,7 +379,7 @@ export default function Projects() {
                     <div>
                       <div className="px-4 sm:px-6 pb-6 pt-2 border-t border-zinc-800/80 bg-[#07090e]/75 space-y-4 text-xs sm:text-sm">
                         {/* Interactive Data-Flow Blueprint (High-Value Show-Off Feature) */}
-                        <div className="mt-3 p-3.5 rounded-xl bg-[#090b11] border border-zinc-800 font-mono text-[0.6875rem] text-zinc-300 overflow-x-auto">
+                        <div className="mt-3 p-3.5 rounded-xl bg-[#090b11] border border-zinc-800 font-mono text-[0.6875rem] text-zinc-300 overflow-x-auto no-scrollbar">
                           <p className="text-zinc-400 uppercase tracking-wider font-bold mb-1 flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                             System Architecture Blueprint:
