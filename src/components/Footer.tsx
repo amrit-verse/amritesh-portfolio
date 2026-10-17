@@ -140,9 +140,9 @@ export default function Footer() {
 
         {/* Cinematic DARK quote & Bottom Bar */}
         <div className="pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-zinc-500 font-mono text-center sm:text-left">
-          <p className="italic text-zinc-400 flex items-center gap-2 flex-wrap justify-center sm:justify-start">
-            <TriquetraIcon className="w-3.5 h-3.5 text-emerald-400 shrink-0 inline" />
-            <span>&ldquo;What we know is a drop, what we don&apos;t know is an ocean.&rdquo; — Winden · Sic mundus creatus est.</span>
+          <p className="italic text-zinc-400 text-center sm:text-left leading-relaxed">
+            <TriquetraIcon className="w-3.5 h-3.5 text-emerald-400 inline-block align-middle mr-1.5 -mt-0.5 shrink-0" />
+            <span>&ldquo;What we know is a drop, what we don&apos;t know is an ocean.&rdquo; — Winden</span>
           </p>
           <p>© 2026 Amritesh Mishra. Built with Next.js &amp; Tailwind CSS.</p>
         </div>
