@@ -72,7 +72,7 @@ export default function CurrentFocus() {
         <ScrollReveal>
           <div className="mb-8 sm:mb-12">
             <p className="section-number mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
               02 // CURRENT FOCUS
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">

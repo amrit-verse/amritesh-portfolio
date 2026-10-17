@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, memo } from 'react';
 import Image from 'next/image';
 import { CHAT_GREETING, CHAT_SUGGESTIONS } from '@/lib/portfolio-knowledge';
+import { TriquetraIcon, openSicMundus } from '@/components/CommandPalette';
 
 /* ── Types ── */
 interface ChatMessage {
@@ -205,6 +206,49 @@ export default function Chatbot() {
     }
   };
 
+  const sendRef = useRef(send);
+  sendRef.current = send;
+  const handleOpenRef = useRef(handleOpen);
+  handleOpenRef.current = handleOpen;
+
+  /* Listen to external triggers (e.g. from Sic Mundus Command Palette) */
+  useEffect(() => {
+    const handleOpenChat = () => {
+      if (!isOpen) handleOpenRef.current();
+    };
+    const handleOpenWithPrompt = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (!isOpen) {
+        setMessages([{ id: nextId(), role: 'assistant', content: CHAT_GREETING }]);
+        setIsOpen(true);
+      }
+      if (customEvent.detail) {
+        setTimeout(() => {
+          sendRef.current(customEvent.detail);
+        }, 200);
+      }
+    };
+
+    window.addEventListener('open-chatbot', handleOpenChat);
+    window.addEventListener('open-chatbot-with-prompt', handleOpenWithPrompt);
+
+    let deepLinkTimer: NodeJS.Timeout | null = null;
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('chat') === '1' && !isOpen) {
+        deepLinkTimer = setTimeout(() => {
+          handleOpenRef.current();
+        }, 50);
+      }
+    }
+
+    return () => {
+      if (deepLinkTimer) clearTimeout(deepLinkTimer);
+      window.removeEventListener('open-chatbot', handleOpenChat);
+      window.removeEventListener('open-chatbot-with-prompt', handleOpenWithPrompt);
+    };
+  }, [isOpen]);
+
   /* ── Render ── */
   const showSuggestions =
     !streaming && messages.length <= 1 && messages[0]?.role === 'assistant';
@@ -221,9 +265,23 @@ export default function Chatbot() {
           />
         )}
 
+        {/* Easter Egg Tooltip on Hover */}
+        {!isOpen && (
+          <div className="absolute -top-9 right-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0 whitespace-nowrap">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0a0d14]/95 border border-emerald-500/40 text-[10px] font-mono text-emerald-300 shadow-[0_4px_16px_rgba(0,0,0,0.85)] backdrop-blur-md">
+              <TriquetraIcon className="w-3 h-3 text-emerald-400" />
+              <span>Sic Mundus Creatus Est · Double-click ⌘K</span>
+            </div>
+          </div>
+        )}
+
         <button
           onClick={() => (isOpen ? handleClose() : handleOpen())}
-          aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant'}
+          onDoubleClick={(e) => {
+            e.stopPropagation();
+            openSicMundus();
+          }}
+          aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant (Double click for Sic Mundus Command Bar)'}
           aria-expanded={isOpen}
           className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full font-mono text-xs sm:text-sm transition-all duration-300 motion-reduce:transition-none active:scale-95 ${
             isOpen
@@ -244,6 +302,19 @@ export default function Chatbot() {
           </svg>
 
           <span className="tracking-tight font-bold text-white">{isOpen ? 'Close' : 'Ask AI'}</span>
+
+          {/* Triquetra Easter Egg Knot */}
+          <span
+            onClick={(e) => {
+              e.stopPropagation();
+              openSicMundus();
+            }}
+            title="Sic Mundus Creatus Est — Open Command Palette"
+            className="w-5 h-5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/25 border border-emerald-500/30 flex items-center justify-center text-emerald-400 transition-colors cursor-pointer"
+            aria-label="Sic Mundus Easter Egg"
+          >
+            <TriquetraIcon className="w-3 h-3" />
+          </span>
 
           {!isOpen && (
             <span className="hidden min-[360px]:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 tracking-wider">
@@ -284,6 +355,15 @@ export default function Chatbot() {
               <h3 className="text-sm font-semibold text-white flex items-center gap-1.5">
                 Amrit AI
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_5px_rgba(52,211,153,0.8)]" />
+                <button
+                  type="button"
+                  onClick={() => openSicMundus()}
+                  title="Sic Mundus Creatus Est — Open Command Palette"
+                  className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono bg-zinc-900 border border-zinc-700/80 text-emerald-400 hover:border-emerald-400 hover:bg-zinc-800 transition-colors cursor-pointer"
+                >
+                  <TriquetraIcon className="w-2.5 h-2.5 text-emerald-400" />
+                  <span>SIC MUNDUS</span>
+                </button>
               </h3>
               <p className="font-mono text-[10px] text-zinc-500">portfolio intelligence</p>
             </div>

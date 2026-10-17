@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
 interface Project {
@@ -219,6 +219,19 @@ export default function Projects() {
   const [expandedId, setExpandedId] = useState<string | null>('01');
   const [filter, setFilter] = useState<'all' | 'backend' | 'fullstack' | 'systems'>('all');
 
+  // Listen to command palette project navigation triggers
+  useEffect(() => {
+    const handleSelectProject = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (customEvent.detail) {
+        setFilter('all');
+        setExpandedId(customEvent.detail);
+      }
+    };
+    window.addEventListener('select-project', handleSelectProject);
+    return () => window.removeEventListener('select-project', handleSelectProject);
+  }, []);
+
   const filteredProjects = projects.filter(
     (p) => filter === 'all' || p.category === filter
   );
@@ -230,7 +243,7 @@ export default function Projects() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
             <div>
               <p className="section-number mb-2 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
                 03 // ARCHIVE &amp; BUILDS
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">
@@ -379,9 +392,9 @@ export default function Projects() {
                     <div>
                       <div className="px-4 sm:px-6 pb-6 pt-2 border-t border-zinc-800/80 bg-[#07090e]/75 space-y-4 text-xs sm:text-sm">
                         {/* Interactive Data-Flow Blueprint (High-Value Show-Off Feature) */}
-                        <div className="mt-3 p-3.5 rounded-xl bg-[#090b11] border border-zinc-800 font-mono text-[0.6875rem] text-zinc-300 overflow-x-auto no-scrollbar">
+                        <div className="mt-3 p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] font-mono text-[0.6875rem] text-zinc-300 overflow-x-auto no-scrollbar">
                           <p className="text-zinc-400 uppercase tracking-wider font-bold mb-1 flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
                             System Architecture Blueprint:
                           </p>
                           <p className="text-zinc-200 whitespace-nowrap">{project.dataFlow}</p>
@@ -389,7 +402,7 @@ export default function Projects() {
 
                         {/* What It Is & Why I Built It */}
                         <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-                          <div className="rounded-xl bg-[#0d1017] p-4 border border-zinc-800/80">
+                          <div className="rounded-xl bg-[#0d1017] p-4 border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]">
                             <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5 flex items-center gap-1.5">
                               <span className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
                               The Real Backstory
@@ -398,7 +411,7 @@ export default function Projects() {
                               {project.whyIBuiltIt}
                             </p>
                           </div>
-                          <div className="rounded-xl bg-[#0d1017] p-4 border border-zinc-800/80">
+                          <div className="rounded-xl bg-[#0d1017] p-4 border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]">
                             <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1.5 flex items-center gap-1.5">
                               <span className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
                               Technical Architecture
@@ -425,7 +438,7 @@ export default function Projects() {
                             </ul>
                           </div>
 
-                          <div className="rounded-xl bg-[#0d1017] p-4 border border-zinc-800/80">
+                          <div className="rounded-xl bg-[#0d1017] p-4 border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]">
                             <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-300 mb-1.5">
                               Hardest Bug / Engineering Hurdle
                             </h4>

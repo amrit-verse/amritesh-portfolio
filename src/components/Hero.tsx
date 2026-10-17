@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { TriquetraIcon, openSicMundus } from '@/components/CommandPalette';
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -10,6 +11,18 @@ export default function Hero() {
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Listen to command palette tab triggers
+  useEffect(() => {
+    const handleSelectTab = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (['blueprint', 'workstation', 'lab', 'proof'].includes(customEvent.detail)) {
+        setActiveTab(customEvent.detail as 'blueprint' | 'workstation' | 'lab' | 'proof');
+      }
+    };
+    window.addEventListener('select-dossier-tab', handleSelectTab);
+    return () => window.removeEventListener('select-dossier-tab', handleSelectTab);
   }, []);
 
   return (
@@ -106,17 +119,17 @@ export default function Hero() {
               }`}
               style={{ transitionDelay: "240ms" }}
             >
-              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 hover:border-emerald-500/30 transition-colors">
+              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)] hover:border-emerald-500/30 transition-colors">
                 <p className="text-[0.6875rem] font-mono text-emerald-400 font-bold uppercase tracking-wider">Academic Record</p>
                 <p className="text-xs font-semibold text-white mt-0.5">8.88 CGPA · 2nd Year</p>
                 <p className="text-[0.6875rem] text-zinc-400">Anna University affiliated</p>
               </div>
-              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 hover:border-emerald-500/30 transition-colors">
+              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)] hover:border-emerald-500/30 transition-colors">
                 <p className="text-[0.6875rem] font-mono text-emerald-400 font-bold uppercase tracking-wider">Backend Core</p>
                 <p className="text-xs font-semibold text-white mt-0.5">Node.js · Spring Boot</p>
                 <p className="text-[0.6875rem] text-zinc-400">PostgreSQL, Prisma, MongoDB</p>
               </div>
-              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 hover:border-emerald-500/30 transition-colors">
+              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)] hover:border-emerald-500/30 transition-colors">
                 <p className="text-[0.6875rem] font-mono text-emerald-400 font-bold uppercase tracking-wider">Systems Lab</p>
                 <p className="text-xs font-semibold text-white mt-0.5">Debian 13 · QEMU/KVM</p>
                 <p className="text-[0.6875rem] text-zinc-400">virbr0 &amp; Nmap 7.95 testbeds</p>
@@ -270,9 +283,9 @@ export default function Hero() {
           {/* TAB 1: 30-Second Blueprint */}
           {activeTab === 'blueprint' && (
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-xs sm:text-sm animate-fade-in">
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 hover:border-emerald-500/30 transition-colors">
+              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] hover:border-emerald-500/30 transition-colors">
                 <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
                   Identity &amp; Status
                 </p>
                 <p className="font-semibold text-white">Amritesh Mishra</p>
@@ -281,9 +294,9 @@ export default function Hero() {
                 <p className="text-emerald-400 font-mono text-xs mt-1.5 font-semibold">CGPA: 8.88 / 10.00</p>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 hover:border-emerald-500/30 transition-colors">
+              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] hover:border-emerald-500/30 transition-colors">
                 <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
                   Everyday Backend
                 </p>
                 <p className="text-zinc-200 font-medium">Node.js, Express, Spring Boot</p>
@@ -291,9 +304,9 @@ export default function Hero() {
                 <p className="text-zinc-500 text-[0.6875rem] mt-0.5">Docker, REST APIs, Auth.js RBAC</p>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 hover:border-emerald-500/30 transition-colors">
+              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] hover:border-emerald-500/30 transition-colors">
                 <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
                   Linux &amp; Systems Lab
                 </p>
                 <p className="text-zinc-200 font-medium">Debian 13 (trixie) Daily Driver</p>
@@ -301,9 +314,9 @@ export default function Hero() {
                 <p className="text-zinc-500 text-[0.6875rem] mt-0.5">virbr0 NAT bridge, debian13 guest, Nmap 7.95, Docker</p>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 hover:border-emerald-500/30 transition-colors">
+              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] hover:border-emerald-500/30 transition-colors">
                 <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
                   Verified Credentials
                 </p>
                 <p className="text-zinc-200 font-medium">Team Leader — SIH &apos;26 (Team Sudo)</p>
@@ -412,6 +425,15 @@ export default function Hero() {
           <div className="flex flex-wrap items-center justify-between gap-3 pt-3.5 mt-4 border-t border-zinc-800/80 text-xs">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-mono text-zinc-500">Quick Navigation:</span>
+              <button
+                type="button"
+                onClick={() => openSicMundus()}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-950/20 border border-emerald-500/30 text-emerald-300 hover:text-white hover:border-emerald-400 hover:bg-emerald-900/30 active:scale-95 transition-all font-mono cursor-pointer"
+                aria-label="Open Sic Mundus Command Console"
+              >
+                <TriquetraIcon className="w-3.5 h-3.5 text-emerald-400" />
+                <span>⌘K Sic Mundus</span>
+              </button>
               <a href="#projects" className="px-2.5 py-1 rounded bg-[#090c12] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-colors font-mono">
                 Featured 7 Projects ↓
               </a>

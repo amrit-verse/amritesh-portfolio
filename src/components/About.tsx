@@ -1,4 +1,5 @@
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { TriquetraIcon } from '@/components/CommandPalette';
 
 export default function About() {
   return (
@@ -7,7 +8,7 @@ export default function About() {
         <ScrollReveal>
           <div className="mb-8 sm:mb-12">
             <p className="section-number mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
               01 // ORIGIN &amp; TIMELINE
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
@@ -22,35 +23,46 @@ export default function About() {
         <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr] items-start">
           <ScrollReveal delay={100}>
             <div className="space-y-6">
-              {/* Natural Human Story Timeline */}
+              {/* Natural Human Story Timeline — Three Cycles */}
               <div className="glass-card p-4 sm:p-6 relative">
-                <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 mb-6 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  The Journey So Far
-                </p>
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
+                  <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+                    The Three Cycles of Engineering
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-emerald-400/90">
+                    <TriquetraIcon className="w-3 h-3 text-emerald-400" />
+                    <span>SIC MUNDUS TIMELINE</span>
+                  </span>
+                </div>
                 <div className="space-y-6 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:-translate-x-1/2 before:h-full before:w-px before:bg-gradient-to-b before:from-zinc-500/40 before:via-white/10 before:to-transparent">
                   {[
                     { 
+                      cycle: "CYCLE I",
                       title: "First Old Computer & Discovering Linux", 
                       period: "Nepal // 2018-2022",
                       desc: "Tore down an old family desktop at 14 just to see how the motherboard worked. Windows was painfully slow on it, so I flashed a lightweight Linux distro. That was my first introduction to the terminal, package managers, and bash." 
                     },
                     { 
+                      cycle: "CYCLE I",
                       title: "Secondary Schooling & +2 Science", 
                       period: "Rautahat to Kathmandu",
                       desc: "Finished 10th grade at Jana Jyoti (SEE: 3.60/4.00) in Rautahat, then moved to Kathmandu for +2 Science (Physics, Chemistry, Maths) at Xavier International (GPA: 3.27/4.00). Started writing basic Python and C scripts." 
                     },
                     { 
+                      cycle: "CYCLE II",
                       title: "College in Chennai & Debian Daily Driver", 
                       period: "2025 — Present",
                       desc: "Joined Excel Engineering College (affiliated with Anna University, Chennai) for B.E. in Computer Science. Switched full-time to Debian Linux as my daily operating system and automated my entire workflow." 
                     },
                     { 
+                      cycle: "CYCLE II",
                       title: "Building Real Tools Instead of Toy Clones", 
                       period: "Projects // 2025-2026",
                       desc: "Built TeLSA when law students needed a real membership and article publishing portal. Built Attendance OS because our university detains anyone under 75% attendance and people needed mathematical proof before skipping a class." 
                     },
                     { 
+                      cycle: "CYCLE III",
                       title: "Hackathons & Virtual Systems Lab", 
                       period: "Current Focus",
                       desc: "Leading Team Sudo in the Smart India Hackathon (Problem SIH26145 - NTRO). Running QEMU/KVM virtual networks on my machine with virbr0 isolated testbeds to audit ports with Nmap 7.95 and analyze network threat patterns." 
@@ -68,6 +80,11 @@ export default function About() {
                             ? "border-emerald-500/30 group-hover:border-emerald-500/60"
                             : "border-zinc-800/80 group-hover:border-zinc-600"
                         } ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}>
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">
+                              {item.cycle}
+                            </span>
+                          </div>
                           <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5 mb-1">
                             <h3 className="font-semibold text-white text-sm">{item.title}</h3>
                             <span className={`text-[0.6875rem] font-mono shrink-0 ${index === 4 ? "text-emerald-400 font-semibold" : "text-zinc-400"}`}>{item.period}</span>
