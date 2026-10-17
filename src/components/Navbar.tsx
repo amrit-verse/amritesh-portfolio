@@ -347,7 +347,7 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop Fast Actions */}
-        <div className="hidden md:flex items-center gap-2.5">
+        <div className="hidden lg:flex items-center gap-2.5">
           <button
             type="button"
             onClick={() => openSicMundus()}

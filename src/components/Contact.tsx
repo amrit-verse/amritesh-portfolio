@@ -117,7 +117,7 @@ export default function Contact() {
         <ScrollReveal>
           <div className="mb-8 sm:mb-12">
             <p className="section-number mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
               09 // DIRECT CONTACT
             </p>
             <h2 id="contact-title" className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
@@ -139,7 +139,7 @@ export default function Contact() {
               </p>
 
               {/* Availability Indicator */}
-              <div className="flex items-center gap-2.5 mb-6 px-4 py-3 rounded-xl bg-[#090c12] border border-emerald-500/20">
+              <div className="flex items-center gap-2.5 mb-6 px-4 py-3 rounded-xl bg-[#090c12] border border-emerald-500/20 shadow-[inset_0_1px_0_0_rgba(52,211,153,0.08)]">
                 <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-pulse-dot" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
@@ -148,7 +148,7 @@ export default function Contact() {
               </div>
 
               {/* Prominent Direct Email Block */}
-              <div className="mb-6 p-5 sm:p-6 rounded-2xl bg-[#0a0d14] border border-zinc-800 hover:border-emerald-500/40 transition-colors group">
+              <div className="mb-6 p-5 sm:p-6 rounded-2xl bg-[#0a0d14] border border-zinc-800 hover:border-emerald-500/40 transition-colors group shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
                 <p className="text-xs text-emerald-400 uppercase tracking-wider mb-2 font-mono">Direct Email</p>
                 <a 
                   href="mailto:contact@amritesh.com.np"

@@ -8,7 +8,7 @@ export default function About() {
         <ScrollReveal>
           <div className="mb-8 sm:mb-12">
             <p className="section-number mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
               01 // ORIGIN &amp; TIMELINE
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
@@ -27,7 +27,7 @@ export default function About() {
               <div className="glass-card p-4 sm:p-6 relative">
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
                   <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
                     The Three Cycles of Engineering
                   </p>
                   <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-emerald-400/90">
