@@ -68,7 +68,7 @@ export default function About() {
                             ? "border-emerald-500/30 group-hover:border-emerald-500/60"
                             : "border-zinc-800/80 group-hover:border-zinc-600"
                         } ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}>
-                          <div className="flex items-center justify-between gap-2 mb-1">
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5 mb-1">
                             <h3 className="font-semibold text-white text-sm">{item.title}</h3>
                             <span className={`text-[0.6875rem] font-mono shrink-0 ${index === 4 ? "text-emerald-400 font-semibold" : "text-zinc-400"}`}>{item.period}</span>
                           </div>

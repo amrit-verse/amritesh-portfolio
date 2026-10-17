@@ -212,30 +212,46 @@ export default function Chatbot() {
   return (
     <>
       {/* ── Floating Launcher ── */}
-      <button
-        onClick={() => (isOpen ? handleClose() : handleOpen())}
-        aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant'}
-        aria-expanded={isOpen}
-        className={`fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 px-4 py-2.5 rounded-full font-mono text-xs sm:text-sm transition-all duration-200 motion-reduce:transition-none
-          ${isOpen
-            ? 'bg-[#12151f] border border-white/30 text-white shadow-[0_4px_24px_rgba(0,0,0,0.8)]'
-            : 'bg-[#0a0c12]/90 border border-white/10 text-zinc-300 hover:border-white/25 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6)]'
+      <div className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-4 sm:bottom-6 sm:right-6 z-40 group">
+        {/* Ambient Emerald Aura (pulses softly so visitor's eye catches it immediately) */}
+        {!isOpen && (
+          <span
+            className="absolute -inset-1 rounded-full bg-gradient-to-r from-emerald-500/40 via-teal-400/35 to-emerald-500/40 blur-md opacity-75 group-hover:opacity-100 animate-pulse transition-opacity duration-300 pointer-events-none"
+            aria-hidden="true"
+          />
+        )}
+
+        <button
+          onClick={() => (isOpen ? handleClose() : handleOpen())}
+          aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant'}
+          aria-expanded={isOpen}
+          className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full font-mono text-xs sm:text-sm transition-all duration-300 motion-reduce:transition-none active:scale-95 ${
+            isOpen
+              ? 'bg-[#12151f] border border-white/30 text-white shadow-[0_4px_24px_rgba(0,0,0,0.8)]'
+              : 'bg-[#0b0e17] border border-emerald-400/60 hover:border-emerald-400 text-white shadow-[0_0_20px_rgba(52,211,153,0.3),0_8px_32px_rgba(0,0,0,0.85)] hover:shadow-[0_0_30px_rgba(52,211,153,0.5),0_10px_36px_rgba(0,0,0,0.95)] hover:scale-105'
           }`}
-      >
-        {/* Status dot */}
-        <span className="relative flex h-2 w-2">
-          <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:animate-none" />
-          <span className="relative rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
-        </span>
+        >
+          {/* Pulsing Beacon Dot */}
+          <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden="true">
+            <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:animate-none" />
+            <span className="relative rounded-full h-2.5 w-2.5 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.95)]" />
+          </span>
 
-        {/* Terminal prompt icon */}
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
-          <polyline points="4 17 10 11 4 5" />
-          <line x1="12" y1="19" x2="20" y2="19" />
-        </svg>
+          {/* Terminal prompt icon */}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" className={`w-4 h-4 shrink-0 transition-colors ${isOpen ? 'text-zinc-400' : 'text-emerald-400'}`} aria-hidden="true">
+            <polyline points="4 17 10 11 4 5" />
+            <line x1="12" y1="19" x2="20" y2="19" />
+          </svg>
 
-        <span className="tracking-tight">{isOpen ? 'Close' : 'Ask AI'}</span>
-      </button>
+          <span className="tracking-tight font-bold text-white">{isOpen ? 'Close' : 'Ask AI'}</span>
+
+          {!isOpen && (
+            <span className="hidden min-[360px]:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 tracking-wider">
+              ONLINE
+            </span>
+          )}
+        </button>
+      </div>
 
       {/* ── Chat Panel ── */}
       <div
@@ -243,7 +259,7 @@ export default function Chatbot() {
         aria-modal="true"
         aria-label="Portfolio AI Assistant"
         aria-hidden={!isOpen}
-        className={`fixed bottom-[4.5rem] right-3 sm:right-6 z-50 w-[calc(100vw-24px)] sm:w-[400px] h-[540px] max-h-[80vh] flex flex-col rounded-2xl overflow-hidden border
+        className={`fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] inset-x-3 sm:inset-x-auto sm:right-6 sm:w-[400px] z-50 h-[min(540px,calc(100dvh-5.5rem-env(safe-area-inset-bottom)))] flex flex-col rounded-2xl overflow-hidden border
           bg-[#060810]/[0.97] backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.95),0_0_20px_rgba(255,255,255,0.02)]
           transition-all duration-200 ease-out motion-reduce:transition-none origin-bottom-right
           ${isOpen

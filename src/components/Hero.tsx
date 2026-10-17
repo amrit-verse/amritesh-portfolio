@@ -43,10 +43,10 @@ export default function Hero() {
                 </div>
               </div>
               <div>
-                <p className="text-base sm:text-lg font-bold text-white tracking-tight">Amritesh Mishra</p>
-                <p className="text-xs text-zinc-300 font-mono">Backend Developer · Debian 13 Workstation</p>
+                <p className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">Engineering Node</p>
+                <p className="text-xs text-zinc-300 font-mono mt-0.5">Debian 13 Workstation · B.E. CSE</p>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
                   <span className="text-[0.6875rem] text-emerald-400 font-mono font-medium">Available for Internships</span>
                 </div>
               </div>
@@ -59,8 +59,8 @@ export default function Hero() {
               }`}
               style={{ transitionDelay: "50ms" }}
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot" />
-              <p className="text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
+              <p className="text-[0.6875rem] sm:text-xs font-mono tracking-wider sm:tracking-[0.2em] text-zinc-400 uppercase">
                 BACKEND &amp; SYSTEMS ENGINEERING // AMRITESH MISHRA
               </p>
             </div>
@@ -219,7 +219,7 @@ export default function Hero() {
             </div>
 
             {/* Tab Buttons — Mobile scrollable without wrapping */}
-            <div className="flex items-center gap-1.5 p-1 rounded-lg bg-[#07090f] border border-zinc-800 text-xs font-mono overflow-x-auto max-w-full">
+            <div className="flex items-center gap-1.5 p-1 rounded-lg bg-[#07090f] border border-zinc-800 text-xs font-mono overflow-x-auto max-w-full no-scrollbar">
               <button
                 type="button"
                 onClick={() => setActiveTab('blueprint')}
@@ -424,7 +424,7 @@ export default function Hero() {
             </div>
             <a
               href="mailto:contact@amritesh.com.np"
-              className="text-zinc-300 hover:text-white hover:underline font-mono"
+              className="text-zinc-300 hover:text-white hover:underline font-mono break-all sm:break-normal"
             >
               contact@amritesh.com.np →
             </a>

@@ -123,7 +123,7 @@ export default function Contact() {
             <h2 id="contact-title" className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
               Get in Touch
             </h2>
-            <p className="text-zinc-400 text-xs sm:text-sm sm:text-base max-w-2xl leading-relaxed">
+            <p className="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed">
               Open for software engineering internships, technical collaborations, and discussions about backend systems or Linux.
             </p>
           </div>
@@ -176,13 +176,13 @@ export default function Contact() {
           <ScrollReveal delay={200}>
             <div className="grid gap-2.5">
               {CONTACTS.map((c) => (
-                <div key={c.label} className="relative">
+                <div key={c.label} className="relative glass-card p-3 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 group border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 min-h-[56px]">
                   <a
                     href={c.href}
                     target={c.external ? "_blank" : undefined}
                     rel={c.external ? "noopener noreferrer" : undefined}
                     download={c.download || undefined}
-                    className="glass-card p-3 sm:p-4 flex items-center gap-3 sm:gap-4 group active:scale-[0.98] transition-all duration-200 border border-zinc-800/80 hover:border-zinc-700"
+                    className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0"
                     aria-label={
                       c.download
                         ? `Download ${c.label}`
@@ -200,24 +200,33 @@ export default function Contact() {
                       </p>
                       <p className="text-xs text-zinc-400 truncate font-mono mt-0.5">{c.value}</p>
                     </div>
+                  </a>
 
-                    {c.copyable ? (
-                      <button
-                        type="button"
-                        onClick={(e) => handleCopyEmail(e, c.value)}
-                        className="px-2.5 py-1 text-xs font-mono rounded bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-600 transition-colors"
-                        aria-label="Copy email address"
-                      >
-                        Copy
-                      </button>
-                    ) : (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors shrink-0" aria-hidden="true">
+                  {c.copyable ? (
+                    <button
+                      type="button"
+                      onClick={(e) => handleCopyEmail(e, c.value)}
+                      className="px-3 py-1.5 min-h-[36px] text-xs font-mono rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-600 active:scale-95 transition-all shrink-0"
+                      aria-label="Copy email address"
+                    >
+                      Copy
+                    </button>
+                  ) : (
+                    <a
+                      href={c.href}
+                      target={c.external ? "_blank" : undefined}
+                      rel={c.external ? "noopener noreferrer" : undefined}
+                      className="p-1 text-zinc-500 group-hover:text-white transition-colors shrink-0"
+                      tabIndex={-1}
+                      aria-hidden="true"
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                         <polyline points="15 3 21 3 21 9" />
                         <line x1="10" y1="14" x2="21" y2="3" />
                       </svg>
-                    )}
-                  </a>
+                    </a>
+                  )}
                 </div>
               ))}
             </div>

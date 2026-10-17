@@ -46,7 +46,7 @@ export default function Skills() {
             <h2 id="skills-title" className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
               Technical Skills &amp; Everyday Tools
             </h2>
-            <p className="text-zinc-400 text-xs sm:text-sm sm:text-base max-w-2xl leading-relaxed">
+            <p className="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed">
               Technologies I actively use in personal projects, coursework, and local virtual environments — no vanity tags.
             </p>
           </div>
