@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { TriquetraIcon, openSicMundus } from '@/components/CommandPalette';
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -10,6 +11,18 @@ export default function Hero() {
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Listen to command palette tab triggers
+  useEffect(() => {
+    const handleSelectTab = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (['blueprint', 'workstation', 'lab', 'proof'].includes(customEvent.detail)) {
+        setActiveTab(customEvent.detail as 'blueprint' | 'workstation' | 'lab' | 'proof');
+      }
+    };
+    window.addEventListener('select-dossier-tab', handleSelectTab);
+    return () => window.removeEventListener('select-dossier-tab', handleSelectTab);
   }, []);
 
   return (
@@ -412,6 +425,15 @@ export default function Hero() {
           <div className="flex flex-wrap items-center justify-between gap-3 pt-3.5 mt-4 border-t border-zinc-800/80 text-xs">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-mono text-zinc-500">Quick Navigation:</span>
+              <button
+                type="button"
+                onClick={() => openSicMundus()}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-950/20 border border-emerald-500/30 text-emerald-300 hover:text-white hover:border-emerald-400 hover:bg-emerald-900/30 active:scale-95 transition-all font-mono cursor-pointer"
+                aria-label="Open Sic Mundus Command Console"
+              >
+                <TriquetraIcon className="w-3.5 h-3.5 text-emerald-400" />
+                <span>⌘K Sic Mundus</span>
+              </button>
               <a href="#projects" className="px-2.5 py-1 rounded bg-[#090c12] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-colors font-mono">
                 Featured 7 Projects ↓
               </a>

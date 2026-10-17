@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { TriquetraIcon, openSicMundus } from '@/components/CommandPalette';
 
 const NAV_LINKS = [
   { label: 'Dossier', href: '#dossier', shortcut: 'D' },
@@ -347,6 +348,16 @@ export default function Navbar() {
 
         {/* Desktop Fast Actions */}
         <div className="hidden md:flex items-center gap-2.5">
+          <button
+            type="button"
+            onClick={() => openSicMundus()}
+            className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-zinc-800 bg-[#0e1118] text-xs font-mono text-zinc-300 hover:text-white hover:border-zinc-600 active:scale-95 transition-all cursor-pointer"
+            aria-label="Open Sic Mundus Command Palette (Cmd+K)"
+          >
+            <TriquetraIcon className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Sic Mundus</span>
+            <kbd className="text-[10px] px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400 font-sans">⌘K</kbd>
+          </button>
           <a
             href="https://github.com/amrit-verse"
             target="_blank"
@@ -368,33 +379,43 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          type="button"
-          className="lg:hidden relative w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-zinc-300 hover:text-white border border-zinc-800 bg-[#0e1118] active:scale-95 transition-all duration-200"
-          onClick={() => setIsMobileOpen((prev) => !prev)}
-          aria-label={isMobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={isMobileOpen}
-          aria-controls="mobile-menu"
-        >
-          <div className="w-4 h-3.5 relative flex flex-col justify-between">
-            <span
-              className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-out origin-center ${
-                isMobileOpen ? 'rotate-45 translate-y-[6px]' : ''
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-out ${
-                isMobileOpen ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-out origin-center ${
-                isMobileOpen ? '-rotate-45 -translate-y-[6px]' : ''
-              }`}
-            />
-          </div>
-        </button>
+        {/* Mobile Fast Action & Hamburger Button */}
+        <div className="lg:hidden flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => openSicMundus()}
+            className="relative w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-zinc-300 hover:text-white border border-zinc-800 bg-[#0e1118] active:scale-95 transition-all duration-200"
+            aria-label="Open Sic Mundus Command Palette (Cmd+K)"
+          >
+            <TriquetraIcon className="w-4 h-4 text-emerald-400" />
+          </button>
+          <button
+            type="button"
+            className="relative w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-zinc-300 hover:text-white border border-zinc-800 bg-[#0e1118] active:scale-95 transition-all duration-200"
+            onClick={() => setIsMobileOpen((prev) => !prev)}
+            aria-label={isMobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMobileOpen}
+            aria-controls="mobile-menu"
+          >
+            <div className="w-4 h-3.5 relative flex flex-col justify-between">
+              <span
+                className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-out origin-center ${
+                  isMobileOpen ? 'rotate-45 translate-y-[6px]' : ''
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-out ${
+                  isMobileOpen ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-out origin-center ${
+                  isMobileOpen ? '-rotate-45 -translate-y-[6px]' : ''
+                }`}
+              />
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Drawer */}
@@ -450,6 +471,29 @@ export default function Navbar() {
                 <path d="M6 6l12 12" />
                 <path d="M18 6L6 18" />
               </svg>
+            </button>
+          </div>
+
+          {/* Quick Sic Mundus Access in Mobile Drawer */}
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={() => {
+                setIsMobileOpen(false);
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+                openSicMundus();
+              }}
+              className="flex min-h-12 w-full items-center justify-between rounded-xl border border-emerald-500/30 bg-emerald-950/20 px-4 py-3 text-sm font-mono text-emerald-300 hover:bg-emerald-900/30 transition-all active:scale-[0.98]"
+              tabIndex={isMobileOpen ? 0 : -1}
+            >
+              <div className="flex items-center gap-2.5">
+                <TriquetraIcon className="w-4 h-4 text-emerald-400" />
+                <span className="font-semibold text-white">Sic Mundus Command Bar</span>
+              </div>
+              <span className="text-xs px-2 py-0.5 rounded bg-zinc-900 border border-zinc-700 text-zinc-300 font-sans">
+                ⌘K
+              </span>
             </button>
           </div>
 

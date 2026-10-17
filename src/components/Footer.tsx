@@ -1,4 +1,5 @@
 import { SITE_CONFIG } from "@/lib/config";
+import { TriquetraIcon, InfinityIcon } from "@/components/CommandPalette";
 
 const NAV_LINKS = [
   { label: "Dossier", href: "#dossier" },
@@ -114,11 +115,12 @@ export default function Footer() {
 
             <a
               href="#"
-              className="hidden sm:inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-[#0c0f16] border border-zinc-800 text-xs font-mono text-zinc-400 hover:text-white hover:border-zinc-600 active:scale-95 transition-all ml-1"
-              aria-label="Scroll back to top of page"
+              className="hidden sm:inline-flex items-center gap-2 h-10 px-3.5 rounded-xl bg-[#0c0f16] border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-white hover:border-emerald-500/40 hover:bg-emerald-950/20 active:scale-95 transition-all ml-1"
+              aria-label="Loop back to origin (Der Anfang)"
             >
-              <span>Top</span>
-              <span className="text-zinc-400">↑</span>
+              <InfinityIcon className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Der Anfang</span>
+              <span className="text-zinc-500">↑</span>
             </a>
           </div>
         </div>
@@ -127,18 +129,20 @@ export default function Footer() {
         <div className="sm:hidden flex justify-center mb-8">
           <a
             href="#"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#0c0f16] border border-zinc-800 text-xs font-mono text-zinc-400 hover:text-white hover:border-zinc-600 active:scale-95 transition-all"
-            aria-label="Scroll back to top of page"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0c0f16] border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-white hover:border-emerald-500/40 active:scale-95 transition-all"
+            aria-label="Loop back to origin (Der Anfang)"
           >
-            <span>Back to top</span>
+            <InfinityIcon className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Der Anfang // Loop to Origin</span>
             <span className="text-zinc-400">↑</span>
           </a>
         </div>
 
         {/* Cinematic DARK quote & Bottom Bar */}
         <div className="pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-zinc-500 font-mono text-center sm:text-left">
-          <p className="italic text-zinc-400">
-            &ldquo;What we know is a drop, what we don&apos;t know is an ocean.&rdquo; — Winden, 2026
+          <p className="italic text-zinc-400 flex items-center gap-2 flex-wrap justify-center sm:justify-start">
+            <TriquetraIcon className="w-3.5 h-3.5 text-emerald-400 shrink-0 inline" />
+            <span>&ldquo;What we know is a drop, what we don&apos;t know is an ocean.&rdquo; — Winden · Sic mundus creatus est.</span>
           </p>
           <p>© 2026 Amritesh Mishra. Built with Next.js &amp; Tailwind CSS.</p>
         </div>

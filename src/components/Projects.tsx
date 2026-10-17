@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
 interface Project {
@@ -218,6 +218,19 @@ function getBadgeStyle(badge?: string) {
 export default function Projects() {
   const [expandedId, setExpandedId] = useState<string | null>('01');
   const [filter, setFilter] = useState<'all' | 'backend' | 'fullstack' | 'systems'>('all');
+
+  // Listen to command palette project navigation triggers
+  useEffect(() => {
+    const handleSelectProject = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (customEvent.detail) {
+        setFilter('all');
+        setExpandedId(customEvent.detail);
+      }
+    };
+    window.addEventListener('select-project', handleSelectProject);
+    return () => window.removeEventListener('select-project', handleSelectProject);
+  }, []);
 
   const filteredProjects = projects.filter(
     (p) => filter === 'all' || p.category === filter
