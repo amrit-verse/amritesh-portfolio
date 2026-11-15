@@ -1,10 +1,15 @@
+"use client";
+
 import { SITE_CONFIG } from "@/lib/config";
 import { TriquetraIcon, InfinityIcon } from "@/components/CommandPalette";
+import { BrandMark } from "@/components/BrandMark";
+import { SoundToggle, useSound } from "@/components/SoundSystem";
 
 const NAV_LINKS = [
   { label: "Dossier", href: "#dossier" },
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
+  { label: "Graph", href: "#graph" },
   { label: "Systems Lab", href: "#learning" },
   { label: "Skills", href: "#skills" },
   { label: "Timeline", href: "#education" },
@@ -34,7 +39,7 @@ const SOCIAL_LINKS = [
     label: "TryHackMe Profile",
     href: SITE_CONFIG.links.tryhackme,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-zinc-300" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-[#9C8058]" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
@@ -43,7 +48,7 @@ const SOCIAL_LINKS = [
     label: "HackerRank Profile",
     href: SITE_CONFIG.links.hackerrank,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-emerald-400" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-[#9C8058]" aria-hidden="true">
         <polyline points="16 18 22 12 16 6" />
         <polyline points="8 6 2 12 8 18" />
       </svg>
@@ -53,7 +58,7 @@ const SOCIAL_LINKS = [
     label: "Direct Email",
     href: `mailto:${SITE_CONFIG.email}`,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-zinc-300" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-[#F1EEE8]" aria-hidden="true">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
         <polyline points="22,6 12,13 2,6" />
       </svg>
@@ -62,35 +67,38 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
+  const { playClick } = useSound();
+
   return (
     <footer
-      className="py-12 sm:py-16 border-t border-zinc-800/80 bg-[#050609] pb-[calc(1.5rem+env(safe-area-inset-bottom))]"
+      className="py-12 sm:py-16 border-t border-border-subtle bg-bg-primary pb-[calc(1.5rem+env(safe-area-inset-bottom))]"
       role="contentinfo"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Main Footer Row: Brand, Nav Pills, and Socials */}
+      <div className="max-w-[1520px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
+        {/* Main Footer Row: Brand, Nav Pills, Sound Toggle, and Socials */}
         <div className="flex flex-col lg:flex-row justify-between items-center gap-8 mb-10">
-          {/* Brand & Dark Motif */}
-          <div className="flex flex-col items-center lg:items-start gap-1.5 text-center lg:text-left">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot" />
-              <span className="text-sm sm:text-base font-bold font-mono tracking-wider text-white">
-                AMRITESH MISHRA <span className="text-zinc-600">{"//"}</span> <span className="text-zinc-400 font-normal">2026</span>
+          {/* Brand Mark ('A' Logo from Browser Tab) & Meta */}
+          <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left">
+            <div className="flex items-center gap-3">
+              <BrandMark size="sm" />
+              <span className="text-sm sm:text-base font-bold font-mono tracking-wider text-text-primary">
+                AMRITESH MISHRA <span className="text-border-subtle">{"//"}</span> <span className="text-accent-bronze font-normal">SIGNAL 2026</span>
               </span>
             </div>
-            <p className="text-xs text-zinc-400 font-mono">
-              Debian Linux · Backend Systems · Virtualized Labs · Chennai, India
+            <p className="text-xs text-text-secondary font-mono">
+              Debian Linux · Systems Architecture · Virtualized Labs · Chennai, India
             </p>
           </div>
 
-          {/* Nav Links: Beautiful touch-friendly pills that wrap symmetrically */}
+          {/* Nav Links: Elegant touch-friendly pills with bronze borders */}
           <nav aria-label="Footer navigation" className="w-full lg:w-auto">
             <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-2.5 max-w-xl mx-auto lg:mx-0">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="px-3 py-1.5 text-xs font-mono rounded-lg border border-zinc-800/80 bg-[#090b11] text-zinc-300 hover:text-white hover:border-zinc-600 active:bg-zinc-800 transition-all text-center"
+                  onClick={playClick}
+                  className="px-3 py-1.5 text-xs font-mono rounded-lg border border-border-subtle bg-bg-card text-text-secondary hover:text-text-primary hover:border-accent-bronze/60 active:bg-bg-tertiary transition-all text-center shadow-sm"
                 >
                   {link.label}
                 </a>
@@ -98,15 +106,18 @@ export default function Footer() {
             </div>
           </nav>
 
-          {/* Social Links & Back-To-Top */}
+          {/* Utilities: Sound Toggle, Social Links & Back-To-Top */}
           <div className="flex items-center gap-2.5">
+            <SoundToggle />
+
             {SOCIAL_LINKS.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 target={item.href.startsWith("mailto:") ? undefined : "_blank"}
                 rel={item.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                className="w-11 h-11 sm:w-10 sm:h-10 rounded-xl bg-[#0c0f16] border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-600 active:scale-95 transition-all"
+                onClick={playClick}
+                className="w-10 h-10 rounded-xl bg-bg-card border border-border-subtle flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent-bronze/60 active:scale-95 transition-all shadow-sm"
                 aria-label={item.label}
               >
                 {item.icon}
@@ -115,12 +126,13 @@ export default function Footer() {
 
             <a
               href="#"
-              className="hidden sm:inline-flex items-center gap-2 h-10 px-3.5 rounded-xl bg-[#0c0f16] border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-white hover:border-emerald-500/40 hover:bg-emerald-950/20 active:scale-95 transition-all ml-1"
+              onClick={playClick}
+              className="hidden sm:inline-flex items-center gap-2 h-10 px-3.5 rounded-xl bg-bg-card border border-border-subtle text-xs font-mono text-text-secondary hover:text-text-primary hover:border-accent-bronze/60 active:scale-95 transition-all ml-1 shadow-sm"
               aria-label="Loop back to origin (Der Anfang)"
             >
-              <InfinityIcon className="w-3.5 h-3.5 text-emerald-400" />
+              <InfinityIcon className="w-3.5 h-3.5 text-accent-bronze" />
               <span>Der Anfang</span>
-              <span className="text-zinc-500">↑</span>
+              <span className="text-accent-bronze">↑</span>
             </a>
           </div>
         </div>
@@ -129,19 +141,20 @@ export default function Footer() {
         <div className="sm:hidden flex justify-center mb-8">
           <a
             href="#"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0c0f16] border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-white hover:border-emerald-500/40 active:scale-95 transition-all"
+            onClick={playClick}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-bg-card border border-border-subtle text-xs font-mono text-text-secondary hover:text-text-primary hover:border-accent-bronze/60 active:scale-95 transition-all shadow-sm"
             aria-label="Loop back to origin (Der Anfang)"
           >
-            <InfinityIcon className="w-3.5 h-3.5 text-emerald-400" />
+            <InfinityIcon className="w-3.5 h-3.5 text-accent-bronze" />
             <span>Der Anfang // Loop to Origin</span>
-            <span className="text-zinc-400">↑</span>
+            <span className="text-accent-bronze">↑</span>
           </a>
         </div>
 
         {/* Cinematic DARK quote & Bottom Bar */}
-        <div className="pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-zinc-500 font-mono text-center sm:text-left">
-          <p className="italic text-zinc-400 text-center sm:text-left leading-relaxed">
-            <TriquetraIcon className="w-3.5 h-3.5 text-emerald-400 inline-block align-middle mr-1.5 -mt-0.5 shrink-0" />
+        <div className="pt-6 border-t border-border-subtle/60 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-text-secondary font-mono text-center sm:text-left">
+          <p className="italic text-text-secondary text-center sm:text-left leading-relaxed">
+            <TriquetraIcon className="w-3.5 h-3.5 text-accent-bronze inline-block align-middle mr-1.5 -mt-0.5 shrink-0" />
             <span>&ldquo;What we know is a drop, what we don&apos;t know is an ocean.&rdquo; — Winden</span>
           </p>
           <p>© 2026 Amritesh Mishra. Built with Next.js &amp; Tailwind CSS.</p>

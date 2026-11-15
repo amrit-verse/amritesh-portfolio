@@ -1,19 +1,19 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { TriquetraIcon, openSicMundus } from '@/components/CommandPalette';
+import Hero3DVisual from '@/components/Hero3DVisual';
+import { useSound } from '@/components/SoundSystem';
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeTab, setActiveTab] = useState<'blueprint' | 'workstation' | 'lab' | 'proof'>('blueprint');
+  const { playClick } = useSound();
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 100);
+    const timer = setTimeout(() => setIsLoaded(true), 80);
     return () => clearTimeout(timer);
   }, []);
 
-  // Listen to command palette tab triggers
   useEffect(() => {
     const handleSelectTab = (e: Event) => {
       const customEvent = e as CustomEvent<string>;
@@ -31,248 +31,241 @@ export default function Hero() {
       className="min-h-[100dvh] flex flex-col justify-center relative overflow-hidden pt-24 pb-16 sm:py-24"
       aria-label="Hero section"
     >
-      <div className="absolute inset-0 hero-depth" aria-hidden="true" />
+      {/* Background Subtle Grid Texture */}
+      <div 
+        className="absolute inset-0 bg-[radial-gradient(var(--color-border-subtle)_1px,transparent_1px)] [background-size:32px_32px] opacity-25 pointer-events-none" 
+        aria-hidden="true" 
+      />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full">
-        {/* Top Hero Grid: Bio + Visual Node */}
-        <div className="grid lg:grid-cols-[1.25fr_0.75fr] gap-8 lg:gap-12 items-center mb-10 sm:mb-12">
+      <div className="relative z-10 max-w-[1520px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
+        {/* Top Hero Grid: Bio & Visual Engineering Satellite Node */}
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] xl:grid-cols-[1.25fr_0.75fr] gap-10 lg:gap-14 items-center mb-12 lg:mb-16">
+          {/* Left Column: Developer Narrative & Visual Hierarchy */}
           <div>
-            {/* Mobile Avatar Presentation (visible only on mobile/tablet screens) */}
-            <div
-              className={`lg:hidden flex items-center gap-4 mb-5 transition-all duration-700 ease-out ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
-            >
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 aspect-square rounded-full p-1 bg-gradient-to-b from-emerald-500/25 via-zinc-800/40 to-transparent shadow-lg shadow-black/80 shrink-0">
-                <div className="relative w-full h-full rounded-full overflow-hidden border border-zinc-700/80 bg-[#07090e]">
-                  <Image
-                    src="/avatar.png"
-                    alt="Amritesh Mishra"
-                    fill
-                    className="object-cover object-center scale-[1.08]"
-                    priority
-                    sizes="96px"
-                  />
-                </div>
-              </div>
-              <div>
-                <p className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">Engineering Node</p>
-                <p className="text-xs text-zinc-300 font-mono mt-0.5">Debian 13 Workstation · B.E. CSE</p>
-                <div className="flex items-center gap-1.5 mt-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
-                  <span className="text-[0.6875rem] text-emerald-400 font-mono font-medium">Available for Internships</span>
-                </div>
-              </div>
-            </div>
-
             {/* Developer Node Kicker */}
             <div
-              className={`flex items-center gap-2 mb-3 transition-all duration-700 ease-out ${
+              className={`flex items-center gap-2 mb-3.5 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: "50ms" }}
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
-              <p className="text-[0.6875rem] sm:text-xs font-mono tracking-wider sm:tracking-[0.2em] text-zinc-400 uppercase">
-                BACKEND &amp; SYSTEMS ENGINEERING // AMRITESH MISHRA
+              <span className="w-2 h-2 rounded-full bg-accent-bronze animate-ping shrink-0" />
+              <p className="text-xs sm:text-sm font-mono tracking-[0.2em] text-accent-bronze uppercase font-semibold">
+                SYSTEMS &amp; BACKEND ARCHITECTURE // SIGNAL
               </p>
             </div>
 
-            {/* Main Name / Title */}
+            {/* Main Statement / Headline */}
             <h1
-              className={`font-extrabold tracking-[-0.03em] mb-3 transition-all duration-700 ease-out ${
+              className={`font-display font-bold tracking-tight mb-4 text-text-primary transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{
-                transitionDelay: "120ms",
-                fontSize: "clamp(2.4rem, 5vw + 0.5rem, 4.25rem)",
-                lineHeight: 1.05,
+                fontSize: "clamp(2.5rem, 5vw + 0.5rem, 4.5rem)",
+                lineHeight: 1.06,
               }}
             >
-              <span className="text-white">Amritesh Mishra</span>
+              Understanding systems.<br />
+              <span className="text-accent-bronze">Building what lasts.</span>
             </h1>
 
-            {/* Specialization subtitle */}
+            {/* Clear, punchy one-line title */}
             <p
-              className={`text-lg sm:text-xl md:text-2xl font-semibold text-zinc-200 mb-3 transition-all duration-700 ease-out ${
+              className={`text-base sm:text-xl font-medium text-text-primary mb-5 transition-all duration-700 ease-out flex items-center gap-2 flex-wrap ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
-              style={{ transitionDelay: "160ms" }}
+              style={{ transitionDelay: "100ms" }}
             >
-              Building robust backend APIs &amp; daily driving Linux.
+              <span>Amritesh Mishra</span>
+              <span className="text-accent-bronze">•</span>
+              <span className="text-text-secondary">Computer Science Engineering @ Anna University</span>
+              <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-accent-bronze/15 border border-accent-bronze/40 text-accent-bronze font-semibold">
+                8.88 CGPA
+              </span>
             </p>
 
-            {/* Authentic Narrative Bio */}
-            <p
-              className={`text-sm sm:text-base text-zinc-300 max-w-xl leading-relaxed mb-6 transition-all duration-700 ease-out ${
+            {/* Visual Capability Badges */}
+            <div
+              className={`flex flex-wrap gap-2 sm:gap-2.5 mb-7 transition-all duration-700 ease-out ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+              style={{ transitionDelay: "150ms" }}
+            >
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
+                ⚡ Backend: Node.js · Spring Boot · PostgreSQL
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
+                🐧 Linux: Debian 13 · KVM virbr0 · Systemd
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
+                🛡️ Security: ThreatDesk SIEM · 357 Pytests
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
+                🚀 Flagship: ReleaseTrace Dual-Store
+              </span>
+            </div>
+
+            {/* 3 Core Metric Cards with HUD Corner Brackets */}
+            <div
+              className={`grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: "200ms" }}
             >
-              Computer Science undergraduate (2nd Year, Anna University) specializing in Node.js, Spring Boot, and PostgreSQL. Focused on type-safe schemas, low-latency queries, and isolated virtual lab testbeds on Debian.
-            </p>
+              <div className="corner-hud p-4 rounded-xl bg-bg-card border border-border-subtle shadow-sm">
+                <p className="text-[11px] font-mono text-accent-bronze uppercase tracking-wider mb-1 font-semibold">ACADEMIC STANDING</p>
+                <p className="text-xl sm:text-2xl font-bold font-display text-text-primary">8.88 CGPA</p>
+                <p className="text-xs text-text-secondary font-mono mt-0.5">Top Tier · Anna University</p>
+              </div>
 
-            {/* 3 Core Capability Cards */}
-            <div
-              className={`grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 mb-6 max-w-xl transition-all duration-700 ease-out ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
-              style={{ transitionDelay: "240ms" }}
-            >
-              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)] hover:border-emerald-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono text-emerald-400 font-bold uppercase tracking-wider">Academic Record</p>
-                <p className="text-xs font-semibold text-white mt-0.5">8.88 CGPA · 2nd Year</p>
-                <p className="text-[0.6875rem] text-zinc-400">Anna University affiliated</p>
+              <div className="corner-hud p-4 rounded-xl bg-bg-card border border-border-subtle shadow-sm">
+                <p className="text-[11px] font-mono text-accent-bronze uppercase tracking-wider mb-1 font-semibold">ENGINEERING BUILDS</p>
+                <p className="text-xl sm:text-2xl font-bold font-display text-text-primary">9 Systems</p>
+                <p className="text-xs text-text-secondary font-mono mt-0.5">Dual-Store, SIEM, CMS, SIH</p>
               </div>
-              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)] hover:border-emerald-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono text-emerald-400 font-bold uppercase tracking-wider">Backend Core</p>
-                <p className="text-xs font-semibold text-white mt-0.5">Node.js · Spring Boot</p>
-                <p className="text-[0.6875rem] text-zinc-400">PostgreSQL, Prisma, MongoDB</p>
-              </div>
-              <div className="p-3 rounded-xl bg-[#0d1017] border border-zinc-800/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)] hover:border-emerald-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono text-emerald-400 font-bold uppercase tracking-wider">Systems Lab</p>
-                <p className="text-xs font-semibold text-white mt-0.5">Debian 13 · QEMU/KVM</p>
-                <p className="text-[0.6875rem] text-zinc-400">virbr0 &amp; Nmap 7.95 testbeds</p>
+
+              <div className="corner-hud p-4 rounded-xl bg-bg-card border border-border-subtle shadow-sm">
+                <p className="text-[11px] font-mono text-accent-bronze uppercase tracking-wider mb-1 font-semibold">ENVIRONMENT</p>
+                <p className="text-xl sm:text-2xl font-bold font-display text-text-primary">Debian 13</p>
+                <p className="text-xs text-text-secondary font-mono mt-0.5">Linux 6.12 · KVM virbr0</p>
               </div>
             </div>
 
-            {/* CTAs */}
+            {/* Primary Action Buttons */}
             <div
-              className={`flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3 transition-all duration-700 ease-out ${
+              className={`flex flex-wrap items-center gap-3.5 transition-all duration-700 ease-out ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
-              style={{ transitionDelay: "280ms" }}
+              style={{ transitionDelay: "250ms" }}
             >
               <a
                 href="/resume/Amritesh_Mishra.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-zinc-200 text-black font-semibold rounded-xl min-h-[2.85rem] px-5 sm:px-6 text-xs sm:text-sm transition-all duration-200 active:scale-[0.98] shadow-md shadow-white/5 text-center"
-                aria-label="View resume PDF in a new tab"
+                onClick={playClick}
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-text-primary text-bg-primary text-xs sm:text-sm font-mono font-bold tracking-tight hover:bg-accent-bronze hover:text-bg-primary transition-all duration-200 active:scale-95 shadow-md"
               >
-                <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                   <polyline points="14 2 14 8 20 8" />
                   <line x1="16" y1="13" x2="8" y2="13" />
                   <line x1="16" y1="17" x2="8" y2="17" />
                 </svg>
-                View Resume (PDF)
+                <span>Download Résumé</span>
               </a>
+
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 bg-[#12151f] border border-zinc-800 hover:border-zinc-600 text-zinc-200 font-medium rounded-xl min-h-[2.85rem] px-4 sm:px-5 text-xs sm:text-sm transition-all duration-200 active:scale-[0.98] text-center"
+                onClick={playClick}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-bg-tertiary border border-border-subtle text-xs sm:text-sm font-mono text-text-primary hover:border-accent-bronze hover:text-accent-bronze transition-all duration-200 active:scale-95"
               >
-                <span>Browse 7 Projects ↓</span>
+                <span>Explore My Work ↓</span>
               </a>
-              <div className="flex items-center gap-2.5">
-                <a
-                  href="https://github.com/amrit-verse"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-[#12151f] border border-zinc-800 hover:border-zinc-600 text-zinc-200 font-medium rounded-xl min-h-[2.85rem] px-4 text-xs sm:text-sm transition-all duration-200 active:scale-[0.98]"
-                  aria-label="Visit GitHub profile"
-                >
-                  <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-                  </svg>
-                  GitHub
-                </a>
-                <a
-                  href="#contact"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 text-zinc-300 hover:text-white rounded-xl min-h-[2.85rem] px-4 text-xs sm:text-sm transition-all duration-200 border border-zinc-800 bg-[#0e1118] sm:bg-transparent sm:border-transparent"
-                >
-                  Contact →
-                </a>
-              </div>
+
+              <a
+                href="https://github.com/amrit-verse"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={playClick}
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-bg-card border border-border-subtle text-xs font-mono text-text-secondary hover:text-text-primary hover:border-accent-bronze/50 transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href="#contact"
+                onClick={playClick}
+                className="text-xs font-mono text-text-secondary hover:text-accent-bronze px-3 py-2 transition-colors"
+              >
+                Direct Contact →
+              </a>
             </div>
           </div>
 
-          {/* Desktop Right Column: Perfectly Proportioned Circular Avatar Frame */}
+          {/* Right Column: Visual Architectural Satellite Node with 3D/2D Modes */}
           <div
-            className={`hidden lg:flex flex-col items-center justify-center transition-all duration-1000 ease-out ${
-              isLoaded ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
+            className={`relative flex items-center justify-center transition-all duration-700 ease-out ${
+              isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
             }`}
-            style={{ transitionDelay: "320ms" }}
+            style={{ transitionDelay: "150ms" }}
           >
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 xl:w-80 xl:h-80 aspect-square rounded-full p-2 bg-gradient-to-b from-emerald-500/25 via-zinc-800/40 to-transparent shadow-[0_0_50px_rgba(16,185,129,0.15)] group">
-              <div className="relative w-full h-full rounded-full overflow-hidden border border-zinc-700/80 bg-[#07090e]">
-                <Image
-                  src="/avatar.png"
-                  alt="Amritesh Mishra"
-                  fill
-                  className="object-cover object-center scale-[1.08] transition-transform duration-500 group-hover:scale-[1.12]"
-                  priority
-                  sizes="(max-width: 1024px) 256px, 320px"
-                />
-              </div>
-            </div>
+            <Hero3DVisual />
           </div>
         </div>
 
-        {/* ═══════════════════════════════════════════════════════════
-            ADDICTIVE INTERACTIVE DOSSIER & SYSTEM INSPECTOR (#dossier)
-            ═══════════════════════════════════════════════════════════ */}
-        <div
-          id="dossier"
-          className={`glass-card p-4 sm:p-6 border border-zinc-800/90 relative overflow-hidden transition-all duration-700 ease-out mt-8 sm:mt-12 scroll-mt-20 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-          style={{ transitionDelay: "380ms" }}
-        >
-          {/* Subtle ambient corner glow */}
-          <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-zinc-700/5 blur-2xl pointer-events-none" />
-
-          {/* Interactive Tab Navigation */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 mb-4 border-b border-zinc-800/80">
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 text-[0.6875rem] font-mono font-bold uppercase rounded bg-zinc-800 text-zinc-200 border border-zinc-700 shrink-0">
+        {/* ─── SYSTEM INSPECTOR DOSSIER (Full Width Architecture Deck) ─── */}
+        <div id="dossier" className="w-full corner-hud rounded-2xl bg-bg-card border border-border-subtle overflow-hidden shadow-xl transition-colors">
+          {/* Deck Top Bar: Tabs & Mode Status */}
+          <div className="px-4 sm:px-6 py-3.5 bg-bg-tertiary border-b border-border-subtle flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="px-2.5 py-0.5 rounded text-[11px] font-mono uppercase bg-bg-card text-accent-bronze border border-border-subtle font-semibold">
                 SYSTEM INSPECTOR
               </span>
-              <span className="text-xs font-mono text-zinc-400 truncate">Click tabs to inspect Amritesh:</span>
+              <span className="text-xs font-mono text-text-secondary hidden md:inline">
+                Live Engineering Telemetry &amp; Architecture Atlas
+              </span>
             </div>
 
-            {/* Tab Buttons — Mobile scrollable without wrapping */}
-            <div className="flex items-center gap-1.5 p-1 rounded-lg bg-[#07090f] border border-zinc-800 text-xs font-mono overflow-x-auto max-w-full no-scrollbar">
+            {/* Interactive Tab Switcher */}
+            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-bg-primary border border-border-subtle">
               <button
                 type="button"
-                onClick={() => setActiveTab('blueprint')}
-                className={`shrink-0 px-2.5 py-1 rounded transition-all ${
+                onClick={() => {
+                  playClick();
+                  setActiveTab('blueprint');
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer ${
                   activeTab === 'blueprint'
-                    ? 'bg-white text-black font-semibold shadow-sm'
-                    : 'text-zinc-400 hover:text-white'
+                    ? 'bg-text-primary text-bg-primary font-bold shadow-sm'
+                    : 'text-text-secondary hover:text-text-primary'
                 }`}
               >
                 ⚡ 30s Skim
               </button>
               <button
                 type="button"
-                onClick={() => setActiveTab('workstation')}
-                className={`shrink-0 px-2.5 py-1 rounded transition-all ${
+                onClick={() => {
+                  playClick();
+                  setActiveTab('workstation');
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer ${
                   activeTab === 'workstation'
-                    ? 'bg-white text-black font-semibold shadow-sm'
-                    : 'text-zinc-400 hover:text-white'
+                    ? 'bg-text-primary text-bg-primary font-bold shadow-sm'
+                    : 'text-text-secondary hover:text-text-primary'
                 }`}
               >
                 $ fastfetch
               </button>
               <button
                 type="button"
-                onClick={() => setActiveTab('lab')}
-                className={`shrink-0 px-2.5 py-1 rounded transition-all ${
+                onClick={() => {
+                  playClick();
+                  setActiveTab('lab');
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer ${
                   activeTab === 'lab'
-                    ? 'bg-white text-black font-semibold shadow-sm'
-                    : 'text-zinc-400 hover:text-white'
+                    ? 'bg-text-primary text-bg-primary font-bold shadow-sm'
+                    : 'text-text-secondary hover:text-text-primary'
                 }`}
               >
                 $ virsh list
               </button>
               <button
                 type="button"
-                onClick={() => setActiveTab('proof')}
-                className={`shrink-0 px-2.5 py-1 rounded transition-all ${
+                onClick={() => {
+                  playClick();
+                  setActiveTab('proof');
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer ${
                   activeTab === 'proof'
-                    ? 'bg-white text-black font-semibold shadow-sm'
-                    : 'text-zinc-400 hover:text-white'
+                    ? 'bg-text-primary text-bg-primary font-bold shadow-sm'
+                    : 'text-text-secondary hover:text-text-primary'
                 }`}
               >
                 $ highlights
@@ -280,177 +273,164 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* TAB 1: 30-Second Blueprint */}
-          {activeTab === 'blueprint' && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-xs sm:text-sm animate-fade-in">
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] hover:border-emerald-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-                  Identity &amp; Status
-                </p>
-                <p className="font-semibold text-white">Amritesh Mishra</p>
-                <p className="text-zinc-400 text-xs mt-0.5">2nd Year B.E. Computer Science</p>
-                <p className="text-zinc-500 text-[0.6875rem] mt-0.5">Excel Eng. College (Anna Univ)</p>
-                <p className="text-emerald-400 font-mono text-xs mt-1.5 font-semibold">CGPA: 8.88 / 10.00</p>
-              </div>
+          {/* Deck Body */}
+          <div className="p-5 sm:p-7 bg-bg-card">
+            {activeTab === 'blueprint' && (
+              <div className="grid md:grid-cols-3 gap-5">
+                {/* Visual Card 1: Core Stack */}
+                <div className="p-4 rounded-xl bg-bg-primary border border-border-subtle">
+                  <p className="text-[11px] font-mono text-accent-bronze uppercase tracking-wider mb-2 font-semibold">01 // PRODUCTION STACK</p>
+                  <div className="space-y-2.5">
+                    <div className="flex justify-between items-center text-xs font-mono">
+                      <span className="text-text-primary">Node.js / Express</span>
+                      <span className="text-accent-bronze font-semibold">Advanced</span>
+                    </div>
+                    <div className="w-full bg-bg-tertiary h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-accent-bronze h-full w-[90%]" />
+                    </div>
 
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] hover:border-emerald-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-                  Everyday Backend
-                </p>
-                <p className="text-zinc-200 font-medium">Node.js, Express, Spring Boot</p>
-                <p className="text-zinc-400 text-xs mt-1">PostgreSQL, Prisma ORM, MongoDB</p>
-                <p className="text-zinc-500 text-[0.6875rem] mt-0.5">Docker, REST APIs, Auth.js RBAC</p>
-              </div>
+                    <div className="flex justify-between items-center text-xs font-mono">
+                      <span className="text-text-primary">Java / Spring Boot</span>
+                      <span className="text-accent-bronze font-semibold">Full CRUD REST</span>
+                    </div>
+                    <div className="w-full bg-bg-tertiary h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-accent-bronze h-full w-[85%]" />
+                    </div>
 
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] hover:border-emerald-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-                  Linux &amp; Systems Lab
-                </p>
-                <p className="text-zinc-200 font-medium">Debian 13 (trixie) Daily Driver</p>
-                <p className="text-zinc-400 text-xs mt-1">HP Pavilion Aero 13 · QEMU/KVM</p>
-                <p className="text-zinc-500 text-[0.6875rem] mt-0.5">virbr0 NAT bridge, debian13 guest, Nmap 7.95, Docker</p>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-[#090b11] border border-zinc-800/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] hover:border-emerald-500/30 transition-colors">
-                <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-                  Verified Credentials
-                </p>
-                <p className="text-zinc-200 font-medium">Team Leader — SIH &apos;26 (Team Sudo)</p>
-                <p className="text-zinc-400 text-xs mt-1">JL-NAT N5 Japanese Certified</p>
-                <p className="text-zinc-500 text-[0.6875rem] mt-0.5">Duolingo English: 105 Score</p>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 2: $ fastfetch Workstation */}
-          {activeTab === 'workstation' && (
-            <div className="p-4 rounded-xl bg-[#090b11] border border-zinc-800/80 font-mono text-xs text-zinc-300 space-y-1.5 animate-fade-in">
-              <p className="text-emerald-400 font-semibold">$ fastfetch --pipe</p>
-              <div className="grid sm:grid-cols-2 gap-x-6 gap-y-1.5 pt-1 text-zinc-400">
-                <p><span className="text-zinc-200 font-bold">OS:</span> Debian GNU/Linux 13 (trixie) x86_64</p>
-                <p><span className="text-zinc-200 font-bold">Host:</span> HP Pavilion Aero Laptop 13-be2xxx</p>
-                <p><span className="text-zinc-200 font-bold">Kernel:</span> Linux 6.12.111+deb13-amd64</p>
-                <p><span className="text-zinc-200 font-bold">Shell:</span> bash 5.2.37</p>
-                <p><span className="text-zinc-200 font-bold">CPU:</span> AMD Ryzen 7 7735U (16) @ 4.82 GHz</p>
-                <p><span className="text-zinc-200 font-bold">Memory:</span> 16 GB LPDDR5 (14.84 GiB available)</p>
-                <p><span className="text-zinc-200 font-bold">Primary Editor:</span> VS Code</p>
-                <p><span className="text-zinc-200 font-bold">Hypervisor:</span> QEMU 10.0 / KVM (libvirt 11.3)</p>
-                <p><span className="text-zinc-200 font-bold">Languages:</span> Java 21, TypeScript, Python 3.13, SQL, C, Bash</p>
-                <p><span className="text-zinc-200 font-bold">Databases:</span> PostgreSQL 17 (psql 17.11), Prisma, MongoDB</p>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 3: $ virsh list Virtual Lab */}
-          {activeTab === 'lab' && (
-            <div className="p-4 rounded-xl bg-[#090b11] border border-zinc-800/80 font-mono text-xs text-zinc-300 space-y-2 animate-fade-in">
-              <p className="text-emerald-400 font-semibold">$ virsh -c qemu:///system list --all</p>
-              <div className="overflow-x-auto text-zinc-400">
-                <table className="w-full text-left">
-                  <thead>
-                    <tr className="border-b border-zinc-800 text-zinc-500">
-                      <th className="py-1 pr-4">Id</th>
-                      <th className="py-1 pr-4">VM / Network Node</th>
-                      <th className="py-1 pr-4">State</th>
-                      <th className="py-1">Configuration &amp; Role</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="py-1 pr-4 text-zinc-600">-</td>
-                      <td className="py-1 pr-4 text-white font-bold">debian13</td>
-                      <td className="py-1 pr-4 text-zinc-400 font-semibold">shut off (guest)</td>
-                      <td className="py-1 text-zinc-300">QEMU/KVM isolated testbed (2 vCPU, 2 GiB RAM, AppArmor)</td>
-                    </tr>
-                    <tr>
-                      <td className="py-1 pr-4 text-zinc-600">net</td>
-                      <td className="py-1 pr-4 text-zinc-200 font-bold">virbr0 (NAT Bridge)</td>
-                      <td className="py-1 pr-4 text-emerald-400 font-semibold">active</td>
-                      <td className="py-1 text-zinc-300">192.168.122.1/24 (dnsmasq DHCP: .2–.254, private subnet)</td>
-                    </tr>
-                    <tr>
-                      <td className="py-1 pr-4 text-zinc-600">app</td>
-                      <td className="py-1 pr-4 text-zinc-300 font-bold">Docker Engine</td>
-                      <td className="py-1 pr-4 text-emerald-400 font-semibold">v26.1.5</td>
-                      <td className="py-1 text-zinc-400">Local containerized development environments</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 4: $ highlights Proof of Work */}
-          {activeTab === 'proof' && (
-            <div className="p-4 rounded-xl bg-[#090b11] border border-zinc-800/80 font-mono text-xs text-zinc-300 space-y-2 animate-fade-in">
-              <p className="text-emerald-400 font-semibold">$ cat achievements.json | jq .highlights</p>
-              <div className="grid sm:grid-cols-2 gap-2 text-zinc-400">
-                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/30 transition-colors">
-                  <p className="text-emerald-300 font-bold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                    Smart India Hackathon 2026
-                  </p>
-                  <p className="text-zinc-400 text-[0.6875rem] mt-0.5">Team Leader for Team Sudo (NTRO Threat Detection Problem SIH26145)</p>
+                    <div className="flex justify-between items-center text-xs font-mono">
+                      <span className="text-text-primary">PostgreSQL &amp; Prisma</span>
+                      <span className="text-accent-bronze font-semibold">Schemas &amp; Indexing</span>
+                    </div>
+                    <div className="w-full bg-bg-tertiary h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-accent-bronze h-full w-[88%]" />
+                    </div>
+                  </div>
                 </div>
-                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/30 transition-colors">
-                  <p className="text-emerald-300 font-bold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                    Current Academic CGPA: 8.88 / 10
-                  </p>
-                  <p className="text-zinc-400 text-[0.6875rem] mt-0.5">Excel Engineering College (Anna University affiliated coursework)</p>
+
+                {/* Visual Card 2: Systems & Virtualization */}
+                <div className="p-4 rounded-xl bg-bg-primary border border-border-subtle">
+                  <p className="text-[11px] font-mono text-accent-bronze uppercase tracking-wider mb-2 font-semibold">02 // SYSTEMS &amp; LINUX</p>
+                  <div className="space-y-2 text-xs font-mono">
+                    <div className="p-2 rounded bg-bg-tertiary border border-border-subtle flex items-center justify-between">
+                      <span className="text-text-primary">Host OS</span>
+                      <span className="text-accent-bronze font-semibold">Debian 13 (Trixie)</span>
+                    </div>
+                    <div className="p-2 rounded bg-bg-tertiary border border-border-subtle flex items-center justify-between">
+                      <span className="text-text-primary">Hypervisor</span>
+                      <span className="text-accent-bronze font-semibold">QEMU / KVM</span>
+                    </div>
+                    <div className="p-2 rounded bg-bg-tertiary border border-border-subtle flex items-center justify-between">
+                      <span className="text-text-primary">Isolated Bridge</span>
+                      <span className="text-accent-bronze font-semibold">virbr0 NAT (192.168.122.0/24)</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/30 transition-colors">
-                  <p className="text-emerald-300 font-bold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                    JL-NAT N5 Japanese Certified
-                  </p>
-                  <p className="text-zinc-400 text-[0.6875rem] mt-0.5">Autodidactic language study validating reading &amp; listening comprehension</p>
-                </div>
-                <div className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/30 transition-colors">
-                  <p className="text-emerald-300 font-bold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                    Duolingo English Score: 105
-                  </p>
-                  <p className="text-zinc-400 text-[0.6875rem] mt-0.5">Certified literacy, academic comprehension, and professional expression</p>
+
+                {/* Visual Card 3: Key Verification Proofs */}
+                <div className="p-4 rounded-xl bg-bg-primary border border-border-subtle">
+                  <p className="text-[11px] font-mono text-accent-bronze uppercase tracking-wider mb-2 font-semibold">03 // VERIFIED AUDIT PROOF</p>
+                  <div className="space-y-2 text-xs font-mono">
+                    <div className="p-2 rounded bg-bg-tertiary border border-border-subtle flex items-center justify-between">
+                      <span className="text-text-primary">ThreatDesk Rules</span>
+                      <span className="text-accent-bronze font-semibold">66 Rules · 357 Pytests (100%)</span>
+                    </div>
+                    <div className="p-2 rounded bg-bg-tertiary border border-border-subtle flex items-center justify-between">
+                      <span className="text-text-primary">Anna University</span>
+                      <span className="text-accent-bronze font-semibold">8.88 CGPA (Coursework)</span>
+                    </div>
+                    <div className="p-2 rounded bg-bg-tertiary border border-border-subtle flex items-center justify-between">
+                      <span className="text-text-primary">SIH 2026</span>
+                      <span className="text-accent-bronze font-semibold">Team Leader (Team Sudo)</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Bottom Fast Navigation Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-3.5 mt-4 border-t border-zinc-800/80 text-xs">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-zinc-500">Quick Navigation:</span>
-              <button
-                type="button"
-                onClick={() => openSicMundus()}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-950/20 border border-emerald-500/30 text-emerald-300 hover:text-white hover:border-emerald-400 hover:bg-emerald-900/30 active:scale-95 transition-all font-mono cursor-pointer"
-                aria-label="Open Sic Mundus Command Console"
-              >
-                <TriquetraIcon className="w-3.5 h-3.5 text-emerald-400" />
-                <span>⌘K Sic Mundus</span>
-              </button>
-              <a href="#projects" className="px-2.5 py-1 rounded bg-[#090c12] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-colors font-mono">
-                Featured 7 Projects ↓
-              </a>
-              <a href="#learning" className="px-2.5 py-1 rounded bg-[#090c12] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-colors font-mono">
-                Virtual Security Lab ↓
-              </a>
-              <a href="#contact" className="px-2.5 py-1 rounded bg-[#090c12] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-colors font-mono">
-                Direct Contact ↓
-              </a>
-            </div>
-            <a
-              href="mailto:contact@amritesh.com.np"
-              className="text-zinc-300 hover:text-white hover:underline font-mono break-all sm:break-normal"
-            >
-              contact@amritesh.com.np →
-            </a>
+            {activeTab === 'workstation' && (
+              <div className="font-mono text-xs text-text-primary bg-bg-primary p-5 rounded-xl border border-border-subtle overflow-x-auto">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-1.5 text-text-secondary">
+                    <p className="text-accent-bronze font-bold mb-2">amrit@signal-workstation:~$ fastfetch</p>
+                    <p><span className="text-text-primary">OS:</span> Debian GNU/Linux 13 (trixie) x86_64</p>
+                    <p><span className="text-text-primary">Host:</span> HP Pavilion Aero Laptop 13-be0xxx</p>
+                    <p><span className="text-text-primary">Kernel:</span> Linux 6.12.38-amd64</p>
+                    <p><span className="text-text-primary">Uptime:</span> Active Systems Development Node</p>
+                    <p><span className="text-text-primary">Shell:</span> bash 5.2.32</p>
+                  </div>
+                  <div className="space-y-1.5 text-text-secondary">
+                    <p><span className="text-text-primary">CPU:</span> AMD Ryzen 5 5600U with Radeon Graphics (12) @ 2.30 GHz</p>
+                    <p><span className="text-text-primary">Memory:</span> 16 GB DDR4-3200 (Dual Channel)</p>
+                    <p><span className="text-text-primary">Disk:</span> 512 GB PCIe NVMe SSD</p>
+                    <p><span className="text-text-primary">Virtualization:</span> KVM enabled (AMD-V hardware acceleration)</p>
+                    <p><span className="text-text-primary">Default Toolchain:</span> Node 22, Python 3.13, OpenJDK 21, Docker Engine</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'lab' && (
+              <div className="font-mono text-xs text-text-primary bg-bg-primary p-5 rounded-xl border border-border-subtle overflow-x-auto">
+                <p className="text-accent-bronze font-bold mb-3">amrit@signal-workstation:~$ sudo virsh list --all &amp;&amp; ip route show</p>
+                <div className="grid md:grid-cols-3 gap-3 mb-4">
+                  <div className="p-3 rounded bg-bg-tertiary border border-border-subtle">
+                    <p className="text-accent-bronze text-[10px] font-semibold">GUEST DOMAIN</p>
+                    <p className="font-bold text-text-primary mt-1">debian13</p>
+                    <p className="text-[11px] text-text-secondary">State: running · QEMU KVM</p>
+                  </div>
+                  <div className="p-3 rounded bg-bg-tertiary border border-border-subtle">
+                    <p className="text-accent-bronze text-[10px] font-semibold">ISOLATED BRIDGE</p>
+                    <p className="font-bold text-text-primary mt-1">virbr0</p>
+                    <p className="text-[11px] text-text-secondary">Subnet: 192.168.122.0/24</p>
+                  </div>
+                  <div className="p-3 rounded bg-bg-tertiary border border-border-subtle">
+                    <p className="text-accent-bronze text-[10px] font-semibold">DEFENSIVE AUDITS</p>
+                    <p className="font-bold text-text-primary mt-1">Nmap 7.95</p>
+                    <p className="text-[11px] text-text-secondary">Passive traffic modeling</p>
+                  </div>
+                </div>
+                <p className="text-[11px] text-text-secondary mt-2">
+                  Isolated hypervisor network ensures offensive security testing, TryHackMe labs, and port audits never compromise host integrity.
+                </p>
+              </div>
+            )}
+
+            {activeTab === 'proof' && (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="p-3.5 rounded-xl bg-bg-primary border border-border-subtle">
+                  <p className="text-[10px] font-mono text-accent-bronze uppercase font-semibold">ACADEMICS</p>
+                  <p className="text-xl font-bold font-display text-text-primary mt-0.5">8.88 CGPA</p>
+                  <p className="text-xs text-text-secondary font-mono mt-1">Excel Engineering College (Anna University affiliated)</p>
+                </div>
+                <div className="p-3.5 rounded-xl bg-bg-primary border border-border-subtle">
+                  <p className="text-[10px] font-mono text-accent-bronze uppercase font-semibold">HACKATHON</p>
+                  <p className="text-xl font-bold font-display text-text-primary mt-0.5">SIH 2026</p>
+                  <p className="text-xs text-text-secondary font-mono mt-1">Team Leader (Team Sudo) tackling Problem SIH26145</p>
+                </div>
+                <div className="p-3.5 rounded-xl bg-bg-primary border border-border-subtle">
+                  <p className="text-[10px] font-mono text-accent-bronze uppercase font-semibold">JAPANESE LANGUAGE</p>
+                  <p className="text-xl font-bold font-display text-text-primary mt-0.5">JL-NAT N5</p>
+                  <p className="text-xs text-text-secondary font-mono mt-1">Certified by Senmon Kyouiku Publishing (Tokyo, Japan)</p>
+                </div>
+                <div className="p-3.5 rounded-xl bg-bg-primary border border-border-subtle">
+                  <p className="text-[10px] font-mono text-accent-bronze uppercase font-semibold">DUOLINGO ENGLISH</p>
+                  <p className="text-xl font-bold font-display text-text-primary mt-0.5">105 Score</p>
+                  <p className="text-xs text-text-secondary font-mono mt-1">CEFR B2 Level Professional English Proficiency</p>
+                </div>
+              </div>
+            )}
           </div>
+        </div>
+
+        {/* Subtle Scroll Indicator */}
+        <div className="mt-8 flex justify-center items-center gap-2 text-text-tertiary text-xs font-mono">
+          <a
+            href="#projects"
+            className="flex items-center gap-2 hover:text-accent-bronze transition-colors py-1 px-3 rounded-full border border-border-subtle/50"
+          >
+            <span>SCROLL TO EXPLORE WORK</span>
+            <span className="animate-bounce">↓</span>
+          </a>
         </div>
       </div>
     </section>

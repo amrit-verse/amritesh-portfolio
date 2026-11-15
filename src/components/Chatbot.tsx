@@ -4,6 +4,8 @@ import { useState, useEffect, useRef, memo } from 'react';
 import Image from 'next/image';
 import { CHAT_GREETING, CHAT_SUGGESTIONS } from '@/lib/portfolio-knowledge';
 import { TriquetraIcon, openSicMundus } from '@/components/CommandPalette';
+import { useSound } from '@/components/SoundSystem';
+import { useExperience } from '@/components/ExperienceContext';
 
 /* ── Types ── */
 interface ChatMessage {
@@ -17,7 +19,7 @@ interface ChatMessage {
 const Formatted = memo(function Formatted({ text }: { text: string }) {
   const lines = text.split('\n');
   return (
-    <div className="space-y-1 leading-relaxed text-[13px] sm:text-sm">
+    <div className="space-y-1.5 leading-relaxed text-[13px] sm:text-sm">
       {lines.map((raw, i) => {
         const trimmed = raw.trim();
         if (!trimmed) return <div key={i} className="h-1" />;
@@ -35,13 +37,13 @@ const Formatted = memo(function Formatted({ text }: { text: string }) {
         if (isBullet || isNumbered) {
           return (
             <div key={i} className="flex items-start gap-2 pl-0.5">
-              <span className="mt-[7px] w-1 h-1 rounded-full bg-zinc-400 shrink-0" />
-              <span className="flex-1">{rendered}</span>
+              <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-accent-bronze shrink-0" />
+              <span className="flex-1 text-text-primary">{rendered}</span>
             </div>
           );
         }
 
-        return <div key={i}>{rendered}</div>;
+        return <div key={i} className="text-text-primary">{rendered}</div>;
       })}
     </div>
   );
@@ -61,17 +63,17 @@ function renderInline(text: string): React.ReactNode[] {
     }
     if (m.index > 0) parts.push(<span key={key++}>{rest.slice(0, m.index)}</span>);
     if (m[2]) {
-      parts.push(<strong key={key++} className="font-semibold text-white">{m[2]}</strong>);
+      parts.push(<strong key={key++} className="font-semibold text-text-primary">{m[2]}</strong>);
     } else if (m[4]) {
       parts.push(
-        <code key={key++} className="px-1 py-px rounded bg-zinc-800 text-zinc-200 font-mono text-[11px] border border-white/10">
+        <code key={key++} className="px-1.5 py-0.5 rounded bg-bg-tertiary text-accent-bronze font-mono text-[11px] border border-border-subtle">
           {m[4]}
         </code>,
       );
     } else if (m[6] && m[7]) {
       parts.push(
         <a key={key++} href={m[7]} target={m[7].startsWith('mailto:') ? undefined : '_blank'} rel="noopener noreferrer"
-           className="text-zinc-200 hover:text-white underline underline-offset-2 transition-colors">{m[6]}</a>,
+           className="text-accent-bronze hover:text-text-primary underline underline-offset-2 transition-colors">{m[6]}</a>,
       );
     }
     rest = rest.slice(m.index + m[0].length);
@@ -89,6 +91,8 @@ export default function Chatbot() {
   const inputRef = useRef<HTMLInputElement>(null);
   const idRef = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
+  const { playClick, playChime } = useSound();
+  const { renderMode } = useExperience();
 
   const nextId = () => `m-${++idRef.current}`;
 
@@ -97,8 +101,9 @@ export default function Chatbot() {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, streaming]);
 
-  /* Close & wipe session — defined before effects that reference it */
+  /* Close & wipe session */
   const handleClose = () => {
+    playClick();
     abortRef.current?.abort();
     setIsOpen(false);
     setMessages([]);
@@ -106,7 +111,7 @@ export default function Chatbot() {
     setStreaming(false);
   };
 
-  /* Greet on open — uses initializer function to avoid setState-in-effect */
+  /* Greet on open */
   const greetedRef = useRef(false);
   useEffect(() => {
     if (isOpen && !greetedRef.current) {
@@ -114,15 +119,15 @@ export default function Chatbot() {
     }
   }, [isOpen]);
 
-  // Reset greeted flag on close so next open re-greets
   useEffect(() => {
     if (!isOpen) {
       greetedRef.current = false;
     }
   }, [isOpen]);
 
-  /* Initialise greeting message when opening (as initial state via toggle) */
+  /* Initialise greeting message when opening */
   const handleOpen = () => {
+    playClick();
     setMessages([{ id: nextId(), role: 'assistant', content: CHAT_GREETING }]);
     setIsOpen(true);
     setTimeout(() => inputRef.current?.focus(), 180);
@@ -143,6 +148,7 @@ export default function Chatbot() {
     const q = text.trim();
     if (!q || streaming) return;
 
+    playClick();
     const userMsg: ChatMessage = { id: nextId(), role: 'user', content: q };
     const asstId = nextId();
     const asstMsg: ChatMessage = { id: asstId, role: 'assistant', content: '' };
@@ -192,6 +198,7 @@ export default function Chatbot() {
       }
 
       if (!acc.trim()) throw new Error('Empty response');
+      playChime();
     } catch (err) {
       if ((err as Error).name === 'AbortError') return;
       const errText = err instanceof Error ? err.message : 'Something went wrong';
@@ -257,10 +264,10 @@ export default function Chatbot() {
     <>
       {/* ── Floating Launcher ── */}
       <div className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-4 sm:bottom-6 sm:right-6 z-40 group">
-        {/* Ambient Emerald Aura (pulses softly so visitor's eye catches it immediately) */}
-        {!isOpen && (
+        {/* Ambient Bronze Aura in 3D Mode */}
+        {!isOpen && renderMode === '3d' && (
           <span
-            className="absolute -inset-1 rounded-full bg-gradient-to-r from-emerald-500/40 via-teal-400/35 to-emerald-500/40 blur-md opacity-75 group-hover:opacity-100 animate-pulse transition-opacity duration-300 pointer-events-none"
+            className="absolute -inset-1 rounded-full bg-gradient-to-r from-accent-bronze/40 via-accent-primary/20 to-accent-bronze/40 blur-md opacity-75 group-hover:opacity-100 animate-pulse transition-opacity duration-300 pointer-events-none"
             aria-hidden="true"
           />
         )}
@@ -268,8 +275,8 @@ export default function Chatbot() {
         {/* Easter Egg Tooltip on Hover */}
         {!isOpen && (
           <div className="absolute -top-9 right-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0 whitespace-nowrap">
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0a0d14]/95 border border-emerald-500/40 text-[10px] font-mono text-emerald-300 shadow-[0_4px_16px_rgba(0,0,0,0.85)] backdrop-blur-md">
-              <TriquetraIcon className="w-3 h-3 text-emerald-400" />
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-bg-card/95 border border-accent-bronze/40 text-[10px] font-mono text-text-primary shadow-hud backdrop-blur-md">
+              <TriquetraIcon className="w-3 h-3 text-accent-bronze" />
               <span>Sic Mundus Creatus Est · Double-click ⌘K</span>
             </div>
           </div>
@@ -283,25 +290,27 @@ export default function Chatbot() {
           }}
           aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant (Double click for Sic Mundus Command Bar)'}
           aria-expanded={isOpen}
-          className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full font-mono text-xs sm:text-sm transition-all duration-300 motion-reduce:transition-none active:scale-95 ${
+          className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full font-mono text-xs sm:text-sm transition-all duration-300 motion-reduce:transition-none active:scale-95 cursor-pointer ${
             isOpen
-              ? 'bg-[#12151f] border border-white/30 text-white shadow-[0_4px_24px_rgba(0,0,0,0.8)]'
-              : 'bg-[#0b0e17] border border-emerald-400/60 hover:border-emerald-400 text-white shadow-[0_0_20px_rgba(52,211,153,0.3),0_8px_32px_rgba(0,0,0,0.85)] hover:shadow-[0_0_30px_rgba(52,211,153,0.5),0_10px_36px_rgba(0,0,0,0.95)] hover:scale-105'
+              ? 'bg-bg-tertiary border border-border-subtle text-text-primary shadow-hud'
+              : 'bg-bg-card border border-accent-bronze/60 hover:border-accent-bronze text-text-primary shadow-glow hover:scale-105'
           }`}
         >
           {/* Pulsing Beacon Dot */}
           <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden="true">
-            <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:animate-none" />
-            <span className="relative rounded-full h-2.5 w-2.5 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.95)]" />
+            {renderMode === '3d' && (
+              <span className="absolute inset-0 animate-ping rounded-full bg-accent-bronze opacity-75 motion-reduce:animate-none" />
+            )}
+            <span className="relative rounded-full h-2.5 w-2.5 bg-accent-bronze shadow-[0_0_8px_var(--color-accent-bronze)]" />
           </span>
 
           {/* Terminal prompt icon */}
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" className={`w-4 h-4 shrink-0 transition-colors ${isOpen ? 'text-zinc-400' : 'text-emerald-400'}`} aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" className={`w-4 h-4 shrink-0 transition-colors ${isOpen ? 'text-text-secondary' : 'text-accent-bronze'}`} aria-hidden="true">
             <polyline points="4 17 10 11 4 5" />
             <line x1="12" y1="19" x2="20" y2="19" />
           </svg>
 
-          <span className="tracking-tight font-bold text-white">{isOpen ? 'Close' : 'Ask AI'}</span>
+          <span className="tracking-tight font-bold text-text-primary">{isOpen ? 'Close' : 'Ask AI'}</span>
 
           {/* Triquetra Easter Egg Knot */}
           <span
@@ -310,14 +319,14 @@ export default function Chatbot() {
               openSicMundus();
             }}
             title="Sic Mundus Creatus Est — Open Command Palette"
-            className="w-5 h-5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/25 border border-emerald-500/30 flex items-center justify-center text-emerald-400 transition-colors cursor-pointer"
+            className="w-5 h-5 rounded-full bg-accent-bronze/15 hover:bg-accent-bronze/30 border border-accent-bronze/40 flex items-center justify-center text-accent-bronze transition-colors cursor-pointer"
             aria-label="Sic Mundus Easter Egg"
           >
             <TriquetraIcon className="w-3 h-3" />
           </span>
 
           {!isOpen && (
-            <span className="hidden min-[360px]:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 tracking-wider">
+            <span className="hidden min-[360px]:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-accent-bronze/20 text-text-primary border border-accent-bronze/40 tracking-wider">
               ONLINE
             </span>
           )}
@@ -330,19 +339,19 @@ export default function Chatbot() {
         aria-modal="true"
         aria-label="Portfolio AI Assistant"
         aria-hidden={!isOpen}
-        className={`fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] inset-x-3 sm:inset-x-auto sm:right-6 sm:w-[400px] z-50 h-[min(540px,calc(100dvh-5.5rem-env(safe-area-inset-bottom)))] flex flex-col rounded-2xl overflow-hidden border
-          bg-[#060810]/[0.97] backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.95),0_0_20px_rgba(255,255,255,0.02)]
+        className={`fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] inset-x-3 sm:inset-x-auto sm:right-6 sm:w-[420px] z-50 h-[min(560px,calc(100dvh-5.5rem-env(safe-area-inset-bottom)))] flex flex-col rounded-2xl overflow-hidden border
+          bg-bg-glass-card backdrop-blur-2xl ${renderMode === '3d' ? 'shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7),0_0_25px_var(--color-accent-bronze-dim)]' : 'shadow-card'}
           transition-all duration-200 ease-out motion-reduce:transition-none origin-bottom-right
           ${isOpen
-            ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto border-white/10'
-            : 'opacity-0 scale-95 translate-y-3 pointer-events-none border-transparent'
+            ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto border-border-subtle'
+            : 'opacity-0 scale-95 translate-y-3 pointer-events-none invisible border-transparent'
           }`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.07] bg-[#0a0d14]/80 shrink-0">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-border-subtle bg-bg-card shrink-0">
           <div className="flex items-center gap-2.5">
-            {/* Authentic A Logo from top tab/favicon */}
-            <div className="w-7 h-7 rounded-lg overflow-hidden border border-white/10 flex items-center justify-center bg-black/50 shrink-0 p-0.5">
+            {/* Authentic 'A' Logo from top tab/favicon */}
+            <div className="w-7 h-7 rounded-lg overflow-hidden border border-border-subtle flex items-center justify-center bg-bg-primary shrink-0 p-0.5">
               <Image
                 src="/icon.png"
                 alt="A Logo"
@@ -352,26 +361,26 @@ export default function Chatbot() {
               />
             </div>
             <div className="leading-tight">
-              <h3 className="text-sm font-semibold text-white flex items-center gap-1.5">
+              <h3 className="text-sm font-semibold text-text-primary flex items-center gap-1.5">
                 Amrit AI
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_5px_rgba(52,211,153,0.8)]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze shadow-[0_0_5px_var(--color-accent-bronze)]" />
                 <button
                   type="button"
                   onClick={() => openSicMundus()}
                   title="Sic Mundus Creatus Est — Open Command Palette"
-                  className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono bg-zinc-900 border border-zinc-700/80 text-emerald-400 hover:border-emerald-400 hover:bg-zinc-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono bg-bg-tertiary border border-border-subtle text-accent-bronze hover:border-accent-bronze hover:bg-bg-card transition-colors cursor-pointer"
                 >
-                  <TriquetraIcon className="w-2.5 h-2.5 text-emerald-400" />
+                  <TriquetraIcon className="w-2.5 h-2.5 text-accent-bronze" />
                   <span>SIC MUNDUS</span>
                 </button>
               </h3>
-              <p className="font-mono text-[10px] text-zinc-500">portfolio intelligence</p>
+              <p className="font-mono text-[10px] text-text-secondary">portfolio intelligence</p>
             </div>
           </div>
 
           <button
             onClick={handleClose}
-            className="p-1.5 rounded-lg text-zinc-500 hover:text-white hover:bg-white/5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-zinc-400"
+            className="p-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-tertiary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-bronze cursor-pointer"
             aria-label="Close assistant"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
@@ -388,10 +397,10 @@ export default function Chatbot() {
               <div
                 className={`max-w-[88%] rounded-2xl px-3.5 py-2.5
                   ${msg.role === 'user'
-                    ? 'bg-zinc-800/80 text-white border border-white/[0.06] rounded-br-sm'
+                    ? 'bg-bg-tertiary text-text-primary border border-border-subtle rounded-br-sm'
                     : msg.isError
-                      ? 'bg-red-950/40 text-red-300 border border-red-500/20 rounded-bl-sm'
-                      : 'bg-[#0d1018] text-zinc-300 border border-white/[0.06] rounded-bl-sm'
+                      ? 'bg-red-950/40 text-red-300 border border-red-500/30 rounded-bl-sm'
+                      : 'bg-bg-card text-text-primary border border-border-subtle rounded-bl-sm'
                   }`}
               >
                 {msg.role === 'user' ? (
@@ -408,10 +417,10 @@ export default function Chatbot() {
           {/* Streaming indicator */}
           {streaming && messages.at(-1)?.content === '' && (
             <div className="flex items-start">
-              <div className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-2xl rounded-bl-sm bg-[#0d1018] border border-white/[0.06]">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse [animation-delay:150ms]" />
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse [animation-delay:300ms]" />
+              <div className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-2xl rounded-bl-sm bg-bg-card border border-border-subtle">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze animate-pulse [animation-delay:150ms]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze animate-pulse [animation-delay:300ms]" />
               </div>
             </div>
           )}
@@ -423,7 +432,7 @@ export default function Chatbot() {
                 <button
                   key={s}
                   onClick={() => send(s)}
-                  className="font-mono text-[11px] text-zinc-400 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-zinc-600 rounded-full px-2.5 py-1 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-zinc-400"
+                  className="font-mono text-[11px] text-text-secondary hover:text-text-primary bg-bg-card hover:bg-bg-tertiary border border-border-subtle hover:border-accent-bronze/60 rounded-full px-2.5 py-1 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-bronze cursor-pointer"
                 >
                   {s}
                 </button>
@@ -440,7 +449,7 @@ export default function Chatbot() {
             e.preventDefault();
             send(input);
           }}
-          className="p-3 border-t border-white/[0.07] bg-[#080a10]/90 shrink-0"
+          className="p-3 border-t border-border-subtle bg-bg-card shrink-0"
         >
           <div className="flex items-center gap-2">
             <input
@@ -448,15 +457,15 @@ export default function Chatbot() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about projects, stack, background…"
+              placeholder="Ask about ReleaseTrace, ThreatDesk, Linux, stack…"
               disabled={streaming}
               maxLength={2000}
-              className="flex-1 bg-[#050608] border border-white/[0.08] focus:border-zinc-500 focus:ring-1 focus:ring-zinc-600/30 rounded-xl px-3 py-2 text-[13px] sm:text-sm text-white placeholder-zinc-600 outline-none transition-all disabled:opacity-40"
+              className="flex-1 bg-bg-primary border border-border-subtle focus:border-accent-bronze focus:ring-1 focus:ring-accent-bronze/40 rounded-xl px-3 py-2 text-[13px] sm:text-sm text-text-primary placeholder:text-text-secondary outline-none transition-all disabled:opacity-40"
             />
             <button
               type="submit"
               disabled={!input.trim() || streaming}
-              className="p-2 rounded-xl bg-white hover:bg-zinc-200 text-black transition-colors disabled:opacity-20 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+              className="p-2 rounded-xl bg-accent-bronze hover:bg-accent-bronze/90 text-bg-primary font-semibold transition-colors disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-bronze cursor-pointer"
               aria-label="Send message"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
@@ -465,8 +474,8 @@ export default function Chatbot() {
               </svg>
             </button>
           </div>
-          <p className="mt-1.5 text-center font-mono text-[9px] text-zinc-600 select-none">
-            Esc to close · session-only memory
+          <p className="mt-1.5 text-center font-mono text-[9px] text-text-tertiary select-none">
+            Esc to close · session-only memory · Gemini AI
           </p>
         </form>
       </div>
