@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, memo } from 'react';
+import { useState, useEffect, useRef, useCallback, memo } from 'react';
 import Image from 'next/image';
 import { CHAT_GREETING, CHAT_SUGGESTIONS } from '@/lib/portfolio-knowledge';
 import { TriquetraIcon, openSicMundus } from '@/components/CommandPalette';
@@ -102,14 +102,14 @@ export default function Chatbot() {
   }, [messages, streaming]);
 
   /* Close & wipe session */
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     playClick();
     abortRef.current?.abort();
     setIsOpen(false);
     setMessages([]);
     setInput('');
     setStreaming(false);
-  };
+  }, [playClick]);
 
   /* Greet on open */
   const greetedRef = useRef(false);
@@ -141,7 +141,7 @@ export default function Chatbot() {
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  });
+  }, [isOpen, handleClose]);
 
   /* Send / stream */
   const send = async (text: string) => {
