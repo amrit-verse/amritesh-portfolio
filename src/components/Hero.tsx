@@ -100,7 +100,7 @@ export default function Hero() {
               </span>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
-                Security: ThreatDesk SIEM · 357 Pytests
+                Security: ThreatDesk DRP · Nmap 7.95
               </span>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
@@ -124,7 +124,7 @@ export default function Hero() {
               <div className="corner-hud p-4 rounded-xl bg-bg-card border border-border-subtle shadow-sm">
                 <p className="text-[11px] font-mono text-accent-bronze uppercase tracking-wider mb-1 font-semibold">ENGINEERING BUILDS</p>
                 <p className="text-xl sm:text-2xl font-bold font-display text-text-primary">9 Systems</p>
-                <p className="text-xs text-text-secondary font-mono mt-0.5">Dual-Store, SIEM, CMS, SIH</p>
+                <p className="text-xs text-text-secondary font-mono mt-0.5">Dual-Store, DRP, Portals, SIH</p>
               </div>
 
               <div className="corner-hud p-4 rounded-xl bg-bg-card border border-border-subtle shadow-sm">
@@ -283,26 +283,17 @@ export default function Hero() {
                   <div className="space-y-2.5">
                     <div className="flex justify-between items-center text-xs font-mono">
                       <span className="text-text-primary">Node.js / Express</span>
-                      <span className="text-accent-bronze font-semibold">Advanced</span>
-                    </div>
-                    <div className="w-full bg-bg-tertiary h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-accent-bronze h-full w-[90%]" />
+                      <span className="text-accent-bronze font-semibold">REST APIs</span>
                     </div>
 
                     <div className="flex justify-between items-center text-xs font-mono">
                       <span className="text-text-primary">Java / Spring Boot</span>
                       <span className="text-accent-bronze font-semibold">Full CRUD REST</span>
                     </div>
-                    <div className="w-full bg-bg-tertiary h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-accent-bronze h-full w-[85%]" />
-                    </div>
 
                     <div className="flex justify-between items-center text-xs font-mono">
                       <span className="text-text-primary">PostgreSQL &amp; Prisma</span>
                       <span className="text-accent-bronze font-semibold">Schemas &amp; Indexing</span>
-                    </div>
-                    <div className="w-full bg-bg-tertiary h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-accent-bronze h-full w-[88%]" />
                     </div>
                   </div>
                 </div>
@@ -331,8 +322,8 @@ export default function Hero() {
                   <p className="text-[11px] font-mono text-accent-bronze uppercase tracking-wider mb-2 font-semibold">03 // VERIFIED AUDIT PROOF</p>
                   <div className="space-y-2 text-xs font-mono">
                     <div className="p-2 rounded bg-bg-tertiary border border-border-subtle flex items-center justify-between">
-                      <span className="text-text-primary">ThreatDesk Rules</span>
-                      <span className="text-accent-bronze font-semibold">66 Rules · 357 Pytests (100%)</span>
+                      <span className="text-text-primary">ReleaseTrace Tests</span>
+                      <span className="text-accent-bronze font-semibold">101 vitest + Playwright</span>
                     </div>
                     <div className="p-2 rounded bg-bg-tertiary border border-border-subtle flex items-center justify-between">
                       <span className="text-text-primary">Anna University</span>
@@ -359,7 +350,7 @@ export default function Hero() {
                     <p><span className="text-text-primary">Shell:</span> bash 5.2.32</p>
                   </div>
                   <div className="space-y-1.5 text-text-secondary">
-                    <p><span className="text-text-primary">CPU:</span> AMD Ryzen 5 5600U with Radeon Graphics (12) @ 2.30 GHz</p>
+                    <p><span className="text-text-primary">CPU:</span> AMD Ryzen 7 7735U with Radeon Graphics (16) @ 4.75 GHz</p>
                     <p><span className="text-text-primary">Memory:</span> 16 GB DDR4-3200 (Dual Channel)</p>
                     <p><span className="text-text-primary">Disk:</span> 512 GB PCIe NVMe SSD</p>
                     <p><span className="text-text-primary">Virtualization:</span> KVM enabled (AMD-V hardware acceleration)</p>
@@ -410,7 +401,7 @@ export default function Hero() {
                 <div className="p-3.5 rounded-xl bg-bg-primary border border-border-subtle">
                   <p className="text-[10px] font-mono text-accent-bronze uppercase font-semibold">JAPANESE LANGUAGE</p>
                   <p className="text-xl font-bold font-display text-text-primary mt-0.5">JL-NAT N5</p>
-                  <p className="text-xs text-text-secondary font-mono mt-1">Certified by Senmon Kyouiku Publishing (Tokyo, Japan)</p>
+                  <p className="text-xs text-text-secondary font-mono mt-1">Certified by JL-NAT Examination Board (Tokyo, Japan)</p>
                 </div>
                 <div className="p-3.5 rounded-xl bg-bg-primary border border-border-subtle">
                   <p className="text-[10px] font-mono text-accent-bronze uppercase font-semibold">DUOLINGO ENGLISH</p>

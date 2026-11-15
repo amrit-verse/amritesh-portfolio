@@ -123,10 +123,10 @@ export default function Contact() {
           <div className="mb-8 sm:mb-12">
             <p className="section-number mb-2 flex items-center gap-2 text-xs font-mono tracking-wider text-accent-bronze">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze shadow-[0_0_8px_var(--color-accent-bronze-glow)]" />
-              DIMENSION 04 // CONTACT &amp; DISPATCH
+              DIMENSION 09 // CONTACT &amp; DISPATCH
             </p>
             <h2 id="contact-title" className="text-2xl sm:text-3xl md:text-4xl font-bold font-display tracking-tight text-text-primary mb-3">
-              Establish Connection
+              Contact Amritesh
             </h2>
             <p className="text-text-secondary text-sm sm:text-base max-w-2xl leading-relaxed">
               Open for software engineering internships, technical collaborations, and discussions about backend systems or Linux.
@@ -138,7 +138,7 @@ export default function Contact() {
           {/* Left: Natural Pitch */}
           <ScrollReveal delay={100}>
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold font-display mb-3 sm:mb-4 text-text-primary">Let&apos;s Build Something</h3>
+              <h3 className="text-xl sm:text-2xl font-bold font-display mb-3 sm:mb-4 text-text-primary">Hire Amritesh for Backend &amp; Linux Work</h3>
               <p className="text-xs sm:text-sm sm:text-base text-text-secondary leading-relaxed mb-4 sm:mb-6">
                 I am actively seeking software engineering, backend, or systems internship opportunities. If you need someone who understands Linux, writes clean typed code, and genuinely enjoys solving tricky technical problems — my inbox is open.
               </p>

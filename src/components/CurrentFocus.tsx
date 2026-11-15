@@ -47,10 +47,10 @@ const focusCards = [
   },
   {
     title: 'Production Platforms & Threat Defense',
-    tag: 'SIEM & Audit Engines',
+    tag: 'Audit Engines & DRP',
     points: [
       'ReleaseTrace: dual-store engine with automated release diffing & cryptographic evidence.',
-      'ThreatDesk: 66 deterministic detection rules with 357 passing automated test suites.'
+      'ThreatDesk: DRP platform for impersonation & typosquatting detection (in progress).'
     ],
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

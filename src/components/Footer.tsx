@@ -157,7 +157,7 @@ export default function Footer() {
             <TriquetraIcon className="w-3.5 h-3.5 text-accent-bronze inline-block align-middle mr-1.5 -mt-0.5 shrink-0" />
             <span>&ldquo;What we know is a drop, what we don&apos;t know is an ocean.&rdquo; — Winden</span>
           </p>
-          <p>© 2026 Amritesh Mishra. Built with Next.js &amp; Tailwind CSS.</p>
+          <p>© {new Date().getFullYear()} Amritesh Mishra. Built with Next.js &amp; Tailwind CSS.</p>
         </div>
       </div>
     </footer>

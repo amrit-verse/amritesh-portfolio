@@ -47,17 +47,19 @@ export function buildSystemPrompt(): string {
 
 ## 3 Core Engineering Pillars
 1. Backend Engineering: Node.js/Express, Spring Boot (Java), RESTful APIs, PostgreSQL, MySQL, MongoDB, TypeScript, Prisma ORM, Auth.js RBAC, schema validation with Zod.
-2. Linux & Systems Engineering: Daily driver workstation on Debian 12 (Bookworm), Bash automation scripts, custom dotfiles, systemd process management, QEMU/KVM virtual security testbed with virbr0 isolated NAT bridge.
+2. Linux & Systems Engineering: Daily driver workstation (AMD Ryzen 7 7735U, 16 GB DDR4) on Debian 13 (Trixie), Bash automation scripts, custom dotfiles, systemd process management, QEMU/KVM virtual security testbed with virbr0 isolated NAT bridge (192.168.122.0/24).
 3. Cybersecurity Foundations: Wireshark packet dissection, Nmap 7.95 network diagnostics, TryHackMe hands-on security labs, Team Leader of Team Sudo in Smart India Hackathon (SIH 2026).
 
-## 7 Verified Projects
-1. TeLSA (Terai Law Students Association) — Production platform replacing WhatsApp rosters with 100% role-based access control (RBAC). Built with Next.js App Router, React, Prisma ORM, PostgreSQL, Auth.js, Cloudflare R2, Cloudinary, Tailwind CSS.
-2. Attendance OS / Attendance Guardian — Client-side utility for Anna University's 75% attendance detention rule. Computes safe bunks and predicts recovery with 0ms server latency. Prototype features QR code and geolocation verification. Built with Next.js, TypeScript, LocalStorage.
-3. Smart Expense Tracker — Backend financial tracking application using multi-stage MongoDB aggregation pipelines ($match, $group, $project) for server-side monthly categorization. Node.js, Express, MongoDB, JWT auth, Chart.js.
-4. Library Management System — Tiered full-stack academic book catalog. Spring Boot (Java), MySQL, JPA/Hibernate, ACID transactions, 12+ REST endpoints. Multi-cloud deployment across Railway (DB), Render (API), and Vercel (UI).
-5. ShopEase — Decoupled e-commerce application with dynamic cart state machine, product filtering, and Razorpay payment gateway integration with cryptographic webhook verification (crypto.createHmac). React, TypeScript, Express, MongoDB.
-6. Entertain Lawyers — Legal study & content platform architecture featuring hierarchical taxonomy and multi-tier editorial review workflows. Next.js App Router, Prisma ORM, PostgreSQL, Cloudflare R2.
-7. DIODESCAN (SIH 2026) — Team Leader (Team Sudo) tackling NTRO challenge SIH26145. Passive threat detection concept combining raw packet inspection principles with Linux network anomaly detection.
+## 9 Verified Projects (flagship first)
+1. ReleaseTrace (Flagship) — Release intelligence platform with dual-store memory (Hindsight Cloud), automated release diffing, tamper-evident audit logs, and HMAC-SHA256-signed telemetry. Next.js 15.1, Inngest background jobs, Groq + Zod schema validation. 101 passing tests (vitest + Playwright). Live dashboard: release-trace-red.vercel.app/dashboard.
+2. ThreatDesk — Digital Risk Protection (DRP) platform detecting brand impersonation, typosquatting domains and rogue apps via deterministic rules plus a logistic-regression ML risk gate. Python 3.13, PostgreSQL. Private build, in progress — ByteXL HacXLerate 2026 (Challenge 3). No public metrics claimed.
+3. TeLSA (Terai Law Students Association) — Production portal for a real law students association (member profiles, events, student publications) with role-based permissions. Next.js App Router, Prisma ORM, PostgreSQL, Auth.js, Cloudinary. Live: terailawassociation.org.np.
+4. Entertain Lawyers — WordPress-to-Next.js 16 architectural migration with hierarchical legal study taxonomy, Prisma 6, PostgreSQL, and Backblaze B2 (S3 SDK) document storage. Live: entertainlawyers.vercel.app.
+5. DIODESCAN (SIH 2026) — Team Leader (Team Sudo) tackling NTRO challenge SIH26145. Passive threat detection concept combining raw packet inspection principles with Linux network anomaly detection.
+6. Library Management System — Academic book catalog with automated loan tracking and strict librarian/student role boundaries. Spring Boot (Java), MySQL, JPA/Hibernate, session-based auth, Docker. Multi-cloud deployment across Railway (DB), Render (API), and Vercel (UI).
+7. EduTrack (Attendance & OD Calculator) — Client-side utility for Anna University's 75% attendance detention rule. Computes safe bunks and predicts recovery with 0ms server latency. Repo: The_Attendence_Predictor.
+8. Smart Expense Tracker — Financial analytics using multi-stage MongoDB aggregation pipelines ($match, $group) for server-side categorization. Node.js, Express, MongoDB, JWT Bearer auth, Chart.js. Live: smart-expense-tracker-d4wt.onrender.com.
+9. ShopEase — E-commerce storefront with persistent cart state and Razorpay checkout verified via HMAC-SHA256 signature checks. TypeScript React (Vite), Express, MongoDB. Live: shopease-iota-nine.vercel.app.
 
 ## Verified Contact & Links
 - Email: ${SITE_CONFIG.email}

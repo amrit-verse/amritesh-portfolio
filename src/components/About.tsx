@@ -16,7 +16,7 @@ export default function About() {
               Where I Started &amp; How I Build
             </h2>
             <p className="text-text-secondary text-xs sm:text-sm max-w-2xl leading-relaxed">
-              From hardware teardowns in Nepal to distributed backend architectures, Debian Linux, and SIEM security in Chennai.
+              From hardware teardowns in Nepal to distributed backend architectures, Debian Linux, and systems security in Chennai.
             </p>
           </div>
         </ScrollReveal>
@@ -43,7 +43,7 @@ export default function About() {
                     { 
                       cycle: "CYCLE I",
                       title: "Hardware Teardown & First Linux Install", 
-                      period: "Nepal // 2018-2022",
+                      period: "Nepal // 2020-2024",
                       points: [
                         "Disassembled first x86 machine at 14 to inspect motherboard and BIOS.",
                         "Replaced slow Windows with lightweight Linux — discovered bash & package managers.",
@@ -57,7 +57,7 @@ export default function About() {
                       points: [
                         "B.E. Computer Science Engineering · Excel Engineering College (8.88 CGPA).",
                         "Adopted Debian 13 as daily driver; automated terminal workflows and dotfiles.",
-                        "Architected ReleaseTrace (Dual-Store engine), ThreatDesk (SIEM), and TeLSA (CMS)."
+                        "Architected ReleaseTrace (Dual-Store engine), ThreatDesk (DRP), and TeLSA (CMS)."
                       ]
                     },
                     { 
