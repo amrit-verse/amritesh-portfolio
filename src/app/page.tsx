@@ -1,12 +1,14 @@
 import Navbar from "@/components/Navbar";
+import SpatialBackground from "@/components/SpatialBackground";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import CurrentFocus from "@/components/CurrentFocus";
 import Projects from "@/components/Projects";
+import ConnectionGraph from "@/components/ConnectionGraph";
+import LearningJourney from "@/components/LearningJourney";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Certifications from "@/components/Certifications";
-import LearningJourney from "@/components/LearningJourney";
 import GitHubActivity from "@/components/GitHubActivity";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -16,6 +18,7 @@ import CommandPalette from "@/components/CommandPalette";
 export default function Home() {
   return (
     <>
+      <SpatialBackground />
       <header>
         <Navbar />
       </header>
@@ -24,6 +27,7 @@ export default function Home() {
         <About />
         <CurrentFocus />
         <Projects />
+        <ConnectionGraph />
         <LearningJourney />
         <Skills />
         <Education />

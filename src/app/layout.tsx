@@ -1,37 +1,46 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { SITE_URL, SITE_CONFIG } from "@/lib/config";
+import { SoundProvider } from "@/components/SoundSystem";
+import { ExperienceProvider } from "@/components/ExperienceContext";
 import "./globals.css";
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: SITE_CONFIG.title,
-  description: SITE_CONFIG.description,
+  title: "Amritesh Mishra | Understanding systems. Building what lasts.",
+  description:
+    "Engineering portfolio of Amritesh Mishra. Computer Science undergraduate (Anna University) building robust backends, exploring Linux internals, and analyzing system threat patterns.",
   keywords: [
     "Amritesh Mishra",
     "Software Engineer",
     "Backend Developer",
-    "Linux",
+    "Linux Systems",
     "Cybersecurity",
     "Full Stack Developer",
     "Computer Science Engineering",
     "Next.js",
     "Prisma",
     "PostgreSQL",
+    "ReleaseTrace",
+    "ThreatDesk",
   ],
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
@@ -42,23 +51,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    title: SITE_CONFIG.title,
-    description: SITE_CONFIG.shortDescription,
+    title: "Amritesh Mishra | Understanding systems. Building what lasts.",
+    description:
+      "Engineering portfolio of Amritesh Mishra. Focused on robust backend architecture, Linux kernel workflows, and verified system security.",
     siteName: SITE_CONFIG.name,
     images: [
       {
-        url: `${SITE_URL}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: `${SITE_CONFIG.name} — Portfolio`,
+        url: `${SITE_URL}/icon.png`,
+        width: 512,
+        height: 512,
+        alt: `${SITE_CONFIG.name} — Architecture & Systems Archive`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_CONFIG.title,
-    description: SITE_CONFIG.shortDescription,
-    images: [`${SITE_URL}/og-image.png`],
+    title: "Amritesh Mishra | Understanding systems. Building what lasts.",
+    description:
+      "Engineering portfolio of Amritesh Mishra. Robust backends, Linux internals, and verified system security.",
+    images: [`${SITE_URL}/icon.png`],
   },
   robots: {
     index: true,
@@ -76,7 +87,7 @@ export const metadata: Metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#000000",
+  themeColor: "#090D12",
 };
 
 const jsonLd = {
@@ -94,11 +105,11 @@ const jsonLd = {
   sameAs: Object.values(SITE_CONFIG.links),
   knowsAbout: [
     "Software Engineering",
-    "Linux",
+    "Linux Internals",
     "Cybersecurity",
     "Python",
     "Java",
-    "JavaScript",
+    "TypeScript",
     "React",
     "Next.js",
     "Spring Boot",
@@ -111,9 +122,9 @@ const jsonLd = {
 const portfolioJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: `${SITE_CONFIG.name} — Portfolio`,
+  name: `${SITE_CONFIG.name} — Engineering Archive`,
   url: SITE_URL,
-  description: SITE_CONFIG.description,
+  description: "Understanding systems. Building what lasts.",
   author: {
     "@type": "Person",
     name: SITE_CONFIG.name,
@@ -126,9 +137,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <link rel="preconnect" href="https://api.github.com" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('signal_theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);if(t==='light'){document.documentElement.classList.add('light');}else{document.documentElement.classList.remove('light');}var m=localStorage.getItem('signal_render_mode');if(m){document.documentElement.setAttribute('data-render-mode',m);}}catch(e){}})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -138,11 +158,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioJsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-bg-primary text-text-primary font-sans antialiased">
+      <body className="min-h-screen bg-bg-primary text-text-primary font-sans antialiased selection:bg-[#9C8058]/30 transition-colors duration-300">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        {children}
+        <ExperienceProvider>
+          <SoundProvider>{children}</SoundProvider>
+        </ExperienceProvider>
       </body>
     </html>
   );

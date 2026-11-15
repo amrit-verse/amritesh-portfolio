@@ -4,94 +4,89 @@ import { TriquetraIcon } from '@/components/CommandPalette';
 export default function About() {
   return (
     <section id="about" className="py-16 sm:py-24 md:py-32" aria-label="About Me">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1520px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         <ScrollReveal>
           <div className="mb-8 sm:mb-12">
-            <p className="section-number mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-              01 // ORIGIN &amp; TIMELINE
+            <p className="section-number mb-2 flex items-center gap-2 text-xs font-mono tracking-wider text-accent-bronze">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze shadow-[0_0_8px_var(--color-accent-bronze-glow)]" />
+              DIMENSION 04 // ORIGIN &amp; ARCHIVAL TIMELINE
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold tracking-tight text-text-primary mb-3">
               Where I Started &amp; How I Build
             </h2>
-            <p className="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed">
-              From taking apart old PCs in Nepal to writing backend APIs and tinkering with Linux in Chennai.
+            <p className="text-text-secondary text-xs sm:text-sm max-w-2xl leading-relaxed">
+              From hardware teardowns in Nepal to distributed backend architectures, Debian Linux, and SIEM security in Chennai.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr] items-start">
+        <div className="grid gap-8 lg:grid-cols-[1.3fr_0.9fr] items-start">
           <ScrollReveal delay={100}>
             <div className="space-y-6">
               {/* Natural Human Story Timeline — Three Cycles */}
-              <div className="glass-card p-4 sm:p-6 relative">
+              <div className="corner-hud p-5 sm:p-7 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
-                  <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+                  <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze flex items-center gap-2 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
                     The Three Cycles of Engineering
                   </p>
-                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-emerald-400/90">
-                    <TriquetraIcon className="w-3 h-3 text-emerald-400" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-bg-secondary border border-border-subtle text-[10px] font-mono text-accent-bronze">
+                    <TriquetraIcon className="w-3 h-3 text-accent-bronze" />
                     <span>SIC MUNDUS TIMELINE</span>
                   </span>
                 </div>
-                <div className="space-y-6 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:-translate-x-1/2 before:h-full before:w-px before:bg-gradient-to-b before:from-zinc-500/40 before:via-white/10 before:to-transparent">
+
+                <div className="space-y-4">
                   {[
                     { 
                       cycle: "CYCLE I",
-                      title: "First Old Computer & Discovering Linux", 
+                      title: "Hardware Teardown & First Linux Install", 
                       period: "Nepal // 2018-2022",
-                      desc: "Tore down an old family desktop at 14 just to see how the motherboard worked. Windows was painfully slow on it, so I flashed a lightweight Linux distro. That was my first introduction to the terminal, package managers, and bash." 
-                    },
-                    { 
-                      cycle: "CYCLE I",
-                      title: "Secondary Schooling & +2 Science", 
-                      period: "Rautahat to Kathmandu",
-                      desc: "Finished 10th grade at Jana Jyoti (SEE: 3.60/4.00) in Rautahat, then moved to Kathmandu for +2 Science (Physics, Chemistry, Maths) at Xavier International (GPA: 3.27/4.00). Started writing basic Python and C scripts." 
-                    },
-                    { 
-                      cycle: "CYCLE II",
-                      title: "College in Chennai & Debian Daily Driver", 
-                      period: "2025 — Present",
-                      desc: "Joined Excel Engineering College (affiliated with Anna University, Chennai) for B.E. in Computer Science. Switched full-time to Debian Linux as my daily operating system and automated my entire workflow." 
+                      points: [
+                        "Disassembled first x86 machine at 14 to inspect motherboard and BIOS.",
+                        "Replaced slow Windows with lightweight Linux — discovered bash & package managers.",
+                        "SEE: 3.60/4.00 (Jana Jyoti) · +2 Science PCM: 3.27/4.00 (Xavier International)."
+                      ]
                     },
                     { 
                       cycle: "CYCLE II",
-                      title: "Building Real Tools Instead of Toy Clones", 
-                      period: "Projects // 2025-2026",
-                      desc: "Built TeLSA when law students needed a real membership and article publishing portal. Built Attendance OS because our university detains anyone under 75% attendance and people needed mathematical proof before skipping a class." 
+                      title: "Anna University & Full-Time Debian OS", 
+                      period: "Chennai // 2025 — Present",
+                      points: [
+                        "B.E. Computer Science Engineering · Excel Engineering College (8.88 CGPA).",
+                        "Adopted Debian 13 as daily driver; automated terminal workflows and dotfiles.",
+                        "Architected ReleaseTrace (Dual-Store engine), ThreatDesk (SIEM), and TeLSA (CMS)."
+                      ]
                     },
                     { 
                       cycle: "CYCLE III",
-                      title: "Hackathons & Virtual Systems Lab", 
-                      period: "Current Focus",
-                      desc: "Leading Team Sudo in the Smart India Hackathon (Problem SIH26145 - NTRO). Running QEMU/KVM virtual networks on my machine with virbr0 isolated testbeds to audit ports with Nmap 7.95 and analyze network threat patterns." 
+                      title: "Hackathons, Virtual Labs & Distributed Systems", 
+                      period: "Current Horizon // 2026-2029",
+                      points: [
+                        "Smart India Hackathon: Team Leader (Team Sudo) tackling NTRO challenge SIH26145.",
+                        "Isolated QEMU/KVM virtual testbed on virbr0 NAT bridge with Nmap 7.95 audits.",
+                        "Targeting high-scale distributed backend systems and cloud infrastructure roles."
+                      ]
                     },
-                  ].map((item, index) => (
-                    <div key={item.title} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                      <div className={`flex items-center justify-center w-3 h-3 rounded-full border absolute left-3 md:left-1/2 -translate-x-1/2 z-10 ${
-                        index === 4
-                          ? "border-emerald-400 bg-emerald-950 shadow-[0_0_8px_rgba(52,211,153,0.5)]"
-                          : "border-zinc-500 bg-zinc-900"
-                      }`} />
-                      <div className="w-[calc(100%-1.75rem)] md:w-[calc(50%-2rem)] pl-6 md:pl-0">
-                        <div className={`p-4 rounded-xl bg-[#090c12] border transition-colors ${
-                          index === 4
-                            ? "border-emerald-500/30 group-hover:border-emerald-500/60"
-                            : "border-zinc-800/80 group-hover:border-zinc-600"
-                        } ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}>
-                          <div className="flex items-center gap-1.5 mb-1">
-                            <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">
-                              {item.cycle}
-                            </span>
-                          </div>
-                          <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5 mb-1">
-                            <h3 className="font-semibold text-white text-sm">{item.title}</h3>
-                            <span className={`text-[0.6875rem] font-mono shrink-0 ${index === 4 ? "text-emerald-400 font-semibold" : "text-zinc-400"}`}>{item.period}</span>
-                          </div>
-                          <p className="text-xs text-zinc-400 leading-relaxed">{item.desc}</p>
+                  ].map((item) => (
+                    <div key={item.title} className="p-4 rounded-xl bg-bg-secondary border border-border-subtle hover:border-accent-bronze/60 transition-colors">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-bg-tertiary text-accent-bronze border border-border-subtle">
+                            {item.cycle}
+                          </span>
+                          <h3 className="font-semibold text-text-primary text-sm sm:text-base">{item.title}</h3>
                         </div>
+                        <span className="text-[11px] font-mono text-accent-bronze font-semibold">{item.period}</span>
                       </div>
+                      <ul className="space-y-1.5 text-xs text-text-secondary font-mono pl-1">
+                        {item.points.map((pt, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="text-accent-bronze mt-0.5">›</span>
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   ))}
                 </div>
@@ -101,55 +96,63 @@ export default function About() {
 
           <ScrollReveal delay={200}>
             <div className="space-y-4">
-              {/* How I Work */}
-              <div className="glass-card p-5 sm:p-6 border-zinc-800/90">
-                <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 mb-3 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
-                  How I Approach Code
+              {/* Engineering Principles (Punchy, Visual Chips) */}
+              <div className="corner-hud p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
+                <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze mb-3 flex items-center gap-2 font-bold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
+                  Engineering Principles
                 </p>
-                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-3">
-                  I don&apos;t enjoy tutorial hell or copy-pasting code I don&apos;t understand. When building a backend, I want to know why a database query is slow, how authentication cookies should be secured, and how edge cases actually behave.
-                </p>
-                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                  I care about typed schemas (TypeScript, Zod), clean migrations (Prisma, PostgreSQL), and predictable error handling. If a tool doesn&apos;t solve a real problem for someone, it&apos;s not worth shipping.
-                </p>
+                <div className="space-y-2.5 text-xs font-mono">
+                  <div className="p-3 rounded-xl bg-bg-secondary border border-border-subtle">
+                    <p className="text-text-primary font-semibold mb-0.5">01 // Zero Toy Clones</p>
+                    <p className="text-text-secondary">Build tools solving real operational problems with verifiable evidence.</p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-bg-secondary border border-border-subtle">
+                    <p className="text-text-primary font-semibold mb-0.5">02 // Type-Safe Contracts</p>
+                    <p className="text-text-secondary">Strict schemas with Zod, TypeScript strict mode, and deterministic migrations.</p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-bg-secondary border border-border-subtle">
+                    <p className="text-text-primary font-semibold mb-0.5">03 // Deep Root-Cause Analysis</p>
+                    <p className="text-text-secondary">Inspect SQL execution plans, kernel syscalls, and network packet traces.</p>
+                  </div>
+                </div>
               </div>
 
-              {/* Academic Snapshot */}
-              <div className="glass-card p-5 sm:p-6 border-zinc-800/90">
-                <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 mb-2">College Coordinates</p>
-                <h3 className="text-base sm:text-lg font-semibold text-white mb-1">
+              {/* Academic Coordinates */}
+              <div className="corner-hud p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
+                <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze mb-2 font-bold">College Coordinates</p>
+                <h3 className="text-base sm:text-lg font-display font-semibold text-text-primary mb-1">
                   B.E. Computer Science Engineering
                 </h3>
-                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+                <p className="text-xs text-text-secondary mb-4">
                   Excel Engineering College (Affiliated with Anna University, Chennai)
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-xl bg-[#090c12] p-3.5 border border-zinc-800/80">
-                    <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-zinc-400 mb-1">Current CGPA</p>
-                    <p className="text-xl font-bold text-white tracking-tight">8.88 / 10</p>
-                    <p className="text-[0.6875rem] text-emerald-400 mt-0.5">Verified Academic Record</p>
+                  <div className="rounded-xl bg-bg-secondary p-3.5 border border-border-subtle">
+                    <p className="text-[10px] font-mono uppercase tracking-wider text-text-secondary mb-1">Current CGPA</p>
+                    <p className="text-xl font-bold font-display text-text-primary tracking-tight">8.88 / 10</p>
+                    <p className="text-[10px] font-mono text-accent-bronze mt-0.5">Verified Academic Record</p>
                   </div>
-                  <div className="rounded-xl bg-[#090c12] p-3.5 border border-zinc-800/80">
-                    <p className="text-[0.6875rem] font-mono uppercase tracking-wider text-zinc-400 mb-1">Graduation</p>
-                    <p className="text-xl font-bold text-white tracking-tight">May 2029</p>
-                    <p className="text-[0.6875rem] text-zinc-400 mt-0.5">Progressing 2nd year</p>
+                  <div className="rounded-xl bg-bg-secondary p-3.5 border border-border-subtle">
+                    <p className="text-[10px] font-mono uppercase tracking-wider text-text-secondary mb-1">Graduation Target</p>
+                    <p className="text-xl font-bold font-display text-text-primary tracking-tight">May 2029</p>
+                    <p className="text-[10px] font-mono text-text-secondary mt-0.5">Progressing 2nd year</p>
                   </div>
                 </div>
               </div>
 
               {/* Human Language Card */}
-              <div className="glass-card p-5 sm:p-6 border-zinc-800/90">
-                <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 mb-2">Languages I Speak</p>
-                <p className="text-xs text-zinc-400 mb-3 leading-relaxed">
-                  Raised speaking Nepali, Hindi, Bhojpuri, and Maithili. Professional fluency in English, conversational Tamil, and self-studied elementary Japanese.
-                </p>
+              <div className="corner-hud p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
+                <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze mb-2 font-bold">Languages &amp; Global Communication</p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#090c12] border border-emerald-500/25 text-emerald-300">
-                    JL-NAT N5 (Japanese)
+                  <span className="text-xs font-mono px-3 py-1.5 rounded-lg bg-bg-secondary border border-accent-bronze/50 text-text-primary">
+                    JL-NAT N5 (Japanese Certified)
                   </span>
-                  <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#090c12] border border-emerald-500/25 text-emerald-300">
-                    Duolingo English: 105
+                  <span className="text-xs font-mono px-3 py-1.5 rounded-lg bg-bg-secondary border border-accent-bronze/50 text-text-primary">
+                    Duolingo English: 105 (B2 Professional)
+                  </span>
+                  <span className="text-xs font-mono px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle text-text-secondary">
+                    Nepali · Hindi · Bhojpuri · Maithili
                   </span>
                 </div>
               </div>

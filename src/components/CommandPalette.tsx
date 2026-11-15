@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useSound } from '@/components/SoundSystem';
 
 export type CommandCategory = 'Actions' | 'Projects' | 'Navigation' | 'Sic Mundus';
 
@@ -11,7 +12,7 @@ export interface CommandItem {
   category: CommandCategory;
   badge?: string;
   keywords: string[];
-  icon: 'resume' | 'mail' | 'chat' | 'terminal' | 'github' | 'linkedin' | 'triquetra' | 'code' | 'compass' | 'cycle';
+  icon: 'resume' | 'mail' | 'chat' | 'terminal' | 'github' | 'linkedin' | 'triquetra' | 'code' | 'compass' | 'cycle' | 'graph';
   run: (ctx: { close: () => void; setCopied: (val: boolean) => void }) => void;
 }
 
@@ -105,7 +106,7 @@ const COMMANDS: CommandItem[] = [
   {
     id: 'act-workstation',
     title: 'Inspect Workstation ($ fastfetch)',
-    subtitle: 'Hardware specs, Debian 12 environment, KVM/QEMU virbr0 virtual lab',
+    subtitle: 'Hardware specs, Debian 13 environment, KVM/QEMU virbr0 virtual lab',
     category: 'Actions',
     badge: 'Dossier',
     keywords: ['fastfetch', 'specs', 'debian', 'workstation', 'hardware', 'system', 'kvm', 'linux'],
@@ -146,12 +147,12 @@ const COMMANDS: CommandItem[] = [
 
   // ─── Direct Project Jumps (Auto-expands project in Projects section) ───
   {
-    id: 'proj-telsa',
-    title: '01 // Terai Law Students Association (TeLSA)',
-    subtitle: 'Production CMS & legal publishing portal (Next.js 16, Prisma, Auth.js RBAC)',
+    id: 'proj-releasetrace',
+    title: '01 // ReleaseTrace (Dual-Store Audit Engine)',
+    subtitle: 'Release intelligence platform with memory, evidence & tamper-evident audit logs',
     category: 'Projects',
-    badge: 'Full-Stack',
-    keywords: ['telsa', 'law', 'cms', 'nextjs', 'prisma', 'postgresql', 'authjs', 'rbac'],
+    badge: 'Flagship Platform',
+    keywords: ['releasetrace', 'release', 'trace', 'audit', 'dual-store', 'nextjs', 'evidence', 'diff'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -161,12 +162,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-edutrack',
-    title: '02 // EduTrack (Attendance & OD Calculator)',
-    subtitle: 'Anna University 75% statutory detention calculator & timetable engine',
+    id: 'proj-threatdesk',
+    title: '02 // ThreatDesk (SIEM & Threat Rule Engine)',
+    subtitle: 'Digital Risk Protection with 66 deterministic rules and 357 passing pytests',
     category: 'Projects',
-    badge: 'Systems',
-    keywords: ['edutrack', 'attendance', 'guardian', '75', 'calculator', 'anna university', 'bunk'],
+    badge: 'HacXLerate 2026',
+    keywords: ['threatdesk', 'threat', 'desk', 'siem', 'rules', 'python', 'pytest', 'postgresql'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -176,12 +177,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-expense',
-    title: '03 // Smart Expense Tracker',
-    subtitle: 'Financial analytics engine with MongoDB aggregation pipelines ($match, $group)',
+    id: 'proj-telsa',
+    title: '03 // Terai Law Students Association (TeLSA)',
+    subtitle: 'Production CMS & legal publishing portal (Next.js 16, Prisma, Auth.js RBAC)',
     category: 'Projects',
-    badge: 'Backend',
-    keywords: ['expense', 'finance', 'tracker', 'mongodb', 'aggregation', 'jwt', 'chartjs'],
+    badge: 'Full-Stack',
+    keywords: ['telsa', 'law', 'cms', 'nextjs', 'prisma', 'postgresql', 'authjs', 'rbac'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -191,12 +192,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-library',
-    title: '04 // Academic Library Management System',
-    subtitle: 'Tiered Spring Boot Java REST backend deployed on Railway, Render & Vercel',
+    id: 'proj-edutrack',
+    title: '04 // EduTrack (Attendance & OD Calculator)',
+    subtitle: 'Anna University 75% statutory detention calculator & timetable engine',
     category: 'Projects',
-    badge: 'Spring Boot',
-    keywords: ['library', 'spring boot', 'java', 'mysql', 'railway', 'render', 'rest api'],
+    badge: 'Systems',
+    keywords: ['edutrack', 'attendance', 'guardian', '75', 'calculator', 'anna university', 'bunk'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -206,12 +207,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-shopease',
-    title: '05 // ShopEase E-Commerce Platform',
-    subtitle: 'MERN cart state machine with Razorpay cryptographic webhook verification',
+    id: 'proj-expense',
+    title: '05 // Smart Expense Tracker',
+    subtitle: 'Financial analytics engine with MongoDB aggregation pipelines ($match, $group)',
     category: 'Projects',
-    badge: 'Payments',
-    keywords: ['shopease', 'ecommerce', 'store', 'cart', 'razorpay', 'webhooks', 'mern'],
+    badge: 'Backend',
+    keywords: ['expense', 'finance', 'tracker', 'mongodb', 'aggregation', 'jwt', 'chartjs'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -221,12 +222,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-lawyers',
-    title: '06 // Entertain Lawyers CMS Architecture',
-    subtitle: 'WordPress to Next.js 16 migration, Backblaze B2 S3 storage & Prisma 6',
+    id: 'proj-library',
+    title: '06 // Academic Library Management System',
+    subtitle: 'Tiered Spring Boot Java REST backend deployed on Railway, Render & Vercel',
     category: 'Projects',
-    badge: 'Migration',
-    keywords: ['entertain lawyers', 'lawyers', 'wordpress migration', 'backblaze', 's3', 'prisma'],
+    badge: 'Spring Boot',
+    keywords: ['library', 'spring boot', 'java', 'mysql', 'railway', 'render', 'rest api'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -236,8 +237,38 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
+    id: 'proj-shopease',
+    title: '07 // ShopEase E-Commerce Platform',
+    subtitle: 'MERN cart state machine with Razorpay cryptographic webhook verification',
+    category: 'Projects',
+    badge: 'Payments',
+    keywords: ['shopease', 'ecommerce', 'store', 'cart', 'razorpay', 'webhooks', 'mern'],
+    icon: 'code',
+    run: ({ close }) => {
+      close();
+      window.dispatchEvent(new CustomEvent('select-project', { detail: '07' }));
+      const el = document.getElementById('projects');
+      el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    },
+  },
+  {
+    id: 'proj-lawyers',
+    title: '08 // Entertain Lawyers CMS Architecture',
+    subtitle: 'WordPress to Next.js 16 migration, Backblaze B2 S3 storage & Prisma 6',
+    category: 'Projects',
+    badge: 'Migration',
+    keywords: ['entertain lawyers', 'lawyers', 'wordpress migration', 'backblaze', 's3', 'prisma'],
+    icon: 'code',
+    run: ({ close }) => {
+      close();
+      window.dispatchEvent(new CustomEvent('select-project', { detail: '08' }));
+      const el = document.getElementById('projects');
+      el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    },
+  },
+  {
     id: 'proj-diodescan',
-    title: '07 // DIODESCAN — Smart India Hackathon 2026',
+    title: '09 // DIODESCAN — Smart India Hackathon 2026',
     subtitle: 'Team Leader for Team Sudo tackling NTRO Threat Detection challenge SIH26145',
     category: 'Projects',
     badge: 'SIH 2026',
@@ -245,7 +276,7 @@ const COMMANDS: CommandItem[] = [
     icon: 'code',
     run: ({ close }) => {
       close();
-      window.dispatchEvent(new CustomEvent('select-project', { detail: '07' }));
+      window.dispatchEvent(new CustomEvent('select-project', { detail: '09' }));
       const el = document.getElementById('projects');
       el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
@@ -293,7 +324,7 @@ const COMMANDS: CommandItem[] = [
   },
   {
     id: 'nav-projects',
-    title: '03 // Featured 7 Projects Showcase',
+    title: '03 // Featured Projects Showcase',
     subtitle: 'Case studies, architectural diagrams, data flows, and code links',
     category: 'Navigation',
     badge: 'Showcase',
@@ -305,9 +336,22 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
+    id: 'nav-graph',
+    title: '04 // Connection Graph & Relational Matrix',
+    subtitle: 'Interactive architectural map linking languages, virtualized labs, builds & credentials',
+    category: 'Navigation',
+    badge: 'Interactive',
+    keywords: ['graph', 'matrix', 'architecture', 'connections', 'nodes', 'relationships'],
+    icon: 'graph',
+    run: ({ close }) => {
+      close();
+      document.getElementById('graph')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    },
+  },
+  {
     id: 'nav-learning',
-    title: '04 // Systems Lab & Hands-On Practice',
-    subtitle: 'TryHackMe penetration testing, HackerRank, QEMU/KVM virtual networks',
+    title: '05 // Systems Lab & Hands-On Practice',
+    subtitle: 'ThreatDesk 357 pytests, TryHackMe, QEMU/KVM virtual networks',
     category: 'Navigation',
     badge: 'Lab',
     keywords: ['learning', 'lab', 'tryhackme', 'hackerrank', 'virtual labs', 'qemu', 'kvm'],
@@ -319,7 +363,7 @@ const COMMANDS: CommandItem[] = [
   },
   {
     id: 'nav-skills',
-    title: '05 // Technical Skills Stack',
+    title: '06 // Technical Skills Stack',
     subtitle: 'Languages, frameworks, databases, Linux tools, and systems comfort',
     category: 'Navigation',
     badge: 'Skills',
@@ -332,7 +376,7 @@ const COMMANDS: CommandItem[] = [
   },
   {
     id: 'nav-education',
-    title: '06 // Academic Credentials & Education',
+    title: '07 // Academic Credentials & Education',
     subtitle: 'Excel Engineering College (Anna University), Xavier International, Jana Jyoti',
     category: 'Navigation',
     badge: 'Academics',
@@ -345,7 +389,7 @@ const COMMANDS: CommandItem[] = [
   },
   {
     id: 'nav-contact',
-    title: '07 // Direct Contact & Inquiries',
+    title: '08 // Direct Contact & Inquiries',
     subtitle: 'Get in touch for internships, engineering roles, or tech collaborations',
     category: 'Navigation',
     badge: 'Contact',
@@ -432,6 +476,7 @@ export default function CommandPalette() {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [copied, setCopied] = useState(false);
+  const { playClick, playChime } = useSound();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -441,14 +486,16 @@ export default function CommandPalette() {
     setSelectedIndex(0);
     setCopied(false);
     setIsOpen(true);
-  }, []);
+    playClick();
+  }, [playClick]);
 
   const closePalette = useCallback(() => {
     setIsOpen(false);
     setQuery('');
     setSelectedIndex(0);
     setCopied(false);
-  }, []);
+    playClick();
+  }, [playClick]);
 
   // Global Keyboard Shortcuts (⌘K / Ctrl+K and Custom Events)
   useEffect(() => {
@@ -473,7 +520,7 @@ export default function CommandPalette() {
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('open-sic-mundus', handleOpenEvent);
 
-    // Deep link query parameter support (deferred to avoid synchronous cascading render)
+    // Deep link query parameter support
     let deepLinkTimer: NodeJS.Timeout | null = null;
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
@@ -507,10 +554,11 @@ export default function CommandPalette() {
   // Reset copied status after 2 seconds
   useEffect(() => {
     if (copied) {
+      playChime();
       const timer = setTimeout(() => setCopied(false), 2200);
       return () => clearTimeout(timer);
     }
-  }, [copied]);
+  }, [copied, playChime]);
 
   // Filter commands by query
   const filteredCommands = useMemo(() => {
@@ -547,6 +595,7 @@ export default function CommandPalette() {
       e.preventDefault();
       const current = filteredCommands[selectedIndex];
       if (current) {
+        playClick();
         current.run({
           close: () => setIsOpen(false),
           setCopied,
@@ -557,12 +606,13 @@ export default function CommandPalette() {
 
   const executeItem = useCallback(
     (cmd: CommandItem) => {
+      playClick();
       cmd.run({
         close: () => setIsOpen(false),
         setCopied,
       });
     },
-    []
+    [playClick]
   );
 
   if (!isOpen) return null;
@@ -576,243 +626,187 @@ export default function CommandPalette() {
       aria-label="Sic Mundus Command Palette"
     >
       <div
-        className="w-full max-w-2xl bg-[#090b11] border border-zinc-800 rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_25px_rgba(52,211,153,0.12)] overflow-hidden flex flex-col max-h-[82vh] animate-in fade-in-0 zoom-in-95 duration-150"
+        className="w-full max-w-2xl bg-bg-card border border-border-subtle rounded-2xl shadow-hud overflow-hidden flex flex-col max-h-[82vh] animate-in fade-in-0 zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ─── Header: Sic Mundus Brand & Latin Motto ─── */}
-        <div className="px-4 sm:px-5 py-3 border-b border-zinc-800/80 bg-[#07080d] flex items-center justify-between">
+        <div className="px-4 sm:px-5 py-3 border-b border-border-subtle bg-bg-secondary flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded-md bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <div className="w-6 h-6 rounded-md bg-accent-bronze/15 border border-accent-bronze/40 flex items-center justify-center text-accent-bronze">
               <TriquetraIcon className="w-3.5 h-3.5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-mono text-xs font-bold tracking-wider text-white">
+                <span className="font-mono text-xs font-bold tracking-wider text-text-primary">
                   SIC MUNDUS CREATUS EST
                 </span>
-                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-zinc-800/90 text-zinc-300 border border-zinc-700">
+                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-bg-tertiary text-accent-bronze border border-border-subtle">
                   COMMAND PALETTE
                 </span>
               </div>
-              <p className="text-[10px] font-mono text-zinc-300 italic">
+              <p className="text-[10px] font-mono text-text-secondary italic">
                 &ldquo;Der Anfang ist das Ende und das Ende ist der Anfang&rdquo;
               </p>
             </div>
           </div>
-
-          {/* Close Pill Button */}
           <button
             type="button"
-            onClick={() => closePalette()}
-            className="px-2 py-1 rounded bg-[#10131d] border border-zinc-800 text-[11px] font-mono text-zinc-400 hover:text-white transition-colors"
-            aria-label="Close command palette (Escape)"
+            onClick={closePalette}
+            className="text-xs font-mono px-2 py-1 rounded bg-bg-tertiary border border-border-subtle text-text-secondary hover:text-text-primary hover:border-accent-bronze/60 transition-colors cursor-pointer"
+            aria-label="Close command palette (Esc)"
           >
-            Esc
+            ESC
           </button>
         </div>
 
-        {/* ─── Search Input Bar ─── */}
-        <div className="px-4 sm:px-5 py-3.5 border-b border-zinc-800/80 bg-[#0a0d14] flex items-center gap-3">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-4 h-4 text-emerald-400 shrink-0"
-            aria-hidden="true"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            ref={inputRef}
-            type="text"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setSelectedIndex(0);
-            }}
-            onKeyDown={handleInputKeyDown}
-            placeholder="Type a command, project, action, or DARK lore... (e.g. 'resume', 'telsa', 'dark', 'email')"
-            className="w-full bg-transparent text-sm text-white placeholder-zinc-500 focus:outline-none font-mono"
-            aria-label="Search commands"
-          />
-          {query && (
-            <button
-              type="button"
-              onClick={() => {
-                setQuery('');
+        {/* ─── Search Input Field ─── */}
+        <div className="p-3 sm:p-4 border-b border-border-subtle bg-bg-card">
+          <div className="relative flex items-center">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4 text-accent-bronze absolute left-3 pointer-events-none"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              ref={inputRef}
+              type="text"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
                 setSelectedIndex(0);
               }}
-              className="text-xs text-zinc-500 hover:text-zinc-300 font-mono px-1.5 py-0.5 rounded"
-              aria-label="Clear search query"
-            >
-              Clear
-            </button>
-          )}
+              onKeyDown={handleInputKeyDown}
+              placeholder="Search actions, projects, systems, or Sic Mundus lore... (↑↓ to select, ↵ to run)"
+              className="w-full pl-9 pr-4 py-2.5 bg-bg-primary border border-border-subtle rounded-xl text-xs sm:text-sm font-mono text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-accent-bronze focus:ring-1 focus:ring-accent-bronze/50 transition-all"
+            />
+          </div>
         </div>
 
-        {/* ─── Copied Toast Indicator (Transient Feedback) ─── */}
+        {/* ─── Copied Toast Indicator ─── */}
         {copied && (
-          <div className="bg-emerald-500/15 border-b border-emerald-500/30 px-4 py-2 flex items-center justify-between text-xs font-mono text-emerald-300 animate-in fade-in">
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              Copied <strong>contact@amritesh.com.np</strong> to clipboard!
-            </span>
-            <span className="text-[10px] text-emerald-400/80">Ready to paste</span>
+          <div className="px-4 py-2 bg-accent-bronze/15 border-b border-accent-bronze/40 text-xs font-mono text-text-primary flex items-center justify-between animate-in fade-in duration-150">
+            <span>✓ Email address copied to clipboard (contact@amritesh.com.np)</span>
+            <span className="text-[10px] text-accent-bronze">READY TO PASTE</span>
           </div>
         )}
 
-        {/* ─── Filtered Commands List ─── */}
-        <div ref={listRef} className="overflow-y-auto p-2 sm:p-3 space-y-1 divide-y divide-zinc-900/60 max-h-[55vh]">
+        {/* ─── Command List ─── */}
+        <div
+          ref={listRef}
+          className="flex-1 overflow-y-auto p-2 sm:p-3 divide-y divide-border-subtle/40"
+          role="listbox"
+        >
           {filteredCommands.length === 0 ? (
-            <div className="py-12 text-center">
-              <TriquetraIcon className="w-8 h-8 text-zinc-700 mx-auto mb-3" />
-              <p className="text-sm font-mono text-zinc-400">No matching command in the timeline.</p>
-              <p className="text-xs font-mono text-zinc-600 mt-1">
-                Try searching for &quot;resume&quot;, &quot;telsa&quot;, &quot;dark&quot;, &quot;email&quot;, or &quot;about&quot;.
-              </p>
+            <div className="p-8 text-center">
+              <p className="font-mono text-xs text-text-secondary mb-1">No matching commands found.</p>
+              <p className="font-mono text-[10px] text-text-secondary/70">Try searching &quot;resume&quot;, &quot;releasetrace&quot;, &quot;threatdesk&quot;, &quot;graph&quot;, or &quot;sic mundus&quot;.</p>
             </div>
           ) : (
             filteredCommands.map((cmd, idx) => {
               const isSelected = idx === selectedIndex;
-
               return (
                 <div
                   key={cmd.id}
                   data-cmd-index={idx}
                   onClick={() => executeItem(cmd)}
                   onMouseEnter={() => setSelectedIndex(idx)}
-                  className={`group flex items-center justify-between gap-3 p-3 rounded-xl cursor-pointer transition-all ${
-                    isSelected
-                      ? 'bg-zinc-800/90 text-white shadow-sm border border-emerald-500/40'
-                      : 'text-zinc-300 hover:bg-zinc-900/80 border border-transparent'
-                  }`}
                   role="option"
                   aria-selected={isSelected}
+                  className={`flex items-center justify-between gap-3 p-2.5 sm:p-3 rounded-xl cursor-pointer transition-all ${
+                    isSelected
+                      ? 'bg-bg-tertiary border border-accent-bronze/60 shadow-sm'
+                      : 'hover:bg-bg-card-hover border border-transparent'
+                  }`}
                 >
-                  <div className="flex items-start sm:items-center gap-3 min-w-0">
+                  <div className="flex items-center gap-3 min-w-0">
                     <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 transition-colors ${
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border ${
                         isSelected
-                          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                          : 'bg-[#121520] text-zinc-400 border border-zinc-800 group-hover:text-zinc-200'
+                          ? 'bg-accent-bronze/20 border-accent-bronze/60 text-text-primary'
+                          : 'bg-bg-primary border-border-subtle text-text-secondary'
                       }`}
                     >
                       {cmd.icon === 'resume' && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-4 h-4">
-                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                          <polyline points="14 2 14 8 20 8" />
-                          <line x1="16" y1="13" x2="8" y2="13" />
-                          <line x1="16" y1="17" x2="8" y2="17" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
                       )}
                       {cmd.icon === 'mail' && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-4 h-4">
-                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                          <polyline points="22,6 12,13 2,6" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                       )}
                       {cmd.icon === 'chat' && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-4 h-4">
-                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
                       )}
                       {cmd.icon === 'terminal' && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-4 h-4">
-                          <polyline points="4 17 10 11 4 5" />
-                          <line x1="12" y1="19" x2="20" y2="19" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" /></svg>
                       )}
                       {cmd.icon === 'github' && (
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" /></svg>
                       )}
                       {cmd.icon === 'linkedin' && (
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
                       )}
-                      {cmd.icon === 'triquetra' && <TriquetraIcon className="w-4 h-4" />}
+                      {cmd.icon === 'triquetra' && (
+                        <TriquetraIcon className="w-4 h-4 text-accent-bronze" />
+                      )}
+                      {cmd.icon === 'cycle' && (
+                        <InfinityIcon className="w-4 h-4 text-accent-bronze" />
+                      )}
                       {cmd.icon === 'code' && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-4 h-4">
-                          <polyline points="16 18 22 12 16 6" />
-                          <polyline points="8 6 2 12 8 18" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
                       )}
                       {cmd.icon === 'compass' && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-4 h-4">
-                          <circle cx="12" cy="12" r="10" />
-                          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><circle cx="12" cy="12" r="10" /><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" /></svg>
                       )}
-                      {cmd.icon === 'cycle' && <InfinityIcon className="w-4 h-4" />}
+                      {cmd.icon === 'graph' && (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><circle cx="6" cy="6" r="3" /><circle cx="18" cy="6" r="3" /><circle cx="12" cy="18" r="3" /><line x1="8.5" y1="7.5" x2="15.5" y2="7.5" /><line x1="7.5" y1="8.5" x2="10.5" y2="15.5" /><line x1="16.5" y1="8.5" x2="13.5" y2="15.5" /></svg>
+                      )}
                     </div>
-
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <p className="text-xs sm:text-sm font-medium tracking-tight truncate text-white">
+                        <span className="text-xs sm:text-sm font-semibold truncate text-text-primary">
                           {cmd.title}
-                        </p>
-                        {cmd.badge && (
-                          <span
-                            className={`text-[10px] font-mono px-1.5 py-0.5 rounded shrink-0 ${
-                              cmd.category === 'Sic Mundus'
-                                ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
-                                : 'bg-zinc-800 text-zinc-300 border border-zinc-700'
-                            }`}
-                          >
-                            {cmd.badge}
-                          </span>
-                        )}
+                        </span>
                       </div>
-                      <p className="text-[11px] sm:text-xs text-zinc-400 truncate mt-0.5 font-mono">
+                      <p className="text-[11px] font-mono text-text-secondary truncate mt-0.5">
                         {cmd.subtitle}
                       </p>
                     </div>
                   </div>
 
-                  {/* Right Action Hint */}
-                  <div className="shrink-0 flex items-center gap-1.5 pl-2">
-                    <span className="hidden sm:inline-block text-[10px] font-mono text-zinc-500 uppercase tracking-wider">
-                      {cmd.category}
-                    </span>
+                  {cmd.badge && (
                     <span
-                      className={`text-[11px] font-mono px-1.5 py-0.5 rounded transition-colors ${
-                        isSelected ? 'bg-white text-black font-semibold' : 'text-zinc-600 bg-zinc-900 border border-zinc-800'
+                      className={`text-[10px] font-mono px-2 py-0.5 rounded-full shrink-0 border ${
+                        isSelected
+                          ? 'bg-accent-bronze/20 text-text-primary border-accent-bronze/50'
+                          : 'bg-bg-primary text-accent-bronze border-border-subtle'
                       }`}
                     >
-                      ↵
+                      {cmd.badge}
                     </span>
-                  </div>
+                  )}
                 </div>
               );
             })
           )}
         </div>
 
-        {/* ─── Footer: Keyboard Navigation Hints ─── */}
-        <div className="px-4 py-2.5 bg-[#07090e] border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-zinc-500">
+        {/* ─── Footer Shortcuts Bar ─── */}
+        <div className="px-4 py-2.5 bg-bg-secondary border-t border-border-subtle flex items-center justify-between text-[10px] font-mono text-text-secondary">
           <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">↑↓</kbd>
-              <span>to navigate</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">↵</kbd>
-              <span>to select</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">esc</kbd>
-              <span>to close</span>
-            </span>
+            <span>↑↓ Navigate</span>
+            <span>↵ Select</span>
+            <span>ESC Close</span>
           </div>
-          <div className="flex items-center gap-1.5 text-zinc-400">
-            <TriquetraIcon className="w-3 h-3 text-emerald-400" />
-            <span>Sic Mundus // Causal Command Center</span>
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
+            <span>25 Commands Ready</span>
           </div>
         </div>
       </div>
