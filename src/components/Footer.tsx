@@ -80,9 +80,9 @@ export default function Footer() {
           {/* Brand Mark ('A' Logo from Browser Tab) & Meta */}
           <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left">
             <div className="flex items-center gap-3">
-              <BrandMark size="sm" />
-              <span className="text-sm sm:text-base font-bold font-mono tracking-wider text-text-primary">
-                AMRITESH MISHRA <span className="text-border-subtle">{"//"}</span> <span className="text-accent-bronze font-normal">SIGNAL 2026</span>
+              <BrandMark size="sm" showText={false} />
+              <span className="text-sm sm:text-base font-bold font-mono tracking-wider text-text-primary sm:whitespace-nowrap">
+                AMRITESH MISHRA <span className="text-border-subtle">{"//"}</span> <span className="text-accent-bronze font-normal">2026</span>
               </span>
             </div>
             <p className="text-xs text-text-secondary font-mono">
@@ -108,7 +108,7 @@ export default function Footer() {
 
           {/* Utilities: Sound Toggle, Social Links & Back-To-Top */}
           <div className="flex items-center gap-2.5">
-            <SoundToggle />
+            <SoundToggle className="h-10 px-3 rounded-xl text-xs active:scale-95" />
 
             {SOCIAL_LINKS.map((item) => (
               <a
@@ -127,7 +127,7 @@ export default function Footer() {
             <a
               href="#"
               onClick={playClick}
-              className="hidden sm:inline-flex items-center gap-2 h-10 px-3.5 rounded-xl bg-bg-card border border-border-subtle text-xs font-mono text-text-secondary hover:text-text-primary hover:border-accent-bronze/60 active:scale-95 transition-all ml-1 shadow-sm"
+              className="hidden sm:inline-flex items-center gap-2 h-10 px-3.5 rounded-xl bg-bg-card border border-border-subtle text-xs font-mono text-text-secondary hover:text-text-primary hover:border-accent-bronze/60 active:scale-95 transition-all ml-1 shadow-sm whitespace-nowrap"
               aria-label="Loop back to origin (Der Anfang)"
             >
               <InfinityIcon className="w-3.5 h-3.5 text-accent-bronze" />

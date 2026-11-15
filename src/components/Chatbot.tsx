@@ -272,23 +272,9 @@ export default function Chatbot() {
           />
         )}
 
-        {/* Easter Egg Tooltip on Hover */}
-        {!isOpen && (
-          <div className="absolute -top-9 right-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0 whitespace-nowrap">
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-bg-card/95 border border-accent-bronze/40 text-[10px] font-mono text-text-primary shadow-hud backdrop-blur-md">
-              <TriquetraIcon className="w-3 h-3 text-accent-bronze" />
-              <span>Sic Mundus Creatus Est · Double-click ⌘K</span>
-            </div>
-          </div>
-        )}
-
         <button
           onClick={() => (isOpen ? handleClose() : handleOpen())}
-          onDoubleClick={(e) => {
-            e.stopPropagation();
-            openSicMundus();
-          }}
-          aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant (Double click for Sic Mundus Command Bar)'}
+          aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant'}
           aria-expanded={isOpen}
           className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full font-mono text-xs sm:text-sm transition-all duration-300 motion-reduce:transition-none active:scale-95 cursor-pointer ${
             isOpen
@@ -311,19 +297,6 @@ export default function Chatbot() {
           </svg>
 
           <span className="tracking-tight font-bold text-text-primary">{isOpen ? 'Close' : 'Ask AI'}</span>
-
-          {/* Triquetra Easter Egg Knot */}
-          <span
-            onClick={(e) => {
-              e.stopPropagation();
-              openSicMundus();
-            }}
-            title="Sic Mundus Creatus Est — Open Command Palette"
-            className="w-5 h-5 rounded-full bg-accent-bronze/15 hover:bg-accent-bronze/30 border border-accent-bronze/40 flex items-center justify-center text-accent-bronze transition-colors cursor-pointer"
-            aria-label="Sic Mundus Easter Egg"
-          >
-            <TriquetraIcon className="w-3 h-3" />
-          </span>
 
           {!isOpen && (
             <span className="hidden min-[360px]:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-accent-bronze/20 text-text-primary border border-accent-bronze/40 tracking-wider">

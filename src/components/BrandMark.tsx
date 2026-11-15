@@ -32,10 +32,8 @@ export function BrandMark({ size = 26, className = '', showText = true }: BrandM
         />
       </div>
       {showText && (
-        <span className="font-mono text-xs sm:text-sm font-bold tracking-tight text-[#F1EEE8] flex items-center gap-1.5">
+        <span className="font-mono text-xs sm:text-sm font-bold tracking-tight text-[#F1EEE8] flex items-center">
           <span>AMRIT</span>
-          <span className="text-[#9C8058] font-normal hidden min-[400px]:inline">/</span>
-          <span className="text-[#929BA4] font-normal text-[11px] hidden min-[400px]:inline">SIGNAL</span>
         </span>
       )}
     </div>

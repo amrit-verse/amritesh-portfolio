@@ -1,4 +1,5 @@
 import { ScrollReveal } from '@/components/ScrollReveal';
+import ProjectCard3D from '@/components/ProjectCard3D';
 
 const focusCards = [
   {
@@ -87,6 +88,7 @@ export default function CurrentFocus() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal-stagger">
           {focusCards.map((card, index) => (
             <ScrollReveal key={card.title} delay={index * 80}>
+              <ProjectCard3D intensity={4} className="h-full">
               <div className="corner-hud h-full p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-bronze/50 shadow-card transition-colors flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-4">
@@ -110,6 +112,7 @@ export default function CurrentFocus() {
                   </ul>
                 </div>
               </div>
+              </ProjectCard3D>
             </ScrollReveal>
           ))}
         </div>

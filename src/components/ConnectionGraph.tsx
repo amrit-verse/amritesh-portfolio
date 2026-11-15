@@ -2,6 +2,7 @@
 
 import { useState, useId } from 'react';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import ProjectCard3D from '@/components/ProjectCard3D';
 import { useExperience } from '@/components/ExperienceContext';
 
 interface GraphNode {
@@ -24,17 +25,17 @@ interface GraphLink {
 const NODES: GraphNode[] = [
   // Languages & Foundations (Col 1: x: 120)
   { id: 'ts', label: 'TypeScript', category: 'language', x: 120, y: 90, description: 'Type-safe contracts & Zod validation', details: 'Core language in ReleaseTrace, TeLSA, and Next.js full-stack architectures.' },
-  { id: 'py', label: 'Python 3.13', category: 'language', x: 120, y: 215, description: 'Threat modeling & automated packet analysis', details: 'Powers ThreatDesk 66 deterministic rules and DIODESCAN flow analysis.' },
+  { id: 'py', label: 'Python 3.13', category: 'language', x: 120, y: 215, description: 'Threat modeling & automated packet analysis', details: 'Powers the ThreatDesk detection engine and DIODESCAN flow analysis.' },
   { id: 'java', label: 'Java 21', category: 'language', x: 120, y: 340, description: 'Spring Boot REST backend services', details: 'JPA transactions, entity modeling, and MySQL concurrency in Library Management.' },
 
   // Systems & Virtualization (Col 2: x: 410)
   { id: 'debian', label: 'Debian 13', category: 'system', x: 410, y: 85, description: 'Workstation host OS & daily driver', details: 'HP Pavilion Aero running Linux 6.12, systemd services, and dotfiles.', jumpLink: '#learning', jumpLabel: 'Inspect Workstation Specs ↓' },
   { id: 'qemu', label: 'QEMU / KVM', category: 'system', x: 410, y: 215, description: 'Isolated hypervisor virtual testbed', details: 'Debian 13 guest on virbr0 NAT bridge for defensive port audits & threat modeling.', jumpLink: '#learning', jumpLabel: 'View Systems Lab ↓' },
-  { id: 'docker', label: 'Docker Engine', category: 'system', x: 410, y: 340, description: 'Containerized services & databases', details: 'Isolated PostgreSQL 17, MongoDB, and microservice containers.' },
+  { id: 'docker', label: 'Docker Engine', category: 'system', x: 410, y: 340, description: 'Containerized services & databases', details: 'Isolated PostgreSQL, MongoDB, and microservice containers.' },
 
   // Builds & Platforms (Col 3: x: 720)
-  { id: 'releasetrace', label: 'ReleaseTrace', category: 'build', x: 720, y: 70, description: 'Dual-store release intelligence platform', details: 'Tracks deployment state & schema transitions with tamper-evident audit memory.', jumpLink: '#projects', jumpLabel: 'Inspect ReleaseTrace in BUILD ↓' },
-  { id: 'threatdesk', label: 'ThreatDesk', category: 'build', x: 720, y: 170, description: 'Digital risk protection platform', details: '66 deterministic detection rules with negative scoring for corporate defensive assets.', jumpLink: '#projects', jumpLabel: 'Inspect ThreatDesk in BUILD ↓' },
+  { id: 'releasetrace', label: 'ReleaseTrace', category: 'build', x: 720, y: 70, description: 'Persistent-memory release intelligence agent', details: 'Hindsight Cloud incident memory, Inngest jobs, Groq synthesis with a human confirmation gate.', jumpLink: '#projects', jumpLabel: 'Inspect ReleaseTrace in BUILD ↓' },
+  { id: 'threatdesk', label: 'ThreatDesk', category: 'build', x: 720, y: 170, description: 'Digital risk protection platform', details: 'Deterministic scoring rules with ML evaluation for corporate defensive assets.', jumpLink: '#projects', jumpLabel: 'Inspect ThreatDesk in BUILD ↓' },
   { id: 'telsa', label: 'TeLSA', category: 'build', x: 720, y: 270, description: 'Production CMS & organizational portal', details: 'Role-based access control, editorial workflows, and legal research taxonomy.', jumpLink: '#projects', jumpLabel: 'Inspect TeLSA in BUILD ↓' },
   { id: 'diodescan', label: 'DIODESCAN', category: 'build', x: 720, y: 370, description: 'Passive AI threat detection for data diodes', details: 'Monitors unidirectional IP packet flows without active network footprints.', jumpLink: '#projects', jumpLabel: 'Inspect DIODESCAN in BUILD ↓' },
 
@@ -173,7 +174,7 @@ export default function ConnectionGraph() {
 
         {/* Visual Graph View */}
         {viewMode === 'graph' ? (
-          <div className={`glass-card border border-border-card p-4 sm:p-6 relative overflow-hidden rounded-2xl mb-6 bg-bg-card/95 transition-all ${
+          <div className={`corner-hud glass-card border border-border-card p-4 sm:p-6 relative overflow-hidden rounded-2xl mb-6 bg-bg-card/95 transition-all ${
             renderMode === '3d'
               ? 'shadow-[0_20px_50px_rgba(0,0,0,0.4),0_0_24px_rgba(156,128,88,0.15)] ring-1 ring-accent-bronze/20'
               : ''
@@ -222,21 +223,19 @@ export default function ConnectionGraph() {
                   targetNode.category === filterCategory;
 
                 return (
-                  <line
+                  <path
                     key={`${link.source}-${link.target}`}
-                    x1={sourceNode.x}
-                    y1={sourceNode.y}
-                    x2={targetNode.x}
-                    y2={targetNode.y}
+                    d={`M ${sourceNode.x} ${sourceNode.y} C ${sourceNode.x + (targetNode.x - sourceNode.x) * 0.45} ${sourceNode.y}, ${targetNode.x - (targetNode.x - sourceNode.x) * 0.45} ${targetNode.y}, ${targetNode.x} ${targetNode.y}`}
+                    fill="none"
                     stroke={
                       isConnected
                         ? `url(#${gradientId}-line)`
                         : isDark ? '#343A40' : '#D6D0C4'
                     }
                     strokeWidth={isConnected ? 2.5 : 1.2}
-                    strokeDasharray={isConnected ? 'none' : '3 3'}
+                    strokeDasharray={isConnected ? undefined : '3 3'}
                     opacity={!isFiltered ? 0.08 : isConnected ? 1 : 0.4}
-                    className="transition-all duration-300"
+                    className={isConnected ? 'graph-edge-active transition-all duration-300' : 'transition-all duration-300'}
                   />
                 );
               })}
@@ -263,19 +262,30 @@ export default function ConnectionGraph() {
                         setSelectedId(node.id);
                       }
                     }}
-                    className="cursor-pointer focus:outline-none transition-all duration-300"
+                    className="graph-node cursor-pointer focus:outline-none transition-all duration-300"
                     opacity={!isFiltered ? 0.15 : 1}
                   >
                     {/* Active highlight aura */}
                     {isSelected && (
-                      <circle
-                        cx={node.x}
-                        cy={node.y}
-                        r={34}
-                        fill="#9C8058"
-                        opacity={0.2}
-                        className="animate-pulse"
-                      />
+                      <>
+                        <circle
+                          cx={node.x}
+                          cy={node.y}
+                          r={34}
+                          fill="#9C8058"
+                          opacity={0.15}
+                          className="animate-pulse"
+                        />
+                        <circle
+                          cx={node.x}
+                          cy={node.y}
+                          r={28}
+                          fill="none"
+                          stroke="#9C8058"
+                          strokeOpacity={0.45}
+                          strokeWidth={1}
+                        />
+                      </>
                     )}
 
                     {/* Node Background */}
@@ -309,7 +319,7 @@ export default function ConnectionGraph() {
                       y={node.y + 25}
                       width={96}
                       height={18}
-                      rx={4}
+                      rx={9}
                       fill={isDark ? '#090D12' : '#F3F0E9'}
                       opacity={0.88}
                       className="pointer-events-none"
@@ -358,6 +368,7 @@ export default function ConnectionGraph() {
         )}
 
         {/* Selected Node Telemetry HUD Card (Wide, punchy, scannable) */}
+        <ProjectCard3D intensity={3}>
         <div className="corner-hud p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-border-subtle">
             <div>
@@ -393,6 +404,7 @@ export default function ConnectionGraph() {
             </div>
           </div>
         </div>
+        </ProjectCard3D>
       </div>
     </section>
   );

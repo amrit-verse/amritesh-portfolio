@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import ProjectCard3D from "@/components/ProjectCard3D";
 
 const VIRTUAL_LAB_ENV = [
   { 
@@ -101,6 +102,7 @@ export default function LearningJourney() {
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           {/* Left Column: Virtual Topology */}
           <ScrollReveal delay={100}>
+            <ProjectCard3D intensity={4} className="h-full">
             <div className="glass-card p-5 sm:p-6 h-full flex flex-col justify-between border border-border-subtle bg-bg-card shadow-card rounded-2xl">
               <div>
                 <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze mb-4 flex items-center gap-2 font-semibold">
@@ -165,10 +167,12 @@ export default function LearningJourney() {
                 </div>
               </div>
             </div>
+            </ProjectCard3D>
           </ScrollReveal>
 
           {/* Right Column: Interactive Diagnostic Inspector */}
           <ScrollReveal delay={180}>
+            <ProjectCard3D intensity={4} className="h-full">
             <div className="glass-card p-5 sm:p-6 border border-border-subtle bg-bg-card shadow-card rounded-2xl flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between gap-3 mb-4">
@@ -248,6 +252,7 @@ export default function LearningJourney() {
                 </p>
               </div>
             </div>
+            </ProjectCard3D>
           </ScrollReveal>
         </div>
       </div>

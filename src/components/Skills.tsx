@@ -1,4 +1,5 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
+import ProjectCard3D from "@/components/ProjectCard3D";
 
 const SKILL_CATEGORIES = [
   {
@@ -50,6 +51,7 @@ export default function Skills() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
           {SKILL_CATEGORIES.map((cat, i) => (
             <ScrollReveal key={cat.label} delay={i * 50}>
+              <ProjectCard3D intensity={4} className="h-full">
               <div className="corner-hud glass-card p-5 sm:p-6 h-full flex flex-col justify-between border border-border-subtle hover:border-accent-bronze/50 transition-colors bg-bg-card shadow-card rounded-2xl">
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
@@ -77,6 +79,7 @@ export default function Skills() {
                   </div>
                 </div>
               </div>
+              </ProjectCard3D>
             </ScrollReveal>
           ))}
         </div>

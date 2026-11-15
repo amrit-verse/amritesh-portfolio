@@ -1,4 +1,5 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
+import ProjectCard3D from "@/components/ProjectCard3D";
 
 const CERTIFICATIONS = [
   {
@@ -47,6 +48,7 @@ export default function Certifications() {
         <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
           {CERTIFICATIONS.map((item) => (
             <ScrollReveal key={item.title} delay={80}>
+              <ProjectCard3D intensity={4} className="h-full">
               <div className="corner-hud h-full p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-bronze/50 shadow-card transition-colors flex flex-col justify-between">
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
@@ -86,6 +88,7 @@ export default function Certifications() {
                   ))}
                 </div>
               </div>
+              </ProjectCard3D>
             </ScrollReveal>
           ))}
         </div>

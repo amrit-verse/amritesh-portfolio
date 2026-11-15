@@ -50,7 +50,7 @@ export default function Hero() {
             >
               <span className="w-2 h-2 rounded-full bg-accent-bronze animate-ping shrink-0" />
               <p className="text-xs sm:text-sm font-mono tracking-[0.2em] text-accent-bronze uppercase font-semibold">
-                SYSTEMS &amp; BACKEND ARCHITECTURE // SIGNAL
+                SYSTEMS &amp; BACKEND ARCHITECTURE
               </p>
             </div>
 
@@ -92,19 +92,19 @@ export default function Hero() {
             >
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
-                ⚡ Backend: Node.js · Spring Boot · PostgreSQL
+                Backend: Node.js · Spring Boot · PostgreSQL
               </span>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
-                🐧 Linux: Debian 13 · KVM virbr0 · Systemd
+                Linux: Debian 13 · KVM virbr0 · Systemd
               </span>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
-                🛡️ Security: ThreatDesk SIEM · 357 Pytests
+                Security: ThreatDesk SIEM · 357 Pytests
               </span>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border-subtle text-xs font-mono text-text-primary shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
-                🚀 Flagship: ReleaseTrace Dual-Store
+                Flagship: ReleaseTrace Dual-Store
               </span>
             </div>
 
@@ -226,7 +226,7 @@ export default function Hero() {
                     : 'text-text-secondary hover:text-text-primary'
                 }`}
               >
-                ⚡ 30s Skim
+                30s Skim
               </button>
               <button
                 type="button"

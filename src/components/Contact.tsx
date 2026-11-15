@@ -2,6 +2,7 @@
 
 import { useState, useCallback, type ReactNode } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import ProjectCard3D from "@/components/ProjectCard3D";
 import { useSound } from "@/components/SoundSystem";
 
 type ContactLink = {
@@ -152,6 +153,7 @@ export default function Contact() {
               </div>
 
               {/* Prominent Direct Email Block */}
+              <ProjectCard3D intensity={4}>
               <div className="corner-hud mb-6 p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-bronze/50 shadow-card transition-colors group">
                 <p className="text-xs text-accent-bronze uppercase tracking-wider mb-2 font-mono">Direct Secure Channel</p>
                 <a 
@@ -166,6 +168,7 @@ export default function Contact() {
                   </svg>
                 </a>
               </div>
+              </ProjectCard3D>
 
               <div className="flex items-center gap-2.5 text-text-secondary cursor-default" title="Based in Chennai, India">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-accent-bronze shrink-0" aria-hidden="true">
