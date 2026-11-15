@@ -149,7 +149,7 @@ export default function Contact() {
                   <span className="absolute inline-flex h-full w-full rounded-full bg-accent-bronze opacity-75 animate-ping" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-bronze" />
                 </span>
-                <span className="text-xs sm:text-sm font-mono text-text-primary">Available for Summer / Fall 2026 Opportunities</span>
+                <span className="text-xs sm:text-sm font-mono text-text-primary">Open for 2027 Internships (All Seasons)</span>
               </div>
 
               {/* Prominent Direct Email Block */}

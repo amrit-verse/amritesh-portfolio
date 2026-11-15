@@ -283,7 +283,7 @@ export default function Hero3DVisual() {
       {/* Satellite Node 1: Top-Right (Status) */}
       <div className="hidden sm:flex absolute -top-2 right-0 z-20 items-center gap-2 px-3 py-1.5 rounded-xl bg-bg-card/95 border border-border-subtle shadow-lg backdrop-blur-md transition-all hover:border-accent-bronze">
         <span className="w-2 h-2 rounded-full bg-accent-bronze animate-ping" />
-        <span className="text-[11px] font-mono text-text-primary font-medium">Summer &apos;26 Available</span>
+        <span className="text-[11px] font-mono text-text-primary font-medium">Open for 2027 Internships</span>
       </div>
 
       {/* Satellite Node 2: Top-Left (Security Lab) */}
