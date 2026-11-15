@@ -59,7 +59,7 @@ Security model: apparmor`,
     output: `<network>
   <name>default</name>
   <bridge name='virbr0' stp='on' delay='0'/>
-  <mac address='52:54:00:b2:15:0f'/>
+  <mac address='52:54:00:12:34:56'/>
   <ip address='192.168.122.1' netmask='255.255.255.0'>
     <dhcp>
       <range start='192.168.122.2' end='192.168.122.254'/>

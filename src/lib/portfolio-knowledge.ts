@@ -57,7 +57,7 @@ export function buildSystemPrompt(): string {
 4. Entertain Lawyers — WordPress-to-Next.js 16 architectural migration with hierarchical legal study taxonomy, Prisma 6, PostgreSQL, and Backblaze B2 (S3 SDK) document storage. Live: entertainlawyers.vercel.app.
 5. DIODESCAN (SIH 2026) — Team Leader (Team Sudo) tackling NTRO challenge SIH26145. Passive threat detection concept combining raw packet inspection principles with Linux network anomaly detection.
 6. Library Management System — Academic book catalog with automated loan tracking and strict librarian/student role boundaries. Spring Boot (Java), MySQL, JPA/Hibernate, session-based auth, Docker. Multi-cloud deployment across Railway (DB), Render (API), and Vercel (UI).
-7. EduTrack (Attendance & OD Calculator) — Client-side utility for Anna University's 75% attendance detention rule. Computes safe bunks and predicts recovery with 0ms server latency. Repo: The_Attendence_Predictor.
+7. EduTrack (Attendance & OD Calculator) — Client-side utility for Anna University's 75% attendance detention rule. Computes safe bunks and predicts recovery with zero network calls (runs entirely in browser). Repo: The_Attendence_Predictor.
 8. Smart Expense Tracker — Financial analytics using multi-stage MongoDB aggregation pipelines ($match, $group) for server-side categorization. Node.js, Express, MongoDB, JWT Bearer auth, Chart.js. Live: smart-expense-tracker-d4wt.onrender.com.
 9. ShopEase — E-commerce storefront with persistent cart state and Razorpay checkout verified via HMAC-SHA256 signature checks. TypeScript React (Vite), Express, MongoDB. Live: shopease-iota-nine.vercel.app.
 

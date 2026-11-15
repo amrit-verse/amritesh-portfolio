@@ -197,7 +197,7 @@ const projects: Project[] = [
     category: 'systems',
     techPreview: ['JavaScript', 'Timetable Engine', 'OD Simulator', 'Local Storage'],
     fullTech: ['JavaScript', 'HTML5', 'CSS3', 'Timetable Algorithm', 'Leave/OD Simulator', 'Local Storage'],
-    showOffStat: 'Instant In-Browser Computation · 0ms Server Latency · 75% Detention Proof',
+    showOffStat: 'Instant In-Browser Computation · Zero Network Calls · 75% Detention Proof',
     overview:
       'An academic attendance intelligence tool that parses college timetables and semester end dates to calculate exact safe bunk margins, On-Duty (OD) buffers, and prove when recovery to 75% is mathematically impossible.',
     whyIBuiltIt:
@@ -206,15 +206,15 @@ const projects: Project[] = [
       'Automatic class timetable parser calculating remaining hours per subject',
       'Statutory 75% detention prediction with safe absence buffer',
       'On-Duty (OD) simulator testing official duty absences before applying',
-      'Instant client-side computation running with zero server latency',
+      'Instant client-side computation with zero network calls',
     ],
     architecture:
-      'Pure client-side computational engine in modular JavaScript. Computes calendar matrices, lab block hours, and future lecture totals entirely in browser memory with zero network delay.',
+      'Pure client-side computational engine in modular JavaScript. Computes calendar matrices, lab block hours, and future lecture totals entirely in browser memory with no network requests.',
     dataFlow: 'Timetable Matrix ──> Client Memory Engine ──> 75% Detention Algorithm ──> Real-time Buffer Trajectory',
     hardestPart:
       'Handling messy academic edge cases: odd/even laboratory blocks (which count as 3 hours), unexpected institutional holidays, and computing the exact inflection point where recovering to 75% becomes impossible.',
     github: 'https://github.com/amrit-verse/The_Attendence_Predictor',
-    highlight: 'Zero-latency timetable algorithm • 75% Detention proof • OD Simulator',
+    highlight: 'Offline-first timetable algorithm • 75% Detention proof • OD Simulator',
   },
   {
     number: '08',
@@ -283,10 +283,13 @@ export default function Projects() {
       const customEvent = e as CustomEvent<string>;
       setFilter('all');
       setExpandedId(customEvent.detail);
-      const target = document.getElementById('projects');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
+      // Scroll to the specific project card after state updates
+      setTimeout(() => {
+        const card = document.getElementById(`project-${customEvent.detail}`);
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 0);
     };
     window.addEventListener('select-project', handleSelectProject);
     return () => window.removeEventListener('select-project', handleSelectProject);
@@ -390,6 +393,7 @@ export default function Projects() {
               <ScrollReveal key={project.name} delay={index * 30}>
                 <ProjectCard3D>
                   <div
+                    id={`project-${project.number}`}
                     className={`corner-hud glass-card border rounded-2xl overflow-hidden transition-all duration-300 ${
                       isExpanded
                         ? 'border-accent-bronze/70 bg-bg-card shadow-2xl'

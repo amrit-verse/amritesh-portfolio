@@ -1,41 +1,19 @@
-# SIGNAL 3.0 — Master Checklist
+# SIGNAL 3.1 — Immersive Polish Audit
 
-## Phase 1 — Live site inspection
-- [ ] Full top-to-bottom pass, desktop viewport
-- [ ] Responsive pass: 320 / 375 / 430 / 768 / 1024 (iframe-viewport emulation) + real desktop
-- [ ] Test interactive: chatbot, command palette, theme/3D toggles, sound, resume, project links, nav
-- [ ] Capture before screenshots
-- [ ] Write concise audit (visual gaps, motion gaps, bugs, mobile problems)
+## Phase 1 — Live site inspection ✅
+- [x] Full top-to-bottom pass, desktop viewport (1440px dark+3D, light+3D, dark+2D)
+- [x] Responsive pass: 375px mobile dark+3D
+- [x] Test interactive: chatbot, command palette, theme/3D toggles, sound, resume, project links, nav
+- [x] Capture before screenshots
+- [x] Write concise audit (visual gaps, motion gaps, bugs, mobile problems)
 
-## Phase 2 — Profile & project verification
-- [ ] GitHub repos: ReleaseTrace, ThreatDesk, TeLSA, Entertain Lawyers, DIODESCAN, Smart Expense Tracker, Library Management, ShopEase, Attendance Guardian
-- [ ] Verify stack claims vs actual repos (Spring Boot, Prisma, PostgreSQL, etc.)
-- [ ] Verify CGPA 8.88 is latest available record
-- [ ] Cross-check portfolio-knowledge.ts against reality
-- [ ] Rank projects by engineering weight
-
-## Phase 3 — Content refinement
-- [ ] Remove generic/AI-sounding copy
-- [ ] Rewrite project summaries from verified facts
-- [ ] Honest status/learning-level labels
-
-## Phase 4 — 3D transformation
-- [ ] Hero upgrade (spatial composition, entrance animation)
-- [ ] Projects section: depth-aware environments
-- [ ] Skills: categorized spatial clusters
-- [ ] Systems section: terminal/architecture storytelling
-- [ ] GitHub + Contact visual consistency
-
-## Phase 5 — Motion system
-- [ ] Scroll entrances, hover depth, section separators
-- [ ] prefers-reduced-motion respected globally
-
-## Phase 6-8 — Design system, 4 modes, responsive
-- [ ] All 4 combos verified per section
-- [ ] 2D mode genuinely lightweight
-- [ ] Mobile/tablet/laptop/desktop regression pass
-
-## Phase 9-12 — Preservation & verification
-- [ ] Chatbot, palette, GitHub API, resume, sound, persistence intact
-- [ ] Lint + typecheck + build green
-- [ ] Before/after screenshot comparison
+## Phase 2 — Audit findings implemented ✅
+- [x] Write up audit document (critical / high-value / optional)
+- [x] Implement high-value fixes:
+  - **Content**: Contact.tsx & Hero3DVisual.tsx — stale "Summer/Fall 2026" → "Open for 2027 Internships (All Seasons)"
+  - **Privacy**: LearningJourney.tsx — MAC address `52:54:00:b2:15:0f` sanitized to `52:54:00:12:34:56`
+  - **Accuracy**: Projects.tsx, portfolio-knowledge.ts — EduTrack "0ms server latency" → "Zero Network Calls / no network requests"
+  - **UX**: Projects.tsx — palette jump now scrolls to expanded card (`project-${id}`), not section top
+- [x] Verify all 4 combos + mobile/tablet after each group
+- [x] Run lint + build
+- [x] Commit and push to `signal-3-0-immersive-polish`; do NOT merge or deploy
