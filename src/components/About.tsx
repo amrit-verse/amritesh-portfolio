@@ -1,4 +1,5 @@
 import { ScrollReveal } from '@/components/ScrollReveal';
+import ProjectCard3D from '@/components/ProjectCard3D';
 import { TriquetraIcon } from '@/components/CommandPalette';
 
 export default function About() {
@@ -15,7 +16,7 @@ export default function About() {
               Where I Started &amp; How I Build
             </h2>
             <p className="text-text-secondary text-xs sm:text-sm max-w-2xl leading-relaxed">
-              From hardware teardowns in Nepal to distributed backend architectures, Debian Linux, and SIEM security in Chennai.
+              From hardware teardowns in Nepal to distributed backend architectures, Debian Linux, and systems security in Chennai.
             </p>
           </div>
         </ScrollReveal>
@@ -24,6 +25,7 @@ export default function About() {
           <ScrollReveal delay={100}>
             <div className="space-y-6">
               {/* Natural Human Story Timeline — Three Cycles */}
+              <ProjectCard3D intensity={4}>
               <div className="corner-hud p-5 sm:p-7 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
                   <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze flex items-center gap-2 font-bold">
@@ -41,7 +43,7 @@ export default function About() {
                     { 
                       cycle: "CYCLE I",
                       title: "Hardware Teardown & First Linux Install", 
-                      period: "Nepal // 2018-2022",
+                      period: "Nepal // 2020-2024",
                       points: [
                         "Disassembled first x86 machine at 14 to inspect motherboard and BIOS.",
                         "Replaced slow Windows with lightweight Linux — discovered bash & package managers.",
@@ -55,7 +57,7 @@ export default function About() {
                       points: [
                         "B.E. Computer Science Engineering · Excel Engineering College (8.88 CGPA).",
                         "Adopted Debian 13 as daily driver; automated terminal workflows and dotfiles.",
-                        "Architected ReleaseTrace (Dual-Store engine), ThreatDesk (SIEM), and TeLSA (CMS)."
+                        "Architected ReleaseTrace (Dual-Store engine), ThreatDesk (DRP), and TeLSA (CMS)."
                       ]
                     },
                     { 
@@ -91,12 +93,14 @@ export default function About() {
                   ))}
                 </div>
               </div>
+              </ProjectCard3D>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
             <div className="space-y-4">
               {/* Engineering Principles (Punchy, Visual Chips) */}
+              <ProjectCard3D intensity={4}>
               <div className="corner-hud p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
                 <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze mb-3 flex items-center gap-2 font-bold">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
@@ -117,8 +121,10 @@ export default function About() {
                   </div>
                 </div>
               </div>
+              </ProjectCard3D>
 
               {/* Academic Coordinates */}
+              <ProjectCard3D intensity={4}>
               <div className="corner-hud p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
                 <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze mb-2 font-bold">College Coordinates</p>
                 <h3 className="text-base sm:text-lg font-display font-semibold text-text-primary mb-1">
@@ -140,8 +146,10 @@ export default function About() {
                   </div>
                 </div>
               </div>
+              </ProjectCard3D>
 
               {/* Human Language Card */}
+              <ProjectCard3D intensity={4}>
               <div className="corner-hud p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
                 <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze mb-2 font-bold">Languages &amp; Global Communication</p>
                 <div className="flex flex-wrap gap-2">
@@ -156,6 +164,7 @@ export default function About() {
                   </span>
                 </div>
               </div>
+              </ProjectCard3D>
             </div>
           </ScrollReveal>
         </div>

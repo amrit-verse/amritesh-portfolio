@@ -2,6 +2,7 @@
 
 import { useState, useCallback, type ReactNode } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import ProjectCard3D from "@/components/ProjectCard3D";
 import { useSound } from "@/components/SoundSystem";
 
 type ContactLink = {
@@ -122,10 +123,10 @@ export default function Contact() {
           <div className="mb-8 sm:mb-12">
             <p className="section-number mb-2 flex items-center gap-2 text-xs font-mono tracking-wider text-accent-bronze">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze shadow-[0_0_8px_var(--color-accent-bronze-glow)]" />
-              DIMENSION 04 // CONTACT &amp; DISPATCH
+              DIMENSION 09 // CONTACT &amp; DISPATCH
             </p>
             <h2 id="contact-title" className="text-2xl sm:text-3xl md:text-4xl font-bold font-display tracking-tight text-text-primary mb-3">
-              Establish Connection
+              Contact Amritesh
             </h2>
             <p className="text-text-secondary text-sm sm:text-base max-w-2xl leading-relaxed">
               Open for software engineering internships, technical collaborations, and discussions about backend systems or Linux.
@@ -137,7 +138,7 @@ export default function Contact() {
           {/* Left: Natural Pitch */}
           <ScrollReveal delay={100}>
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold font-display mb-3 sm:mb-4 text-text-primary">Let&apos;s Build Something</h3>
+              <h3 className="text-xl sm:text-2xl font-bold font-display mb-3 sm:mb-4 text-text-primary">Hire Amritesh for Backend &amp; Linux Work</h3>
               <p className="text-xs sm:text-sm sm:text-base text-text-secondary leading-relaxed mb-4 sm:mb-6">
                 I am actively seeking software engineering, backend, or systems internship opportunities. If you need someone who understands Linux, writes clean typed code, and genuinely enjoys solving tricky technical problems — my inbox is open.
               </p>
@@ -152,6 +153,7 @@ export default function Contact() {
               </div>
 
               {/* Prominent Direct Email Block */}
+              <ProjectCard3D intensity={4}>
               <div className="corner-hud mb-6 p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-bronze/50 shadow-card transition-colors group">
                 <p className="text-xs text-accent-bronze uppercase tracking-wider mb-2 font-mono">Direct Secure Channel</p>
                 <a 
@@ -166,6 +168,7 @@ export default function Contact() {
                   </svg>
                 </a>
               </div>
+              </ProjectCard3D>
 
               <div className="flex items-center gap-2.5 text-text-secondary cursor-default" title="Based in Chennai, India">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-accent-bronze shrink-0" aria-hidden="true">

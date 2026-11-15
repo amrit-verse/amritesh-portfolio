@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import ProjectCard3D from "@/components/ProjectCard3D";
 
 const VIRTUAL_LAB_ENV = [
   { 
@@ -43,10 +44,10 @@ Nmap done: 1 IP address (1 host up) scanned in 0.02 seconds`,
   },
   virsh: {
     command: "$ virsh -c qemu:///system dominfo debian13",
-    output: `Id:             -
+    output: `Id:             3
 Name:           debian13
 OS Type:        hvm
-State:          shut off
+State:          running
 CPU(s):         2
 Max memory:     2097152 KiB (2 GiB)
 Used memory:    2097152 KiB
@@ -66,19 +67,24 @@ Security model: apparmor`,
   </ip>
 </network>`,
   },
-  threatdesk: {
-    command: "$ pytest tests/test_scoring.py -v --tb=short",
-    output: `tests/test_scoring.py::test_66_deterministic_rules PASSED [ 24%]
-tests/test_scoring.py::test_negative_scoring_official_assets PASSED [ 52%]
-tests/test_scoring.py::test_zero_code_exec_logistic_evaluator PASSED [ 80%]
-tests/test_scoring.py::test_evidence_ledger_integrity PASSED [100%]
+  vitest: {
+    command: "$ npm test --prefix ~/projects/releasetrace",
+    output: `> releasetrace@1.0.0 test
+> vitest run
 
-============================== 357 passed in 99.86s ==============================`,
+✓ tests/unit/memory-store.test.ts (9 tests) 118ms
+✓ tests/unit/diff-engine.test.ts (7 tests) 94ms
+✓ tests/integration/audit-log.test.ts (11 tests) 302ms
+✓ tests/integration/evidence.test.ts (8 tests) 187ms
+
+Test Files  14 passed (14)
+     Tests  101 passed (101)
+  Duration  9.83s`,
   },
 };
 
 export default function LearningJourney() {
-  const [activeSnippet, setActiveSnippet] = useState<'nmap' | 'virsh' | 'network' | 'threatdesk'>('nmap');
+  const [activeSnippet, setActiveSnippet] = useState<'nmap' | 'virsh' | 'network' | 'vitest'>('nmap');
 
   return (
     <section id="learning" className="py-16 sm:py-24 md:py-32 bg-bg-primary border-y border-border-subtle" aria-labelledby="learning-title">
@@ -101,6 +107,7 @@ export default function LearningJourney() {
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           {/* Left Column: Virtual Topology */}
           <ScrollReveal delay={100}>
+            <ProjectCard3D intensity={4} className="h-full">
             <div className="glass-card p-5 sm:p-6 h-full flex flex-col justify-between border border-border-subtle bg-bg-card shadow-card rounded-2xl">
               <div>
                 <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-bronze mb-4 flex items-center gap-2 font-semibold">
@@ -165,10 +172,12 @@ export default function LearningJourney() {
                 </div>
               </div>
             </div>
+            </ProjectCard3D>
           </ScrollReveal>
 
           {/* Right Column: Interactive Diagnostic Inspector */}
           <ScrollReveal delay={180}>
+            <ProjectCard3D intensity={4} className="h-full">
             <div className="glass-card p-5 sm:p-6 border border-border-subtle bg-bg-card shadow-card rounded-2xl flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between gap-3 mb-4">
@@ -200,14 +209,14 @@ export default function LearningJourney() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setActiveSnippet('threatdesk')}
+                    onClick={() => setActiveSnippet('vitest')}
                     className={`shrink-0 px-2.5 py-1 rounded-lg transition-all ${
-                      activeSnippet === 'threatdesk'
+                      activeSnippet === 'vitest'
                         ? 'bg-accent-primary text-bg-primary font-semibold shadow-sm'
                         : 'text-text-secondary hover:text-text-primary'
                     }`}
                   >
-                    ThreatDesk Pytest (357)
+                    ReleaseTrace vitest (101)
                   </button>
                   <button
                     type="button"
@@ -248,6 +257,7 @@ export default function LearningJourney() {
                 </p>
               </div>
             </div>
+            </ProjectCard3D>
           </ScrollReveal>
         </div>
       </div>

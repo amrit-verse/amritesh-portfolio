@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import ProjectCard3D from "@/components/ProjectCard3D";
 
 interface GitHubUser {
   public_repos: number;
@@ -68,19 +69,14 @@ function calculateTopLanguage(repoList: GitHubRepo[]): string {
 }
 
 export default function GitHubActivity() {
-  const [user, setUser] = useState<GitHubUser | null>(() => getCached<GitHubUser>(CACHE_KEY_USER));
-  const [repos, setRepos] = useState<GitHubRepo[]>(() => getCached<GitHubRepo[]>(CACHE_KEY_REPOS) || []);
-  const [loading, setLoading] = useState<boolean>(() => {
-    const cachedUser = getCached<GitHubUser>(CACHE_KEY_USER);
-    const cachedRepos = getCached<GitHubRepo[]>(CACHE_KEY_REPOS);
-    return !(cachedUser && cachedRepos);
-  });
+  // Server-safe defaults; sessionStorage cache is applied after hydration in the
+  // effect below (reading it in useState initializers causes hydration mismatch).
+  const [user, setUser] = useState<GitHubUser | null>(null);
+  const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [topLang, setTopLang] = useState<string>(() => {
-    const cachedRepos = getCached<GitHubRepo[]>(CACHE_KEY_REPOS);
-    return cachedRepos ? calculateTopLanguage(cachedRepos) : "—";
-  });
+  const [topLang, setTopLang] = useState<string>("—");
   const [syncToast, setSyncToast] = useState(false);
 
   useEffect(() => {
@@ -91,6 +87,10 @@ export default function GitHubActivity() {
       const cachedRepos = getCached<GitHubRepo[]>(CACHE_KEY_REPOS);
 
       if (cachedUser && cachedRepos) {
+        setUser(cachedUser);
+        setRepos(cachedRepos);
+        setTopLang(calculateTopLanguage(cachedRepos));
+        setLoading(false);
         return;
       }
 
@@ -292,11 +292,13 @@ export default function GitHubActivity() {
                     label: "Distinct Languages",
                   },
                 ].map((stat) => (
-                  <div key={stat.label} className="corner-hud glass-card p-4 sm:p-5 text-center border border-border-subtle hover:border-accent-bronze/50 transition-all bg-bg-card shadow-sm rounded-xl">
+                  <ProjectCard3D key={stat.label} intensity={3}>
+                  <div className="corner-hud glass-card p-4 sm:p-5 text-center border border-border-subtle hover:border-accent-bronze/50 transition-all bg-bg-card shadow-sm rounded-xl">
                     <div className="w-10 h-10 mx-auto mb-2.5 rounded-lg border border-border-subtle bg-bg-secondary flex items-center justify-center text-accent-bronze">{stat.icon}</div>
                     <div className="text-xl sm:text-2xl font-bold font-display text-text-primary tracking-tight">{stat.value}</div>
                     <div className="text-xs font-mono text-text-secondary mt-1 uppercase tracking-wider">{stat.label}</div>
                   </div>
+                  </ProjectCard3D>
                 ))}
               </div>
             </ScrollReveal>
@@ -304,6 +306,7 @@ export default function GitHubActivity() {
             <ScrollReveal delay={150}>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {repos.map((repo) => (
+                  <ProjectCard3D key={repo.name} intensity={3}>
                   <a
                     key={repo.name}
                     href={repo.html_url}
@@ -357,6 +360,7 @@ export default function GitHubActivity() {
                       )}
                     </div>
                   </a>
+                  </ProjectCard3D>
                 ))}
               </div>
             </ScrollReveal>

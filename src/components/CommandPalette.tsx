@@ -163,11 +163,11 @@ const COMMANDS: CommandItem[] = [
   },
   {
     id: 'proj-threatdesk',
-    title: '02 // ThreatDesk (SIEM & Threat Rule Engine)',
-    subtitle: 'Digital Risk Protection with 66 deterministic rules and 357 passing pytests',
+    title: '02 // ThreatDesk (Digital Risk Protection)',
+    subtitle: 'DRP platform for impersonation & typosquatting detection — ByteXL HacXLerate 2026',
     category: 'Projects',
     badge: 'HacXLerate 2026',
-    keywords: ['threatdesk', 'threat', 'desk', 'siem', 'rules', 'python', 'pytest', 'postgresql'],
+    keywords: ['threatdesk', 'threat', 'desk', 'drp', 'rules', 'python', 'impersonation', 'postgresql'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -192,12 +192,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-edutrack',
-    title: '04 // EduTrack (Attendance & OD Calculator)',
-    subtitle: 'Anna University 75% statutory detention calculator & timetable engine',
+    id: 'proj-lawyers',
+    title: '04 // Entertain Lawyers CMS Architecture',
+    subtitle: 'WordPress to Next.js 16 migration, Backblaze B2 S3 storage & Prisma 6',
     category: 'Projects',
-    badge: 'Systems',
-    keywords: ['edutrack', 'attendance', 'guardian', '75', 'calculator', 'anna university', 'bunk'],
+    badge: 'Migration',
+    keywords: ['entertain lawyers', 'lawyers', 'wordpress migration', 'backblaze', 's3', 'prisma'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -207,12 +207,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-expense',
-    title: '05 // Smart Expense Tracker',
-    subtitle: 'Financial analytics engine with MongoDB aggregation pipelines ($match, $group)',
+    id: 'proj-diodescan',
+    title: '05 // DIODESCAN — Smart India Hackathon 2026',
+    subtitle: 'Team Leader for Team Sudo tackling NTRO Threat Detection challenge SIH26145',
     category: 'Projects',
-    badge: 'Backend',
-    keywords: ['expense', 'finance', 'tracker', 'mongodb', 'aggregation', 'jwt', 'chartjs'],
+    badge: 'SIH 2026',
+    keywords: ['diodescan', 'sih', 'hackathon', 'ntro', 'team sudo', 'threat detection', 'cybersecurity'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -237,12 +237,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-shopease',
-    title: '07 // ShopEase E-Commerce Platform',
-    subtitle: 'MERN cart state machine with Razorpay cryptographic webhook verification',
+    id: 'proj-edutrack',
+    title: '07 // EduTrack (Attendance & OD Calculator)',
+    subtitle: 'Anna University 75% statutory detention calculator & timetable engine',
     category: 'Projects',
-    badge: 'Payments',
-    keywords: ['shopease', 'ecommerce', 'store', 'cart', 'razorpay', 'webhooks', 'mern'],
+    badge: 'Systems',
+    keywords: ['edutrack', 'attendance', 'guardian', '75', 'calculator', 'anna university', 'bunk'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -252,12 +252,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-lawyers',
-    title: '08 // Entertain Lawyers CMS Architecture',
-    subtitle: 'WordPress to Next.js 16 migration, Backblaze B2 S3 storage & Prisma 6',
+    id: 'proj-expense',
+    title: '08 // Smart Expense Tracker',
+    subtitle: 'Financial analytics engine with MongoDB aggregation pipelines ($match, $group)',
     category: 'Projects',
-    badge: 'Migration',
-    keywords: ['entertain lawyers', 'lawyers', 'wordpress migration', 'backblaze', 's3', 'prisma'],
+    badge: 'Backend',
+    keywords: ['expense', 'finance', 'tracker', 'mongodb', 'aggregation', 'jwt', 'chartjs'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -267,12 +267,12 @@ const COMMANDS: CommandItem[] = [
     },
   },
   {
-    id: 'proj-diodescan',
-    title: '09 // DIODESCAN — Smart India Hackathon 2026',
-    subtitle: 'Team Leader for Team Sudo tackling NTRO Threat Detection challenge SIH26145',
+    id: 'proj-shopease',
+    title: '09 // ShopEase E-Commerce Platform',
+    subtitle: 'TypeScript React storefront with Razorpay HMAC signature verification',
     category: 'Projects',
-    badge: 'SIH 2026',
-    keywords: ['diodescan', 'sih', 'hackathon', 'ntro', 'team sudo', 'threat detection', 'cybersecurity'],
+    badge: 'Payments',
+    keywords: ['shopease', 'ecommerce', 'store', 'cart', 'razorpay', 'payments', 'typescript'],
     icon: 'code',
     run: ({ close }) => {
       close();
@@ -351,7 +351,7 @@ const COMMANDS: CommandItem[] = [
   {
     id: 'nav-learning',
     title: '05 // Systems Lab & Hands-On Practice',
-    subtitle: 'ThreatDesk 357 pytests, TryHackMe, QEMU/KVM virtual networks',
+    subtitle: 'TryHackMe labs, QEMU/KVM virtual networks, Nmap audits',
     category: 'Navigation',
     badge: 'Lab',
     keywords: ['learning', 'lab', 'tryhackme', 'hackerrank', 'virtual labs', 'qemu', 'kvm'],
@@ -806,7 +806,7 @@ export default function CommandPalette() {
           </div>
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-bronze" />
-            <span>25 Commands Ready</span>
+            <span>{COMMANDS.length} Commands Ready</span>
           </div>
         </div>
       </div>

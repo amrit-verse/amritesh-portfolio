@@ -20,7 +20,7 @@ export default function NotFound() {
         <div className="corner-hud p-8 rounded-2xl bg-[#121923] border border-[#343A40] shadow-[0_20px_50px_rgba(0,0,0,0.8)] mb-8">
           <p className="text-xs font-mono tracking-widest text-[#9C8058] uppercase mb-2 flex items-center justify-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#9C8058] animate-ping" />
-            SIGNAL // 404: CARRIER LOST
+            404 // CARRIER LOST
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold font-display tracking-tight text-[#F1EEE8] mb-4">
             Route Not Found

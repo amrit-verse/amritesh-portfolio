@@ -151,7 +151,7 @@ export function SoundToggle({ className = '' }: { className?: string }) {
     <button
       type="button"
       onClick={toggleSound}
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono tracking-wider border transition-all duration-300 shadow-sm cursor-pointer ${
+      className={`inline-flex items-center gap-1.5 font-mono tracking-wider border transition-all duration-300 shadow-sm cursor-pointer ${
         soundEnabled
           ? 'bg-bg-tertiary border-accent-bronze/60 text-text-primary shadow-[0_0_10px_var(--color-accent-bronze-glow)]'
           : 'bg-bg-card border-border-subtle text-text-secondary hover:text-text-primary hover:border-accent-bronze/40'
@@ -159,17 +159,30 @@ export function SoundToggle({ className = '' }: { className?: string }) {
       aria-label={soundEnabled ? 'Mute ambient sound design' : 'Enable ambient sound design'}
       title={soundEnabled ? 'Sound is ON (Click to mute)' : 'Sound is OFF (Click to enable subtle audio)'}
     >
-      <span className="relative flex h-2 w-2">
-        {soundEnabled && (
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-bronze opacity-75" />
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={`w-3.5 h-3.5 shrink-0 ${soundEnabled ? 'text-accent-bronze' : 'text-text-secondary'}`}
+        aria-hidden="true"
+      >
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+        {soundEnabled ? (
+          <>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+          </>
+        ) : (
+          <>
+            <line x1="22" y1="9" x2="16" y2="15" />
+            <line x1="16" y1="9" x2="22" y2="15" />
+          </>
         )}
-        <span
-          className={`relative inline-flex rounded-full h-2 w-2 ${
-            soundEnabled ? 'bg-accent-bronze' : 'bg-border-subtle'
-          }`}
-        />
-      </span>
-      <span className="hidden sm:inline">AUDIO:</span>
+      </svg>
+      <span className="st-label hidden sm:inline">AUDIO:</span>
       <span className={soundEnabled ? 'text-accent-bronze font-bold' : 'text-text-secondary'}>
         {soundEnabled ? 'ON' : 'OFF'}
       </span>

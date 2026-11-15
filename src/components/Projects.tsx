@@ -31,26 +31,28 @@ const projects: Project[] = [
     tagline: 'Release intelligence platform with memory, evidence & human control',
     badge: 'Flagship Platform',
     category: 'fullstack',
-    techPreview: ['Next.js 16', 'TypeScript', 'Dual-Store Engine', 'Audit Diffs'],
-    fullTech: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Dual Evidence Engine', 'Audit Trail Diffing', 'Automated Verification'],
-    showOffStat: 'Dual-Store Architecture · Automated Release Diffing · Cryptographic Evidence',
+    techPreview: ['Next.js 15.1', 'TypeScript', 'Hindsight Cloud Memory', 'Inngest'],
+    fullTech: ['Next.js 15.1', 'TypeScript', 'Prisma 6', 'Neon PostgreSQL', 'Inngest', 'Groq', 'Hindsight Cloud', 'Zod', 'Vitest + Playwright'],
+    showOffStat: 'HMAC-SHA256 Signed Telemetry · Persistent Incident Memory · Human Confirmation Gate',
     overview:
-      'A specialized release intelligence system engineered to track deployment states, schema transitions, and configuration drift with cryptographically auditable memory and deterministic rollback proof.',
+      'A release intelligence agent that ingests HMAC-SHA256-signed deployment webhooks, recalls past release incidents from Hindsight Cloud memory, diffs environment configurations, and synthesizes a risk assessment with a Groq LLM — validated by Zod and gated behind human confirmation.',
     whyIBuiltIt:
-      'Software deployments often fail silently because engineering teams lack immutable, multi-stage visibility into configuration drift and schema changes between staging and production environments.',
+      'Deployments fail the same way twice because nothing remembers the last incident. I wanted an agent that recalls prior release behavior before judging a new one, and that refuses to guess when evidence is thin — relevance scoring has explicit abstention paths.',
     keyFeatures: [
-      'Dual-store architecture isolating operational telemetry from tamper-evident audit logs',
-      'Automated release diffing showing schema migrations and environment flag drift',
-      'Deterministic rollback evaluation with dependency graph verification',
-      'Exportable architecture atlas and audit compliance reports',
+      'Signed webhook ingestion (HMAC-SHA256) for deployment telemetry',
+      'Persistent incident memory via Hindsight Cloud for cross-release recall',
+      'Environment diffing with deterministic risk rules and abstention on low-confidence signals',
+      'Groq LLM synthesis with Zod schema validation and a human confirmation gate',
+      'Event-driven background jobs on Inngest; 101 vitest + Playwright tests',
     ],
     architecture:
-      'Next.js App Router fronted architecture communicating with dual evidence stores. Implements structured API endpoints for release ingestion, pipeline evaluation, and audit trail reconstruction.',
-    dataFlow: 'CI/CD Webhook ──> Ingestion Validator ──> Dual Evidence Store ──> Diff Engine ──> Audit Atlas',
+      'Next.js 15.1 App Router with Prisma 6 on Neon PostgreSQL. Inngest handles event-driven evaluation; a Groq-backed synthesis step produces the final release report only after deterministic rules pass.',
+    dataFlow: 'CI/CD Webhook ──> HMAC Validator ──> Inngest Jobs ──> Hindsight Memory Recall ──> Diff Engine ──> Groq + Zod Report ──> Human Gate',
     hardestPart:
-      'Ensuring immutable audit capture during high-concurrency deployment webhooks without creating locking bottlenecks in the primary operational store.',
+      'Designing the abstention path: the agent must say "insufficient evidence" instead of inventing a risk verdict when memory recall returns weak matches.',
     github: 'https://github.com/amrit-verse/ReleaseTrace',
-    highlight: 'Next.js 16 • Dual-Store Engine • Evidence Verification • Architecture Atlas',
+    liveDemo: 'https://release-trace-red.vercel.app/dashboard',
+    highlight: 'Next.js 15.1 • Hindsight Memory • Inngest • Groq Synthesis • 101 Tests',
   },
   {
     number: '02',
@@ -58,26 +60,25 @@ const projects: Project[] = [
     tagline: 'Enterprise Digital Risk Protection (DRP) for brand & impersonation monitoring',
     badge: 'HacXLerate 2026',
     category: 'systems',
-    techPreview: ['Python 3.13', 'PostgreSQL 16', '66 Detection Rules', 'ML Regression'],
-    fullTech: ['Python 3.13', 'PostgreSQL 16', '66 Deterministic Rules', 'Logistic Regression Evaluator', 'AppArmor', 'Pytest (357 Tests)'],
-    showOffStat: '357 Automated Tests (100% Pass) · 66 Deterministic Rules · 0% FP on Official Assets',
+    techPreview: ['Python 3.13', 'PostgreSQL', 'Deterministic Rules', 'ML Regression'],
+    fullTech: ['Python 3.13', 'PostgreSQL', 'Deterministic Scoring Engine', 'Logistic Regression Evaluator', 'Automated Evidence Capture'],
+    showOffStat: 'Private Build · In Progress · ByteXL HacXLerate 2026 (Challenge 3)',
     overview:
-      'An enterprise-grade Digital Risk Protection (DRP) platform built to detect brand impersonation, typosquatting domains, rogue mobile apps, and unauthorized social profiles without brittle black-box heuristics.',
+      'A Digital Risk Protection (DRP) platform built to detect brand impersonation, typosquatting domains, rogue mobile apps, and unauthorized social profiles without brittle black-box heuristics.',
     whyIBuiltIt:
-      'Engineered for ByteXL HacXLerate 2026 (Challenge 3). Existing commercial risk platforms either rely on slow manual analyst queues or brittle AI calls that hallucinate false positives on legitimate corporate domains.',
+      'Built for ByteXL HacXLerate 2026 (Challenge 3). Existing commercial risk platforms either rely on slow manual analyst queues or brittle AI calls that hallucinate false positives on legitimate corporate domains.',
     keyFeatures: [
-      '66 deterministic detection rules with negative scoring for verified corporate defensive assets',
+      'Deterministic detection rules with negative scoring for verified corporate defensive assets',
       'Zero-code-execution Python logistic regression evaluator with precomputed weights',
-      'Strict pre-inference official brand asset exclusion gate guaranteeing 0% false positives',
+      'Strict pre-inference official brand asset exclusion gate',
       'Automated headless Chrome screenshot and evidentiary capture pipeline',
     ],
     architecture:
-      'Modular Python backend with PostgreSQL 16 persistence. Evaluates endpoint streams through deterministic scoring chains and mathematical logistic regression, verified across 357 automated test suites.',
-    dataFlow: 'Monitored Endpoints ──> Deterministic Scoring (66 Rules) ──> ML Risk Gate ──> Evidence Ledger ──> PostgreSQL',
+      'Modular Python backend with PostgreSQL persistence. Evaluates endpoint streams through deterministic scoring chains and a mathematical logistic regression evaluator.',
+    dataFlow: 'Monitored Endpoints ──> Deterministic Scoring ──> ML Risk Gate ──> Evidence Ledger ──> PostgreSQL',
     hardestPart:
       'Eliminating false positives on legitimate defensive domain registrations by building negative-scoring rules and rigorous official asset allowlisting.',
-    github: 'https://github.com/amrit-verse/ThreatDesk',
-    highlight: 'Python 3.13 • PostgreSQL 16 • 66 Rules • 357 Passing Pytests',
+    highlight: 'Python 3.13 • PostgreSQL • Deterministic Rules • ML Risk Gate',
   },
   {
     number: '03',
@@ -87,22 +88,24 @@ const projects: Project[] = [
     category: 'fullstack',
     techPreview: ['Next.js 16', 'Prisma', 'PostgreSQL', 'Auth.js'],
     fullTech: ['Next.js 16', 'React 19', 'Prisma ORM', 'PostgreSQL', 'Auth.js (v5)', 'Tailwind CSS', 'Cloudinary'],
-    showOffStat: '100% RBAC Coverage · Replaced WhatsApp Roster for Active Student Body',
+    showOffStat: 'Live at terailawassociation.org.np · Role-Based Portal for Active Student Body',
     overview:
       'A full-stack web portal built for a real law students association, replacing chaotic WhatsApp groups with a unified hub for member profiles, event notices, and student legal publications.',
     whyIBuiltIt:
-      'The student association was tracking hundreds of members on disparate spreadsheets and sharing article drafts over chat. They needed a single portal where students could submit legal essays and admins could review, approve, and publish them with proper author credits.',
+      'The student association was tracking members on disparate spreadsheets and sharing article drafts over chat. They needed a single portal where students could submit legal essays and admins could review and publish them with proper author credits.',
     keyFeatures: [
       'Role-based permissions (Super Admin, Admin, Member, Guest)',
-      'Editorial submission workflow with draft, review, and publish states',
-      'Study material and legal research taxonomy',
-      'Dynamic SEO sitemaps for public legal articles',
+      'Content management for events, notices, and student publications',
+      'Study material and legal research sections',
+      'Member directory replacing spreadsheet rosters',
     ],
     architecture:
-      'Built using Next.js App Router for server-rendered performance, backed by a PostgreSQL database managed via Prisma ORM. Asset attachments and documents are uploaded and processed through Cloudinary.',
+      'Built using Next.js App Router for server-rendered performance, backed by a PostgreSQL database managed via Prisma ORM. Asset attachments and documents are uploaded and processed through Cloudinary. Authentication via Auth.js v5.',
     dataFlow: 'Client Browser ──> Next.js App Router ──> Auth.js RBAC ──> Prisma ORM ──> PostgreSQL + Cloudinary',
     hardestPart:
       'Getting the role-based authorization clean in Next.js Server Actions so that non-admin members cannot manipulate editorial records or change article publication statuses.',
+    github: 'https://github.com/amrit-verse/telsa-website',
+    liveDemo: 'https://terailawassociation.org.np',
     highlight: 'Next.js 16 • Prisma • PostgreSQL • Auth.js RBAC',
   },
   {
@@ -117,7 +120,7 @@ const projects: Project[] = [
     overview:
       'A structured legal resource repository and full-scale architectural migration from a legacy WordPress site to a typed Next.js 16, PostgreSQL, and Backblaze B2 cloud storage architecture.',
     whyIBuiltIt:
-      'The legacy WordPress platform suffered from database bloat, slow page loads, and fragile plugins. I engineered automated extraction and staging scripts to parse, sanitize, and migrate dense course taxonomies and thousands of resources into a clean relational database.',
+      'The legacy WordPress platform suffered from database bloat, slow page loads, and fragile plugins. I built automated extraction and staging scripts to parse, sanitize, and migrate dense course taxonomies and resources into a clean relational database.',
     keyFeatures: [
       'Automated ETL migration scripts extracting and sanitizing legacy WordPress data',
       'Hierarchical study taxonomy for legal semesters, subjects, and study materials',
@@ -125,10 +128,12 @@ const projects: Project[] = [
       'Upstash Redis rate-limiting and performance caching for high-traffic endpoints',
     ],
     architecture:
-      'Next.js 16 App Router backed by PostgreSQL via Prisma 6. Custom migration scripts parse and stage data using Cheerio, with assets hosted on Backblaze B2.',
+      'Next.js 16 App Router backed by PostgreSQL via Prisma 6. Custom migration scripts parse and stage data using Cheerio, with assets hosted on Backblaze B2. Premium entitlements and purchases gate protected resources.',
     dataFlow: 'Legacy WordPress ──> Custom ETL Script ──> Prisma 6 Models ──> PostgreSQL + Backblaze B2 S3',
     hardestPart:
       'Reconciling inconsistent WordPress category hierarchies and repairing malformed legacy HTML content during ETL staging without losing relational links to legal subjects.',
+    github: 'https://github.com/entertain-lawyers/site',
+    liveDemo: 'https://entertainlawyers.vercel.app',
     highlight: 'WordPress to Next.js Migration • Prisma 6 • PostgreSQL • Backblaze B2',
   },
   {
@@ -165,7 +170,7 @@ const projects: Project[] = [
     category: 'backend',
     techPreview: ['Spring Boot', 'Java', 'MySQL', 'REST API'],
     fullTech: ['Spring Boot', 'Java', 'MySQL', 'JPA / Hibernate', 'Docker', 'REST API'],
-    showOffStat: 'ACID-Compliant Transactions · Spring Boot · 12+ REST Endpoints',
+    showOffStat: 'ACID-Compliant Transactions · Spring Boot · Session-Based Auth',
     overview:
       'A robust Java backend that handles book inventory, automated loan tracking, and strict authorization boundaries between college librarians and students.',
     whyIBuiltIt:
@@ -174,15 +179,15 @@ const projects: Project[] = [
       'Role-based permissions separating librarian CRUD actions from student searches',
       'Automated checkout tracking and return timestamp auditing',
       'Fast catalog search across title, author, and ISBN',
-      'Stateless REST API design with input validation',
+      'Session-based authentication with role-scoped dashboards',
     ],
     architecture:
       'Spring Boot application communicating with a normalized MySQL database through JPA/Hibernate. Containerized with Docker for predictable local development and cloud hosting.',
-    dataFlow: 'Client Request ──> Spring Security (JWT) ──> Spring REST Controller ──> JPA Transactions ──> MySQL InnoDB',
+    dataFlow: 'Client Request ──> Session Auth Filter ──> Spring REST Controller ──> JPA Transactions ──> MySQL InnoDB',
     hardestPart:
       'Ensuring that concurrent checkout requests for the last physical copy of a book don\'t cause a race condition, handled with database transactions and inventory constraints.',
     github: 'https://github.com/amrit-verse/Library-Management-System',
-    highlight: 'Spring Boot • MySQL • JPA Transactions • 12+ Endpoints',
+    highlight: 'Spring Boot • MySQL • JPA Transactions • Session Auth',
   },
   {
     number: '07',
@@ -208,6 +213,7 @@ const projects: Project[] = [
     dataFlow: 'Timetable Matrix ──> Client Memory Engine ──> 75% Detention Algorithm ──> Real-time Buffer Trajectory',
     hardestPart:
       'Handling messy academic edge cases: odd/even laboratory blocks (which count as 3 hours), unexpected institutional holidays, and computing the exact inflection point where recovering to 75% becomes impossible.',
+    github: 'https://github.com/amrit-verse/The_Attendence_Predictor',
     highlight: 'Zero-latency timetable algorithm • 75% Detention proof • OD Simulator',
   },
   {
@@ -217,7 +223,7 @@ const projects: Project[] = [
     badge: 'API & Analytics',
     category: 'backend',
     techPreview: ['Node.js', 'Express', 'MongoDB', 'Chart.js'],
-    fullTech: ['Node.js', 'Express.js', 'MongoDB Aggregations', 'JWT Auth', 'Chart.js', 'REST API'],
+    fullTech: ['Node.js', 'Express.js', 'MongoDB Aggregations', 'JWT Bearer Auth', 'Chart.js', 'REST API'],
     showOffStat: 'Optimized Aggregation Pipelines · Zero Client-Side Data Looping',
     overview:
       'A personal finance API and dashboard that calculates real-time spending breakdowns using MongoDB database aggregation pipelines rather than sluggish client-side loops.',
@@ -225,16 +231,18 @@ const projects: Project[] = [
       'I wanted to understand how real financial apps handle analytical queries over thousands of user receipts without blowing up memory on the backend.',
     keyFeatures: [
       'Multi-stage MongoDB aggregation pipelines for weekly and monthly category sums',
-      'JWT authentication with HTTP-only cookie session handling',
+      'JWT authentication via Bearer-token middleware',
       'Dynamic visual charts showing spending trajectory over time',
-      'Custom budget limit alerts per category',
+      'Transaction CRUD with category-wise summaries',
     ],
     architecture:
       'Express backend exposing REST endpoints that trigger optimized NoSQL aggregation pipelines ($group, $match, $project). Chart.js renders the aggregated numbers client-side.',
-    dataFlow: 'Express REST Endpoints ──> JWT Auth ──> MongoDB Aggregations ($group/$match) ──> Chart.js View',
+    dataFlow: 'Express REST Endpoints ──> Bearer JWT Middleware ──> MongoDB Aggregations ($group/$match) ──> Chart.js View',
     hardestPart:
       'Structuring MongoDB aggregation queries so that category sums across custom date ranges run on indexed fields rather than doing full-collection scans in memory.',
-    highlight: 'MongoDB Aggregation Pipelines • JWT Auth • Chart.js',
+    github: 'https://github.com/amrit-verse/smart-expense-tracker',
+    liveDemo: 'https://smart-expense-tracker-d4wt.onrender.com',
+    highlight: 'MongoDB Aggregation Pipelines • Bearer JWT • Chart.js',
   },
   {
     number: '09',
@@ -242,9 +250,9 @@ const projects: Project[] = [
     tagline: 'Modular e-commerce store with secure payment webhooks',
     badge: 'Full Stack',
     category: 'fullstack',
-    techPreview: ['React', 'Express', 'MongoDB', 'Razorpay'],
-    fullTech: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Razorpay API'],
-    showOffStat: 'Cryptographic Webhook Verification · State Machine Cart',
+    techPreview: ['React + TS', 'Express', 'MongoDB', 'Razorpay'],
+    fullTech: ['React (Vite)', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Razorpay API'],
+    showOffStat: 'Razorpay HMAC Signature Verification · State Machine Cart',
     overview:
       'A full-featured digital storefront with category browsing, cart state management, and end-to-end Razorpay payment checkout integration.',
     whyIBuiltIt:
@@ -252,16 +260,17 @@ const projects: Project[] = [
     keyFeatures: [
       'Dynamic product catalog with filtering and search',
       'Persistent shopping cart across browser reloads',
-      'Razorpay payment gateway integration with digital signature checks',
+      'Razorpay checkout with HMAC-SHA256 signature verification of payment results',
       'Seller inventory management dashboard',
     ],
     architecture:
-      'MERN stack setup. The React frontend talks to an Express REST API, which stores orders and inventory documents in MongoDB and verifies payments via Razorpay webhooks.',
-    dataFlow: 'React Shopping Cart ──> Express API ──> Razorpay Webhook Signatures ──> Idempotent DB Write ──> MongoDB',
+      'TypeScript React (Vite) frontend talking to an Express REST API, which stores orders and inventory in MongoDB — with an in-memory fallback for local runs — and verifies payments via Razorpay signature checks.',
+    dataFlow: 'React Shopping Cart ──> Express API ──> Razorpay Checkout ──> HMAC Signature Verification ──> Idempotent DB Write ──> MongoDB',
     hardestPart:
-      'Handling webhook idempotency: making sure that if a customer pays and immediately closes their tab, the server verifies the cryptographic webhook signature from Razorpay and fulfills the order once without duplicates.',
-    github: 'https://github.com/amrit-verse/ShopEase',
-    highlight: 'Razorpay Webhooks • MERN Stack • Cart State Machine',
+      'Handling payment idempotency: making sure that if a customer pays and immediately closes their tab, the server verifies the Razorpay signature and fulfills the order once without duplicates.',
+    github: 'https://github.com/amrit-verse/shopease',
+    liveDemo: 'https://shopease-iota-nine.vercel.app',
+    highlight: 'Razorpay HMAC Verification • TS React + Express • Cart State Machine',
   },
 ];
 

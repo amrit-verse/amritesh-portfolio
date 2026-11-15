@@ -48,9 +48,9 @@
   --color-bg-glass: rgba(243, 240, 233, 0.92);
   --color-bg-glass-card: rgba(255, 255, 255, 0.92);
 
-  --color-text-primary: #20252B;     /* Charcoal Typography */
-  --color-text-secondary: #626B73;   /* Muted Slate */
-  --color-text-tertiary: #8B949E;    /* Subtle Footnote */
+  --color-text-primary: #161B21;     /* Deep Charcoal — headline & key copy */
+  --color-text-secondary: #4D555D;   /* Readable Slate — body copy */
+  --color-text-tertiary: #6B747C;    /* Soft Footnote (AA on white) */
 
   --color-accent-bronze: #8B6D42;    /* Refined Architectural Bronze */
   --color-accent-bronze-dim: rgba(139, 109, 66, 0.12);
@@ -145,6 +145,24 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* ── Balanced heading line-breaks: avoids orphan words on wrap ── */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+/* ── Tuk-tuk hover bump for interactive controls (playful spring on hover) ── */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  @keyframes tuk-bump {
+    0% { transform: translateY(0) scale(1); }
+    35% { transform: translateY(-3px) scale(1.03); }
+    70% { transform: translateY(1px) scale(0.995); }
+    100% { transform: translateY(0) scale(1); }
+  }
+  [class*="active:scale-95"]:hover {
+    animation: tuk-bump 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  }
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -232,6 +250,11 @@ body {
       var(--shadow-card),
       var(--shadow-glow);
   }
+}
+
+/* ── Navbar compact sound toggle: hide the AUDIO: label where the desktop bar is tight (1280–1535), restore at 2xl ── */.nb-sound-compact .st-label { display: none !important; }
+@media (min-width: 1536px) {
+  .nb-sound-compact .st-label { display: inline !important; }
 }
 
 /* ── HUD Technical Corner Brackets ── */
@@ -345,6 +368,33 @@ body {
   perspective: none !important;
   transform-style: flat !important;
   transition: background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* Cursor ring is a 3D-mode flourish only */
+[data-render-mode="2d"] .cursor-fx {
+  display: none !important;
+}
+
+/* ── ConnectionGraph: animated data flow + hover depth ── */
+@keyframes graph-flow {
+  to { stroke-dashoffset: -24; }
+}
+.graph-edge-active {
+  stroke-dasharray: 7 5;
+  animation: graph-flow 1.1s linear infinite;
+}
+.graph-node {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.graph-node:hover {
+  transform: scale(1.06);
+}
+@media (prefers-reduced-motion: reduce) {
+  .graph-edge-active { animation: none; }
+}
+[data-render-mode="2d"] .graph-edge-active {
+  animation: none;
 }
 
 /* ── Project Accordion Expansion ── */

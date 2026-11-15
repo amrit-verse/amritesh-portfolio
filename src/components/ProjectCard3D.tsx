@@ -6,9 +6,10 @@ import { useExperience } from '@/components/ExperienceContext';
 interface ProjectCard3DProps {
   children: React.ReactNode;
   className?: string;
+  intensity?: number; // max tilt in degrees
 }
 
-export default function ProjectCard3D({ children, className = '' }: ProjectCard3DProps) {
+export default function ProjectCard3D({ children, className = '', intensity = 7 }: ProjectCard3DProps) {
   const { renderMode } = useExperience();
   const cardRef = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState<React.CSSProperties>({});
@@ -26,8 +27,8 @@ export default function ProjectCard3D({ children, className = '' }: ProjectCard3
       const centerY = rect.height / 2;
 
       // Calculate tilt angles (degrees)
-      const rotateX = -((y - centerY) / centerY) * 7;
-      const rotateY = ((x - centerX) / centerX) * 7;
+      const rotateX = -((y - centerY) / centerY) * intensity;
+      const rotateY = ((x - centerX) / centerX) * intensity;
 
       setStyle({
         transform: `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`,
@@ -42,7 +43,7 @@ export default function ProjectCard3D({ children, className = '' }: ProjectCard3
         background: `radial-gradient(circle at ${glareX}% ${glareY}%, var(--color-accent-bronze-glow), transparent 60%)`,
       });
     },
-    [renderMode]
+    [renderMode, intensity]
   );
 
   const handleMouseLeave = useCallback(() => {

@@ -1,4 +1,5 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
+import ProjectCard3D from "@/components/ProjectCard3D";
 
 const TIMELINE = [
   {
@@ -50,6 +51,7 @@ export default function Education() {
         <div className="grid md:grid-cols-3 gap-5">
           {TIMELINE.map((item, i) => (
             <ScrollReveal key={`${item.title}-${i}`} delay={i * 80}>
+              <ProjectCard3D intensity={4} className="h-full">
               <div className="corner-hud h-full p-5 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-bronze/50 shadow-card transition-colors flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
@@ -75,6 +77,7 @@ export default function Education() {
                   <p className="text-xs font-mono text-text-primary">{item.metrics}</p>
                 </div>
               </div>
+              </ProjectCard3D>
             </ScrollReveal>
           ))}
         </div>

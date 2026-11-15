@@ -100,7 +100,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       measurePill();
-      if (window.innerWidth >= 1024 && isMobileOpen) {
+      if (window.innerWidth >= 1280 && isMobileOpen) {
         setIsMobileOpen(false);
       }
     };
@@ -284,7 +284,7 @@ export default function Navbar() {
         {/* Desktop Navigation with Smooth Sliding Warm Ivory Pill */}
         <ul
           ref={navRef}
-          className="relative hidden lg:flex items-center gap-1 bg-bg-glass-card border border-border-subtle rounded-full p-1.5 backdrop-blur-md shadow-sm"
+          className="relative hidden xl:flex items-center gap-1 bg-bg-glass-card border border-border-subtle rounded-full p-1.5 backdrop-blur-md shadow-sm"
           role="list"
         >
           {/* Hardware-accelerated sliding warm ivory pill */}
@@ -320,7 +320,7 @@ export default function Navbar() {
                     e.preventDefault();
                     navigateToSection(sectionId);
                   }}
-                  className={`relative z-10 px-3 py-1.5 text-xs font-mono rounded-full transition-colors duration-200 select-none block ${
+                  className={`relative z-10 px-2.5 2xl:px-3 py-1.5 text-xs font-mono rounded-full transition-colors duration-200 select-none block whitespace-nowrap ${
                     isActive
                       ? 'text-bg-primary font-semibold'
                       : 'text-text-secondary hover:text-text-primary'
@@ -335,7 +335,7 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop Fast Actions */}
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden xl:flex items-center gap-1.5">
           {/* CONTROL A: Dark / Light Mode Toggle */}
           <button
             type="button"
@@ -343,7 +343,7 @@ export default function Navbar() {
               playClick();
               toggleTheme();
             }}
-            className="w-9 h-9 rounded-lg border border-border-subtle bg-bg-card hover:bg-bg-tertiary flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent-bronze/60 transition-all cursor-pointer"
+            className="w-10 h-10 rounded-full border border-border-subtle bg-bg-card hover:bg-bg-tertiary flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent-bronze/60 transition-all cursor-pointer"
             aria-label={`Toggle Theme (Current: ${theme === 'dark' ? 'Dark' : 'Light'})`}
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
           >
@@ -373,7 +373,7 @@ export default function Navbar() {
               playClick();
               toggleRenderMode();
             }}
-            className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-1.5 h-10 px-4 rounded-full border text-xs font-mono transition-all cursor-pointer ${
               renderMode === '3d'
                 ? 'border-accent-bronze/60 bg-accent-bronze/10 text-accent-bronze shadow-[0_0_12px_rgba(156,128,88,0.2)]'
                 : 'border-border-subtle bg-bg-card text-text-secondary hover:text-text-primary hover:border-accent-bronze/50'
@@ -389,24 +389,24 @@ export default function Navbar() {
             <span className="font-bold">{renderMode.toUpperCase()}</span>
           </button>
 
-          <SoundToggle />
+          <SoundToggle className="h-10 px-4 rounded-full text-xs" />
 
           <button
             type="button"
             onClick={() => openSicMundus()}
-            className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border-subtle bg-bg-card text-xs font-mono text-text-primary hover:border-accent-bronze/60 active:scale-95 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 h-10 px-4 rounded-full border border-border-subtle bg-bg-card text-xs font-mono text-text-primary hover:border-accent-bronze/60 active:scale-95 transition-all cursor-pointer"
             aria-label="Open Sic Mundus Command Palette (Cmd+K)"
           >
             <TriquetraIcon className="w-3.5 h-3.5 text-accent-bronze" />
             <span>Sic Mundus</span>
-            <kbd className="text-[10px] px-1.5 py-0.5 rounded bg-bg-primary border border-border-subtle text-text-secondary font-sans">⌘K</kbd>
+            <kbd className="hidden 2xl:inline text-[10px] px-1.5 py-0.5 rounded bg-bg-primary border border-border-subtle text-text-secondary font-sans">⌘K</kbd>
           </button>
 
           <a
             href="https://github.com/amrit-verse"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 rounded-lg border border-border-subtle bg-bg-card flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent-bronze/50 transition-colors"
+            className="w-10 h-10 rounded-full border border-border-subtle bg-bg-card flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent-bronze/50 transition-colors"
             aria-label="GitHub Profile (@amrit-verse)"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
@@ -418,14 +418,14 @@ export default function Navbar() {
             href="/resume/Amritesh_Mishra.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-mono font-semibold px-4 py-2 rounded-lg bg-text-primary text-bg-primary hover:bg-accent-bronze hover:text-bg-primary transition-all shadow-sm active:scale-[0.98]"
+            className="inline-flex items-center h-10 text-xs font-mono font-semibold px-5 rounded-full bg-text-primary text-bg-primary hover:bg-accent-bronze hover:text-bg-primary transition-all shadow-sm active:scale-[0.98]"
           >
             Resume (PDF)
           </a>
         </div>
 
         {/* Mobile Fast Action & Hamburger Button */}
-        <div className="lg:hidden flex items-center gap-1.5">
+        <div className="xl:hidden flex items-center gap-1.5">
           {/* Mobile Theme Toggle */}
           <button
             type="button"
@@ -462,13 +462,13 @@ export default function Navbar() {
               playClick();
               toggleRenderMode();
             }}
-            className="h-10 px-2.5 flex items-center gap-1 rounded-xl text-xs font-mono font-bold text-accent-bronze border border-border-subtle bg-bg-card active:scale-95 transition-all"
+            className="h-10 px-3 flex items-center gap-1 rounded-xl text-xs font-mono font-bold text-accent-bronze border border-border-subtle bg-bg-card active:scale-95 transition-all"
             aria-label={`Toggle 3D/2D (${renderMode.toUpperCase()})`}
           >
             <span>{renderMode.toUpperCase()}</span>
           </button>
 
-          <SoundToggle />
+          <SoundToggle className="h-10 px-3 rounded-xl text-xs active:scale-95" />
 
           <button
             type="button"
@@ -511,7 +511,7 @@ export default function Navbar() {
       {/* Mobile Menu Drawer */}
       <div
         id="mobile-menu"
-        className={`lg:hidden fixed inset-0 z-[100] transition-opacity duration-300 ease-out ${
+        className={`xl:hidden fixed inset-0 z-[100] transition-opacity duration-300 ease-out ${
           isMobileOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -529,14 +529,29 @@ export default function Navbar() {
         />
 
         <div
-          className={`fixed right-0 top-0 z-[101] flex h-dvh w-full flex-col bg-bg-primary px-4 sm:px-6 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-[calc(1.25rem+env(safe-area-inset-bottom))] shadow-2xl border-l border-border-subtle backdrop-blur-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:max-w-md ${
-            isMobileOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`fixed right-0 top-0 z-[101] flex h-dvh w-full flex-col bg-bg-primary px-4 sm:px-6 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-[calc(1.25rem+env(safe-area-inset-bottom))] shadow-2xl border-l border-border-subtle backdrop-blur-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none sm:max-w-md ${
+            renderMode === '3d'
+              ? 'translate-x-0'
+              : isMobileOpen
+              ? 'translate-x-0'
+              : 'translate-x-full'
           }`}
+          style={
+            renderMode === '3d'
+              ? {
+                  transformOrigin: 'right center',
+                  transform: isMobileOpen
+                    ? 'perspective(1400px) rotateY(0deg) translateX(0)'
+                    : 'perspective(1400px) rotateY(14deg) translateX(110%)',
+                  transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1)',
+                }
+              : undefined
+          }
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
         >
-          <div className="flex items-center justify-between pb-4 border-b border-border-subtle">
+          <div className="flex items-center justify-between pb-3 border-b border-border-subtle">
             <a
               href="#"
               onClick={(e) => {
@@ -563,6 +578,19 @@ export default function Navbar() {
             </button>
           </div>
 
+          {/* Identity strip — who Amritesh is, at a glance */}
+          <div className="pt-3 pb-1">
+            <p className="text-sm font-display font-bold text-text-primary leading-tight">
+              Amritesh Mishra
+              <span className="ml-2 text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-accent-bronze/10 border border-accent-bronze/40 text-accent-bronze align-middle">
+                OPEN TO OPPORTUNITIES
+              </span>
+            </p>
+            <p className="text-[11px] font-mono text-text-secondary mt-0.5">
+              Backend Developer · Linux &amp; Systems · CSE @ Anna University
+            </p>
+          </div>
+
           {/* Mobile Experience Preference Bar */}
           <div className="grid grid-cols-2 gap-2 pt-3">
             <button
@@ -573,7 +601,23 @@ export default function Navbar() {
               }}
               className="flex items-center justify-center gap-2 p-2.5 rounded-xl border border-border-subtle bg-bg-card text-xs font-mono text-text-primary active:scale-95 transition-all cursor-pointer shadow-sm"
             >
-              <span className="text-accent-bronze">{theme === 'dark' ? '☀️' : '🌙'}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 text-accent-bronze" aria-hidden="true">
+                {theme === 'dark' ? (
+                  <>
+                    <circle cx="12" cy="12" r="5" />
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                  </>
+                ) : (
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                )}
+              </svg>
               <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
             </button>
             <button
@@ -632,7 +676,9 @@ export default function Navbar() {
                         : 'border-transparent text-text-secondary hover:border-border-subtle hover:bg-bg-secondary hover:text-text-primary'
                     }`}
                     style={{
-                      transitionDelay: isMobileOpen ? `${index * 30}ms` : '0ms',
+                      transform: isMobileOpen ? 'translateX(0)' : 'translateX(20px)',
+                      opacity: isMobileOpen ? 1 : 0,
+                      transition: `transform 0.4s cubic-bezier(0.16,1,0.3,1) ${index * 35}ms, opacity 0.4s ease ${index * 35}ms, color 0.2s, background-color 0.2s, border-color 0.2s`,
                     }}
                     aria-current={isActive ? 'true' : undefined}
                     tabIndex={isMobileOpen ? 0 : -1}

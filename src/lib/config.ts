@@ -20,9 +20,9 @@ export const SITE_CONFIG = {
   displayName: "Amrit",
   title: "Amritesh Mishra | Software Engineer | Linux & Backend Developer",
   description:
-    "Computer Science Engineering student passionate about Linux, Backend Development, Full Stack Engineering, Cybersecurity, and Open Source. Explore projects, skills, and professional experience.",
+    "Computer Science Engineering student focused on Linux, Backend Development, Full Stack Engineering, Cybersecurity, and Open Source. Explore projects, skills, and professional experience.",
   shortDescription:
-    "Computer Science Engineering student passionate about Linux, Backend Development, Full Stack Engineering, Cybersecurity, and Open Source.",
+    "Computer Science Engineering student focused on Linux, Backend Development, Full Stack Engineering, Cybersecurity, and Open Source.",
   email: "contact@amritesh.com.np",
   jobTitle: "Software Engineer",
   location: "Chennai, India",

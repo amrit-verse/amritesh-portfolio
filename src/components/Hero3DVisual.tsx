@@ -25,7 +25,8 @@ export default function Hero3DVisual() {
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.z = 7;
+    // Pulled back so the outer horizon ring (r=3.05) projects fully inside the canvas
+    camera.position.z = 8.1;
 
     let renderer: THREE.WebGLRenderer | null = null;
     try {
@@ -224,7 +225,7 @@ export default function Hero3DVisual() {
       {renderMode === '3d' && (
         <div
           ref={mountRef}
-          className="absolute inset-0 z-0 pointer-events-auto cursor-grab active:cursor-grabbing"
+          className="absolute -inset-10 sm:-inset-12 xl:-inset-16 z-0 pointer-events-auto cursor-grab active:cursor-grabbing"
           aria-hidden="true"
         />
       )}
@@ -287,19 +288,19 @@ export default function Hero3DVisual() {
 
       {/* Satellite Node 2: Top-Left (Security Lab) */}
       <div className="hidden sm:flex absolute top-6 -left-4 z-20 items-center gap-2 px-3 py-1.5 rounded-xl bg-bg-card/95 border border-border-subtle shadow-lg backdrop-blur-md transition-all hover:border-accent-bronze">
-        <span className="text-xs text-accent-bronze">🛡️</span>
+        <span className="w-2 h-2 rounded-full bg-accent-bronze shrink-0" />
         <span className="text-[11px] font-mono text-text-primary">QEMU virbr0 NAT</span>
       </div>
 
       {/* Satellite Node 3: Bottom-Left (Kernel) */}
       <div className="hidden sm:flex absolute bottom-6 -left-2 z-20 items-center gap-2 px-3 py-1.5 rounded-xl bg-bg-card/95 border border-border-subtle shadow-lg backdrop-blur-md transition-all hover:border-accent-bronze">
-        <span className="text-xs text-accent-bronze">🐧</span>
+        <span className="w-2 h-2 rounded-full bg-accent-bronze shrink-0" />
         <span className="text-[11px] font-mono text-text-primary">Debian 13 · Linux 6.12</span>
       </div>
 
       {/* Satellite Node 4: Bottom-Right (SIH) */}
       <div className="hidden sm:flex absolute -bottom-3 right-4 z-20 items-center gap-2 px-3 py-1.5 rounded-xl bg-bg-card/95 border border-border-subtle shadow-lg backdrop-blur-md transition-all hover:border-accent-bronze">
-        <span className="text-xs text-accent-bronze">🏆</span>
+        <span className="w-2 h-2 rounded-full bg-accent-bronze shrink-0" />
         <span className="text-[11px] font-mono text-text-primary">Team Leader (Team Sudo)</span>
       </div>
     </div>

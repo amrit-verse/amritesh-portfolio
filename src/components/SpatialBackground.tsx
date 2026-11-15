@@ -43,7 +43,7 @@ export default function SpatialBackground() {
     // Colors based on theme
     const isDark = theme === 'dark';
     const primaryColor = isDark ? 0x9c8058 : 0x8b6d42;
-    const secondaryColor = isDark ? 0x343a40 : 0xd6d0c4;
+    const secondaryColor = isDark ? 0x343a40 : 0x3a2a1a; // light: dark chocolate floaters
 
     // 1. Particle Cloud (Stars / Signal nodes)
     const particleCount = 180;
@@ -72,7 +72,7 @@ export default function SpatialBackground() {
       size: isDark ? 1.6 : 1.8,
       vertexColors: true,
       transparent: true,
-      opacity: isDark ? 0.45 : 0.35,
+      opacity: isDark ? 0.45 : 0.4,
     });
 
     const particles = new THREE.Points(geometry, material);
