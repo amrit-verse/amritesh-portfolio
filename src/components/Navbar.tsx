@@ -529,14 +529,29 @@ export default function Navbar() {
         />
 
         <div
-          className={`fixed right-0 top-0 z-[101] flex h-dvh w-full flex-col bg-bg-primary px-4 sm:px-6 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-[calc(1.25rem+env(safe-area-inset-bottom))] shadow-2xl border-l border-border-subtle backdrop-blur-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:max-w-md ${
-            isMobileOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`fixed right-0 top-0 z-[101] flex h-dvh w-full flex-col bg-bg-primary px-4 sm:px-6 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-[calc(1.25rem+env(safe-area-inset-bottom))] shadow-2xl border-l border-border-subtle backdrop-blur-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none sm:max-w-md ${
+            renderMode === '3d'
+              ? 'translate-x-0'
+              : isMobileOpen
+              ? 'translate-x-0'
+              : 'translate-x-full'
           }`}
+          style={
+            renderMode === '3d'
+              ? {
+                  transformOrigin: 'right center',
+                  transform: isMobileOpen
+                    ? 'perspective(1400px) rotateY(0deg) translateX(0)'
+                    : 'perspective(1400px) rotateY(14deg) translateX(110%)',
+                  transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1)',
+                }
+              : undefined
+          }
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
         >
-          <div className="flex items-center justify-between pb-4 border-b border-border-subtle">
+          <div className="flex items-center justify-between pb-3 border-b border-border-subtle">
             <a
               href="#"
               onClick={(e) => {
@@ -561,6 +576,19 @@ export default function Navbar() {
                 <path d="M18 6L6 18" />
               </svg>
             </button>
+          </div>
+
+          {/* Identity strip — who Amritesh is, at a glance */}
+          <div className="pt-3 pb-1">
+            <p className="text-sm font-display font-bold text-text-primary leading-tight">
+              Amritesh Mishra
+              <span className="ml-2 text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-accent-bronze/10 border border-accent-bronze/40 text-accent-bronze align-middle">
+                OPEN TO OPPORTUNITIES
+              </span>
+            </p>
+            <p className="text-[11px] font-mono text-text-secondary mt-0.5">
+              Backend Developer · Linux &amp; Systems · CSE @ Anna University
+            </p>
           </div>
 
           {/* Mobile Experience Preference Bar */}
@@ -648,7 +676,9 @@ export default function Navbar() {
                         : 'border-transparent text-text-secondary hover:border-border-subtle hover:bg-bg-secondary hover:text-text-primary'
                     }`}
                     style={{
-                      transitionDelay: isMobileOpen ? `${index * 30}ms` : '0ms',
+                      transform: isMobileOpen ? 'translateX(0)' : 'translateX(20px)',
+                      opacity: isMobileOpen ? 1 : 0,
+                      transition: `transform 0.4s cubic-bezier(0.16,1,0.3,1) ${index * 35}ms, opacity 0.4s ease ${index * 35}ms, color 0.2s, background-color 0.2s, border-color 0.2s`,
                     }}
                     aria-current={isActive ? 'true' : undefined}
                     tabIndex={isMobileOpen ? 0 : -1}
